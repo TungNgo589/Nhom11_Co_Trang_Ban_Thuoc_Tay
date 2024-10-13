@@ -7722,11 +7722,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\QLThuocDAPM.csproj",
+      "projectUniqueName": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv4\\QLThuocDAPM\\QLThuocDAPM.csproj",
       "projectName": "QLThuocDAPM",
-      "projectPath": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\QLThuocDAPM.csproj",
+      "projectPath": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv4\\QLThuocDAPM\\QLThuocDAPM.csproj",
       "packagesPath": "C:\\Users\\dong trieu\\.nuget\\packages\\",
-      "outputPath": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\obj\\",
+      "outputPath": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv4\\QLThuocDAPM\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
