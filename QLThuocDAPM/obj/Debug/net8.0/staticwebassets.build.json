@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "Hash": "4vuWi60NoMIOaEbSiEhVt5TaCW1u8IflufT+74CuEMg=",
-=======
   "Hash": "aADi4yG40e6xvzKWW0izAT2ee9D8USQUHuM7ooiinBQ=",
->>>>>>> 5bfa64653b5600ff4388273c2aaed4e15d210b28
   "Source": "QLThuocDAPM",
   "BasePath": "_content/QLThuocDAPM",
   "Mode": "Default",
@@ -78,36 +74,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\wwwroot\\css\\store.css",
-      "SourceId": "QLThuocDAPM",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\wwwroot\\",
-      "BasePath": "_content/QLThuocDAPM",
-      "RelativePath": "css/store.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\store.css"
-    },
-    {
       "Identity": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\wwwroot\\favicon.ico",
       "SourceId": "QLThuocDAPM",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\wwwroot\\",
-=======
-      "Identity": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\wwwroot\\favicon.ico",
-      "SourceId": "QLThuocDAPM",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv3\\QLThuocDAPM\\wwwroot\\",
->>>>>>> 5bfa64653b5600ff4388273c2aaed4e15d210b28
       "BasePath": "_content/QLThuocDAPM",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",

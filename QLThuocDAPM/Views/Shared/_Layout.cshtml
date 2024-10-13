@@ -11,8 +11,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
-@*     @Styles.Render("~/Content/store")
- *@    <link href="~/css/store.css" rel="stylesheet"/>
+    @*     @Styles.Render("~/Content/store")
+    *@
+    <link href="~/css/store.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
     <title>NHATHUOCSO1VIETNAM</title>
     <link rel="shortcut icon" href="~/UploadFile/icon.png" type="image/x-icon" />
@@ -149,7 +150,7 @@
         <div class="header">
 
             <div class="navbar p-4 d-flex align-items-center">
-            
+
                 <nav style="height:150px">
                     <ul id="MenuItems">
                         <li><a href="/home/index"><img class="img-logo" src="~/anh/nhathuoc.jpg"></a> <a href="/games/index">TRANG CHỦ</a> </li>
@@ -159,7 +160,7 @@
                         <li><a href="/games/danhmuc/3">CHĂM SÓC CÁ NHÂN</a></li>
                         <li><a href="/games/danhmuc/4">THUỐC</a></li>
                         <li><a href="/games/danhmuc/5">THIẾT BỊ Y TẾ</a></li>
-                       
+
 
 
                     </ul>
@@ -172,43 +173,43 @@
 
 
                     <a class="icon-cart-cus" style="margin-left:10px" href="/giohang"><i class='cus-icon bx bx-cart'></i> <span id="cart"></span></a>
-                 @*    @if (Session["userLogin"] != null)
+                    @*    @if (Session["userLogin"] != null)
                     {
-                        <div class="userlogin">
-                            <a style="margin-left:30px" href="/home/donhang">
+                    <div class="userlogin">
+                    <a style="margin-left:30px" href="/home/donhang">
 
-                                <i class='cus-icon bx bx-user-check'></i>
+                    <i class='cus-icon bx bx-user-check'></i>
 
-                            </a>
-                            <div class="userlogged">
-                                <div>
-                                    <a href="/home/donhang">Đơn hàng của tôi</a>
-                                </div>
-                                <div>
-                                    <a href="/user/dangxuat">Đăng xuất</a>
-                                </div>
-                            </div>
-                        </div>
+                    </a>
+                    <div class="userlogged">
+                    <div>
+                    <a href="/home/donhang">Đơn hàng của tôi</a>
+                    </div>
+                    <div>
+                    <a href="/user/dangxuat">Đăng xuất</a>
+                    </div>
+                    </div>
+                    </div>
                     }
                     else
                     {
-                        <a style="margin-left:30px" href="/user/login"><i class='cus-icon bx bx-user'></i></a>
+                    <a style="margin-left:30px" href="/user/login"><i class='cus-icon bx bx-user'></i></a>
                     } *@
                 </div>
 
                 <img src="~/UploadFile/menu.png" class="menu-icon" onclick="menutoggle()">
             </div>
 
-       
+
         </div>
         <div class="main">
             @RenderBody()
         </div>
 
         <!-- Button trigger modal -->
-       
 
-  
+
+
         <footer id="footer-map">
 
             <div class="name-map">
@@ -1006,67 +1007,66 @@
         </footer>
 
 
-   
 
 
 
-    <!----footer------>
-  
-    <!-- script for menu -->
-    <script language="JavaScript">
-        var MenuItems = document.getElementById("MenuItems");
 
-        MenuItems.style.maxHeight = "0px";
-        function menutoggle() {
+        <!----footer------>
+        <!-- script for menu -->
+        <script language="JavaScript">
             var MenuItems = document.getElementById("MenuItems");
-            if (MenuItems.style.maxHeight == "0px") {
-                MenuItems.style.maxHeight = "200px";
 
+            MenuItems.style.maxHeight = "0px";
+            function menutoggle() {
+                var MenuItems = document.getElementById("MenuItems");
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "200px";
+
+                }
+                else {
+                    MenuItems.style.maxHeight = "0px";
+                }
             }
-            else {
-                MenuItems.style.maxHeight = "0px";
-            }
-        }
 
-        const keyword = document.getElementById('search-box');
-    
+            const keyword = document.getElementById('search-box');
 
-        const iconSearch = document.querySelector('.icon-search')
 
-       
-        iconSearch.addEventListener('click', e => {
-            if (keyword.value.trim()) {
-                window.location.href = `/games/Search?keyword=${keyword.value}`
-            }
-        })
+            const iconSearch = document.querySelector('.icon-search')
 
-        function runScript(e) {
-            //See notes about 'which' and 'key'
-            if (e.keyCode == 13) {
+
+            iconSearch.addEventListener('click', e => {
                 if (keyword.value.trim()) {
                     window.location.href = `/games/Search?keyword=${keyword.value}`
                 }
+            })
+
+            function runScript(e) {
+                //See notes about 'which' and 'key'
+                if (e.keyCode == 13) {
+                    if (keyword.value.trim()) {
+                        window.location.href = `/games/Search?keyword=${keyword.value}`
+                    }
+                }
             }
-        }
 
-        const cart = document.getElementById("cart");
-  
+            const cart = document.getElementById("cart");
 
-  
-        fetch('/home/GetData')
-            .then((response) => response.json())
-            .then((data) =>   cart.innerHTML=data );
 
-    </script>
 
-  @*   @Scripts.Render("~/bundles/modernizr")
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-></script>
-    @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false) *@
+            fetch('/home/GetData')
+                .then((response) => response.json())
+                .then((data) => cart.innerHTML = data);
+
+        </script>
+
+        @*   @Scripts.Render("~/bundles/modernizr")
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        ></script>
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false) *@
 </body>
 
-</html >
+</html>
 
 
 @*    @Styles.Render("~/Content/css")
