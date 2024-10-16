@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WQ7ZAQszmthH1DJhgdY9uZfutp3w3Ykh8jDIpJmEess=",
+  "Hash": "gsQqozs8akizq/UKVXKXWDF5vqXZgBPuza8qmsInFNA=",
   "Source": "QLThuocDAPM",
   "BasePath": "_content/QLThuocDAPM",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\QLThuocDAPM.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\wwwroot\\css\\s.css",
+      "SourceId": "QLThuocDAPM",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\wwwroot\\",
+      "BasePath": "_content/QLThuocDAPM",
+      "RelativePath": "css/s.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\s.css"
     },
     {
       "Identity": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\wwwroot\\css\\site.css",

@@ -1,0 +1,25 @@
+﻿@model QLThuocDAPM.Data.SanPham
+
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container single-product">
+    <div class="row align-items-start">
+        <div class="col-5 p-3">
+          
+                <img src="@Url.Content("~/UploadFile/" + Model.HinhAnh1)" alt="@Model.TenSp" class="img-fluid" />
+
+        </div>
+        <div class="col-7">
+            <h3>@Model.TenSp</h3>
+            <h4>@Model.GiaTien.ToString("N0") VNĐ</h4> 
+            <p>@Model.ChitietSp</p>
+            <p>Thành phần: @Model.ThanhPhan</p>
+            <p>Đơn vị: @Model.DonVi</p>
+            <p>Hạn sử dụng: @Model.HansuDung</p>
+            <a href="@Url.Action("AddToCart", "GioHang", new { maSP = Model.MaSp })" class="btn btn-success">Thêm vào giỏ hàng</a>
+        </div>
+    </div>
+</div>
