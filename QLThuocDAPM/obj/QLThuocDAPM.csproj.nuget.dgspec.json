@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\QLThuocDAPM.csproj": {}
+    "C:\\DongTrieu_Nam3\\20_10\\QLThuocDAPM\\QLThuocDAPM.csproj": {}
   },
   "projects": {
-    "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\QLThuocDAPM.csproj": {
+    "C:\\DongTrieu_Nam3\\20_10\\QLThuocDAPM\\QLThuocDAPM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\QLThuocDAPM.csproj",
+        "projectUniqueName": "C:\\DongTrieu_Nam3\\20_10\\QLThuocDAPM\\QLThuocDAPM.csproj",
         "projectName": "QLThuocDAPM",
-        "projectPath": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\QLThuocDAPM.csproj",
+        "projectPath": "C:\\DongTrieu_Nam3\\20_10\\QLThuocDAPM\\QLThuocDAPM.csproj",
         "packagesPath": "C:\\Users\\dong trieu\\.nuget\\packages\\",
-        "outputPath": "C:\\DongTrieu_Nam3\\DoAnPhanMem_2\\File dapmv5\\QLThuocDAPM\\obj\\",
+        "outputPath": "C:\\DongTrieu_Nam3\\20_10\\QLThuocDAPM\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.10, )"

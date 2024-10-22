@@ -989,12 +989,7 @@
 
   };
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v5.1.0): dom/selector-engine.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-   * --------------------------------------------------------------------------
-   */
+
   const NODE_TEXT = 3;
   const SelectorEngine = {
     find(selector, element = document.documentElement) {

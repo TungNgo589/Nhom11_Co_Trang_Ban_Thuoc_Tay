@@ -1,0 +1,50 @@
+﻿@model QLThuocDAPM.Data.Benh
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Benh</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            Tên
+            <div class="form-group">
+                <label asp-for="TenBenh" class="control-label"></label>
+                <input asp-for="TenBenh" class="form-control" />
+                <span asp-validation-for="TenBenh" class="text-danger"></span>
+            </div>
+            Mô tả
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label"></label>
+                <input asp-for="MoTa" class="form-control" />
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+                <div  class="form-group">
+                  
+                    <a asp-area="Admin" asp-controller="Benhs" asp-action="Create" class="btn btn-primary">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+
+                    </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+        <a asp-area="Admin" asp-controller="Benhs" asp-action="Index">  <input type="submit" class="btn btn-primary" value="Back to List" /></a>
+</div>
+
+</body>
+</html>

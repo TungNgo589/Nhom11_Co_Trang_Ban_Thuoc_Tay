@@ -1,0 +1,36 @@
+﻿@model IEnumerable<QLThuocDAPM.Data.SanPham>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="~/css/listSanPham.css" />
+    <title>Danh sách sản phẩm</title>
+</head>
+<body>
+    <h2 class="title">TẤT CẢ SẢN PHẨM</h2>
+    <div class="row mb-2">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-3 mt-2 card-product">
+                <a asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                <img class="img-product" src="~/UploadFile/@item.HinhAnh1">
+                    <div class="name-product">@item.TenSp</div>
+
+                    <div class="price-product">Giá: @item.GiaTien,000 VNĐ</div>
+                  
+
+
+
+                </a>
+            </div>
+        }
+        </div>
+</body>
+</html>

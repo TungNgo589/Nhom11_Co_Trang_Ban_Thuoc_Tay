@@ -1,0 +1,41 @@
+﻿@model IEnumerable<QLThuocDAPM.Data.KhuyenMai>
+
+@{
+    ViewData["Title"] = "Danh sách khuyến mãi";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-area="Admin" asp-controller="KhuyenMais" asp-action="Create" class="btn btn-primary">Tạo khuyến mãi mới</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>MaKhuyenMai</th>
+            <th>GiaTri</th>
+            <th>ThoiGianBatDau</th>
+            <th>ThoiGianKetThuc</th>
+            <th>TrangThai</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var khuyenMai in Model)
+        {
+            <tr>
+                <td>@khuyenMai.MaKhuyenMai</td>
+                <td>@khuyenMai.GiaTri</td>
+                <td>@khuyenMai.ThoiGianBatDau.ToString("dd/MM/yyyy")</td>
+                <td>@khuyenMai.ThoiGianKetThuc.ToString("dd/MM/yyyy")</td>
+                <td>@khuyenMai.TrangThai</td>
+                <td>
+                    <a asp-area="Admin" asp-controller="KhuyenMais" asp-action="Edit" asp-route-id="@khuyenMai.MaKhuyenMai" class="btn btn-warning">Sửa</a>
+                    <a asp-area="Admin" asp-controller="KhuyenMais" asp-action="Delete" asp-route-id="@khuyenMai.MaKhuyenMai" class="btn btn-danger">Xóa</a>
+                    <a asp-area="Admin" asp-controller="KhuyenMais" asp-action="Details" asp-route-id="@khuyenMai.MaKhuyenMai" class="btn btn-info">Chi tiết</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
