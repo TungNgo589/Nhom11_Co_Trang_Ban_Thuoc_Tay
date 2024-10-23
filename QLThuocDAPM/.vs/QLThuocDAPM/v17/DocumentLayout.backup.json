@@ -3,12 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\kiemtrasuckhoe\\khaosat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\kiemtrasuckhoe\\khaosat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\kiemtrasuckhoe\\ketquatrave.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\kiemtrasuckhoe\\ketquatrave.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\kiemtrasuckhoe\\ketquakhaosat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\kiemtrasuckhoe\\ketquakhaosat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\kiemtrasuckhoe\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\kiemtrasuckhoe\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\controllers\\kiemtrasuckhoecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:controllers\\kiemtrasuckhoecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\controllers\\danhmuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:controllers\\danhmuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\qlthuocdapm.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:qlthuocdapm.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\user\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,24 +87,12 @@
       "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:controllers\\giohangcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\controllers\\danhmuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:controllers\\danhmuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\user\\thongtinnguoidung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\user\\thongtinnguoidung.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\user\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\user\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\QlthuocDapm3Context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\QlthuocDapm3Context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -190,10 +214,6 @@
       "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:data\\giohang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\qlthuocdapm.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:qlthuocdapm.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\data\\nhacungcap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:data\\nhacungcap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -215,10 +235,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.Benh.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -244,6 +260,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|c:\\users\\admin\\downloads\\dapm\\qlthuocdapm\\data\\qlthuocdapm3context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A89A766B-D256-44ED-871A-23F77D4CA750}|QLThuocDAPM.csproj|solutionrelative:data\\qlthuocdapm3context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -253,8 +273,73 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "KetQuaTraVe.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\KiemTraSucKhoe\\KetQuaTraVe.cshtml",
+              "RelativeDocumentMoniker": "Views\\KiemTraSucKhoe\\KetQuaTraVe.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\KiemTraSucKhoe\\KetQuaTraVe.cshtml",
+              "RelativeToolTip": "Views\\KiemTraSucKhoe\\KetQuaTraVe.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAywDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T17:00:42.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KetQuaKhaoSat.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\KiemTraSucKhoe\\KetQuaKhaoSat.cshtml",
+              "RelativeDocumentMoniker": "Views\\KiemTraSucKhoe\\KetQuaKhaoSat.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\KiemTraSucKhoe\\KetQuaKhaoSat.cshtml",
+              "RelativeToolTip": "Views\\KiemTraSucKhoe\\KetQuaKhaoSat.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAywDoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T17:01:43.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "KhaoSat.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\KiemTraSucKhoe\\KhaoSat.cshtml",
+              "RelativeDocumentMoniker": "Views\\KiemTraSucKhoe\\KhaoSat.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\KiemTraSucKhoe\\KhaoSat.cshtml",
+              "RelativeToolTip": "Views\\KiemTraSucKhoe\\KhaoSat.cshtml",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAywD4AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T17:01:36.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\KiemTraSucKhoe\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\KiemTraSucKhoe\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\KiemTraSucKhoe\\Index.cshtml",
+              "RelativeToolTip": "Views\\KiemTraSucKhoe\\Index.cshtml",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAywEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-23T16:58:36.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "KiemTraSucKhoeController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\KiemTraSucKhoeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\KiemTraSucKhoeController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\KiemTraSucKhoeController.cs",
+              "RelativeToolTip": "Controllers\\KiemTraSucKhoeController.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAAAIIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T16:56:43.194Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -269,72 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:08:27.23Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BenhsController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\BenhsController.cs",
-              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\BenhsController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\BenhsController.cs",
-              "RelativeToolTip": "Areas\\Admin\\Controllers\\BenhsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T16:19:18.719Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DonHangsController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\DonHangsController.cs",
-              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\DonHangsController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\DonHangsController.cs",
-              "RelativeToolTip": "Areas\\Admin\\Controllers\\DonHangsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T14:33:08.53Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Areas\\Admin\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T14:50:01.336Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "KhuyenMaisController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\KhuyenMaisController.cs",
-              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\KhuyenMaisController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\KhuyenMaisController.cs",
-              "RelativeToolTip": "Areas\\Admin\\Controllers\\KhuyenMaisController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T17:47:33.496Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 12,
               "Title": "SanPhamsController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\SanPhamsController.cs",
               "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\SanPhamsController.cs",
@@ -342,12 +362,11 @@
               "RelativeToolTip": "Areas\\Admin\\Controllers\\SanPhamsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T13:13:07.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T13:13:07.684Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -355,12 +374,36 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:05:11.87Z",
+              "WhenOpened": "2024-10-20T15:05:11.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-20T15:43:38.529Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 13,
+              "Title": "KhuyenMaisController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\KhuyenMaisController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\KhuyenMaisController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\KhuyenMaisController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\KhuyenMaisController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T17:47:33.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\User\\Login.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\Login.cshtml",
@@ -368,64 +411,74 @@
               "RelativeToolTip": "Views\\User\\Login.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAAACgAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-20T15:17:53.195Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T15:17:53.195Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAANoAAAAAAAAAAAAAAOoAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAALwAAAAAAAAAAAAAAMkAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-20T15:07:59.595Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SanPhamController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\SanPhamController.cs",
-              "RelativeDocumentMoniker": "Controllers\\SanPhamController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\SanPhamController.cs",
-              "RelativeToolTip": "Controllers\\SanPhamController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:44:50.21Z",
+              "DocumentIndex": 6,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-20T16:18:15.745Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-20T15:36:23.572Z",
+              "WhenOpened": "2024-10-22T14:50:01.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DonHangsController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\DonHangsController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\DonHangsController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\DonHangsController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\DonHangsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T14:33:08.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "QLThuocDAPM.csproj",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\QLThuocDAPM.csproj",
+              "RelativeDocumentMoniker": "QLThuocDAPM.csproj",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\QLThuocDAPM.csproj",
+              "RelativeToolTip": "QLThuocDAPM.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-21T13:09:00.184Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GioHangController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\GioHangController.cs",
-              "RelativeDocumentMoniker": "Controllers\\GioHangController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\GioHangController.cs",
-              "RelativeToolTip": "Controllers\\GioHangController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T13:22:26.557Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 7,
               "Title": "DanhMuc.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\DanhMuc.cs",
               "RelativeDocumentMoniker": "Controllers\\DanhMuc.cs",
@@ -437,21 +490,72 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-20T15:43:38.529Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
+              "Title": "BenhsController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\BenhsController.cs",
+              "RelativeDocumentMoniker": "Areas\\Admin\\Controllers\\BenhsController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Controllers\\BenhsController.cs",
+              "RelativeToolTip": "Areas\\Admin\\Controllers\\BenhsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T16:19:18.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T15:08:27.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SanPhamController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\SanPhamController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SanPhamController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\SanPhamController.cs",
+              "RelativeToolTip": "Controllers\\SanPhamController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T15:44:50.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-20T15:36:23.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "GioHangController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\GioHangController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GioHangController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Controllers\\GioHangController.cs",
+              "RelativeToolTip": "Controllers\\GioHangController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T13:22:26.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "ThongTinNguoiDung.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\User\\ThongTinNguoiDung.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\ThongTinNguoiDung.cshtml",
@@ -459,12 +563,11 @@
               "RelativeToolTip": "Views\\User\\ThongTinNguoiDung.cshtml",
               "ViewState": "AgIAAGYAAAAAAAAAAAAxwIEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-23T16:44:50.858Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-23T16:44:50.858Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 67,
               "Title": "QlthuocDapm3Context.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\QlthuocDapm3Context.cs",
               "RelativeDocumentMoniker": "Data\\QlthuocDapm3Context.cs",
@@ -472,16 +575,11 @@
               "RelativeToolTip": "Data\\QlthuocDapm3Context.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T16:43:22.917Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "WhenOpened": "2024-10-23T16:43:22.917Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 24,
               "Title": "ThanhToan.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\GioHang\\ThanhToan.cshtml",
               "RelativeDocumentMoniker": "Views\\GioHang\\ThanhToan.cshtml",
@@ -489,12 +587,11 @@
               "RelativeToolTip": "Views\\GioHang\\ThanhToan.cshtml",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T15:43:10.081Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T15:43:10.081Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 26,
               "Title": "NguoiDung.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\NguoiDung.cs",
               "RelativeDocumentMoniker": "Data\\NguoiDung.cs",
@@ -502,12 +599,11 @@
               "RelativeToolTip": "Data\\NguoiDung.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T14:01:02.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T14:01:02.247Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 22,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\User\\Register.cshtml",
               "RelativeDocumentMoniker": "Views\\User\\Register.cshtml",
@@ -515,12 +611,11 @@
               "RelativeToolTip": "Views\\User\\Register.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-20T15:20:19.227Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T15:20:19.227Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 25,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\GioHang\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\GioHang\\Index.cshtml",
@@ -528,12 +623,11 @@
               "RelativeToolTip": "Views\\GioHang\\Index.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAAACYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T13:25:05.037Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T13:25:05.037Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 23,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -541,12 +635,11 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAB9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-20T15:03:38.998Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T15:03:38.998Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 27,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\Home\\Create.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Home\\Create.cshtml",
@@ -554,12 +647,11 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\Home\\Create.cshtml",
               "ViewState": "AgIAAA0AAAAAAAAAAADwvzIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-22T14:50:55.204Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T14:50:55.204Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 28,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\Benhs\\Create.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Benhs\\Create.cshtml",
@@ -567,12 +659,11 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\Benhs\\Create.cshtml",
               "ViewState": "AgIAABMAAAAAAAAAAADwvzIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T16:19:26.097Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T16:19:26.097Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 30,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\SanPhams\\Create.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\SanPhams\\Create.cshtml",
@@ -580,12 +671,11 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\SanPhams\\Create.cshtml",
               "ViewState": "AgIAADkAAAAAAAAAAAAAAEAAAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T13:13:13.067Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T13:13:13.067Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 31,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\DonHangs\\Index.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\DonHangs\\Index.cshtml",
@@ -593,12 +683,11 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\DonHangs\\Index.cshtml",
               "ViewState": "AgIAAEgAAAAAAAAAAADwv1EAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-22T14:40:02.938Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T14:40:02.938Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 29,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\Benhs\\Delete.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Benhs\\Delete.cshtml",
@@ -606,12 +695,11 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\Benhs\\Delete.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T16:32:36.51Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T16:32:36.51Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 32,
               "Title": "ChiTietSanPham.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\SanPham\\ChiTietSanPham.cshtml",
               "RelativeDocumentMoniker": "Views\\SanPham\\ChiTietSanPham.cshtml",
@@ -619,12 +707,11 @@
               "RelativeToolTip": "Views\\SanPham\\ChiTietSanPham.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-20T17:47:42.824Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-20T17:47:42.824Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 33,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\KhuyenMais\\Create.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\KhuyenMais\\Create.cshtml",
@@ -632,12 +719,11 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\KhuyenMais\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T17:50:34.094Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T17:50:34.094Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 34,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\KhuyenMais\\Index.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\KhuyenMais\\Index.cshtml",
@@ -645,12 +731,11 @@
               "RelativeToolTip": "Areas\\Admin\\Views\\KhuyenMais\\Index.cshtml",
               "ViewState": "AgIAABIAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-21T17:51:10.561Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-21T17:51:10.561Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 35,
               "Title": "dbo.ChiTietDonHang.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.ChiTietDonHang.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.ChiTietDonHang.sql",
@@ -659,7 +744,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 36,
               "Title": "ChiTietDonHang.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\ChiTietDonHang.cs",
               "RelativeDocumentMoniker": "Data\\ChiTietDonHang.cs",
@@ -671,7 +756,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 37,
               "Title": "dbo.KhuyenMai.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.KhuyenMai.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.KhuyenMai.sql",
@@ -680,7 +765,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 40,
               "Title": "Error.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Shared\\Error.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\Error.cshtml",
@@ -692,7 +777,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 38,
               "Title": "dbo.DonHang.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.DonHang.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.DonHang.sql",
@@ -701,7 +786,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 39,
               "Title": "DonHang.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\DonHang.cs",
               "RelativeDocumentMoniker": "Data\\DonHang.cs",
@@ -713,7 +798,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 41,
               "Title": "CartItem.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Models\\CartItem.cs",
               "RelativeDocumentMoniker": "Models\\CartItem.cs",
@@ -725,7 +810,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 42,
               "Title": "SessionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Helpers\\SessionExtensions.cs",
               "RelativeDocumentMoniker": "Helpers\\SessionExtensions.cs",
@@ -737,7 +822,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 43,
               "Title": "ChiTietSP.css",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\css\\ChiTietSP.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\ChiTietSP.css",
@@ -749,7 +834,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 44,
               "Title": "ListSanPham.css",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\css\\ListSanPham.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\ListSanPham.css",
@@ -761,7 +846,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 45,
               "Title": "s.css",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\css\\s.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\s.css",
@@ -773,7 +858,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 46,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\Benhs\\Edit.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\Benhs\\Edit.cshtml",
@@ -785,7 +870,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 47,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\SanPham\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\SanPham\\Index.cshtml",
@@ -797,7 +882,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 48,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
@@ -809,7 +894,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 50,
               "Title": "ChiTietGioHang.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\ChiTietGioHang.cs",
               "RelativeDocumentMoniker": "Data\\ChiTietGioHang.cs",
@@ -821,7 +906,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 51,
               "Title": "dbo.GioHang.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.GioHang.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.GioHang.sql",
@@ -830,7 +915,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 49,
               "Title": "SanPham.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\SanPham.cs",
               "RelativeDocumentMoniker": "Data\\SanPham.cs",
@@ -842,7 +927,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 52,
               "Title": "dbo.ChiTietGioHang.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.ChiTietGioHang.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.ChiTietGioHang.sql",
@@ -851,7 +936,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 53,
               "Title": "GioHang.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\GioHang.cs",
               "RelativeDocumentMoniker": "Data\\GioHang.cs",
@@ -863,19 +948,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
-              "Title": "QLThuocDAPM.csproj",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\QLThuocDAPM.csproj",
-              "RelativeDocumentMoniker": "QLThuocDAPM.csproj",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\QLThuocDAPM.csproj",
-              "RelativeToolTip": "QLThuocDAPM.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-10-21T13:09:00.184Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 54,
               "Title": "NhaCungCap.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Data\\NhaCungCap.cs",
               "RelativeDocumentMoniker": "Data\\NhaCungCap.cs",
@@ -887,7 +960,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 55,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\SanPhams\\Index.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\SanPhams\\Index.cshtml",
@@ -899,7 +972,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 56,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Areas\\Admin\\Views\\SanPhams\\Edit.cshtml",
               "RelativeDocumentMoniker": "Areas\\Admin\\Views\\SanPhams\\Edit.cshtml",
@@ -911,7 +984,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 57,
               "Title": "store.css",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\css\\store.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\store.css",
@@ -923,7 +996,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 58,
               "Title": "ListSanPham.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\SanPham\\ListSanPham.cshtml",
               "RelativeDocumentMoniker": "Views\\SanPham\\ListSanPham.cshtml",
@@ -935,7 +1008,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 59,
               "Title": "dbo.Benh.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.Benh.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM/True/SqlTable/dbo.Benh.sql",
@@ -944,19 +1017,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
-              "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Home\\Privacy.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Home\\Privacy.cshtml",
-              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-20T16:18:15.745Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 60,
               "Title": "additional-methods.js",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
               "RelativeDocumentMoniker": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
@@ -968,7 +1029,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 61,
               "Title": "bootstrap.bundle.js",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
               "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
@@ -980,7 +1041,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 62,
               "Title": "_ValidationScriptsPartial.cshtml",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
@@ -992,7 +1053,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 63,
               "Title": "dbo.DanhMuc.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM2/True/SqlTable/dbo.DanhMuc.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM2/True/SqlTable/dbo.DanhMuc.sql",
@@ -1001,7 +1062,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 64,
               "Title": "dbo.SanPham.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM2/True/SqlTable/dbo.SanPham.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM2/True/SqlTable/dbo.SanPham.sql",
@@ -1010,7 +1071,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 65,
               "Title": "dbo.NguoiDung.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM2/True/SqlTable/dbo.NguoiDung.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/DESKTOP_Q5EI430/QLThuocDAPM2/True/SqlTable/dbo.NguoiDung.sql",
@@ -1019,7 +1080,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 66,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",

@@ -29,8 +29,36 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\img\\Alzheimer.jpg",
+      "PackagePath": "staticwebassets\\img\\Alzheimer.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\img\\cam.png",
+      "PackagePath": "staticwebassets\\img\\cam.png"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\img\\cothenguoi.jpg",
+      "PackagePath": "staticwebassets\\img\\cothenguoi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\img\\haduonghuyet.jpg",
+      "PackagePath": "staticwebassets\\img\\haduonghuyet.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\img\\khambenh.jpg",
+      "PackagePath": "staticwebassets\\img\\khambenh.jpg"
+    },
+    {
       "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\img\\logoLC.jpg",
       "PackagePath": "staticwebassets\\img\\logoLC.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\img\\tim.jpg",
+      "PackagePath": "staticwebassets\\img\\tim.jpg"
+    },
+    {
+      "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\img\\trào ngược dạ dày.jpg",
+      "PackagePath": "staticwebassets\\img\\trào ngược dạ dày.jpg"
     },
     {
       "Id": "C:\\Users\\ADMIN\\Downloads\\DAPM\\QLThuocDAPM\\wwwroot\\js\\site.js",
