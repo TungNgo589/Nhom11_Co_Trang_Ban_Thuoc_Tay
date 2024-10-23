@@ -1,0 +1,155 @@
+﻿@model QLThuocDAPM.Data.SanPham
+
+@{
+    Layout =  "~/Views/Shared/_Layout.cshtml";
+
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ChiTietSanPham</title>
+    <link rel="stylesheet" type="text/css" href="~/css/ChiTietSP.css" />
+
+</head>
+<body>
+    <div style="width:1000px;justify-content:center;margin:auto">
+        <div class="col-5">
+            <img src="@Url.Content(Model.HinhAnh1)" alt="@Model.TenSp" class="img-fluid" />
+            <!-- Thêm hình ảnh khác nếu cần -->
+        </div>
+        <div class="col-7">
+            <h3>@Model.TenSp</h3>
+            <h4>@Model.GiaTien.000 VNĐ</h4>
+            <h5 style=" font-weight:200;">@Model.MaNhaCungCapNavigation.TenNhaCungCap</h5>
+
+            <a asp-controller="SanPham" asp-action="MoTaBenh" asp-route-id="@Model.MaBenh">
+                <h5 style=" font-weight:200;">@Model.MaBenhNavigation.TenBenh</h5>
+
+        </a>
+
+            <div class="">Thành phần: @Model.ThanhPhan</div>
+            <div class="">Chi tiết sản phẩm: @Model.ChitietSp</div>
+            <div class="">Số lượng: @Model.SoLuong</div>
+
+            <a asp-controller="GioHang" asp-action="AddToCart" asp-route-id="@Model.MaSp" class="btn btn-success">Thêm vào giỏ hàng</a>
+        </div>
+
+        @*    <div class="rating">
+        <strong>Số sao trung bình: </strong>
+        <span>
+        @for (int i = 1; i <= 5; i++)
+        {
+        if (i <= ViewBag.SoSaoTrungBinh)
+        {
+        <i class="fas fa-star"></i> <!-- Hiển thị sao đầy -->
+        }
+        else
+        {
+        <i class="far fa-star"></i> <!-- Hiển thị sao rỗng -->
+        }
+        }
+        </span>
+        </div> *@
+
+       
+        @{
+            var binhLuans = ViewBag.BinhLuans as List<QLThuocDAPM.Data.BinhLuan>; // Chuyển đổi kiểu
+        }
+        <table border="0" style="width: 1100px; border-collapse: collapse;">
+            <tr style="width: 300px;">
+            
+            </tr>
+            <tr style="width: 800px;">
+                <td style="padding: 15px;">
+                    Trung Bình: <strong style="font-size: 18px;">@ViewBag.SoSaoTrungBinh</strong>
+                </td>
+                <td style="padding: 15px;">
+                    <h4 style="margin-bottom: 15px;">Gửi Đánh Giá</h4>
+                    @using (Html.BeginForm("AddRating", "SanPham", FormMethod.Post))
+                    {
+                        @Html.Hidden("maSP", Model.MaSp) <!-- Thêm ID sản phẩm vào form -->
+                        <div class="form-group">
+                            <label for="soSao">Đánh giá:</label>
+                            <select name="soSao" id="soSao" class="form-control" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                                <option value="">Chọn số sao</option>
+                                <option value="1">1 sao</option>
+                                <option value="2">2 sao</option>
+                                <option value="3">3 sao</option>
+                                <option value="4">4 sao</option>
+                                <option value="5">5 sao</option>
+                            </select>
+                        </div>
+                        <button asp-controller="SanPham" asp-action="AddRating" asp-action="UpdateAverageRating" type="submit" class="btn btn-success" style="padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                            Gửi đánh giá
+                        </button>
+                    }
+                </td>
+            </tr>
+        </table>
+
+        <div class="MoTaDanhGia">
+            <h3>Bình luận</h3>
+            @if (binhLuans != null && binhLuans.Count > 0) // Sử dụng Count để kiểm tra số lượng
+            {
+                var visibleComments = binhLuans.Take(5).ToList(); // Lấy tối đa 5 bình luận
+                foreach (var binhLuan in visibleComments)
+                {
+                    <div class="comment">
+                        <strong>@binhLuan.MaNguoiDungNavigation.HoTen</strong>
+                        <p>@binhLuan.NoiDung</p>
+                        <small>@binhLuan.NgayBinhLuan.ToString("dd/MM/yyyy HH:mm:ss")</small>
+                    </div>
+                }
+
+                if (binhLuans.Count > 5) // Kiểm tra xem có bình luận nào thêm không
+                {
+                    <button id="showMoreComments" class="btn btn-primary">Hiện thêm bình luận</button>
+                }
+            }
+            else
+            {
+                <p>Chưa có bình luận nào.</p>
+            }
+
+            <h4>Gửi Bình Luận</h4>
+            @using (Html.BeginForm("AddComment", "SanPham", FormMethod.Post))
+            {
+                @Html.Hidden("maSP", Model.MaSp) <!-- Thêm ID sản phẩm vào form -->
+                <div class="form-group">
+                    <label for="NoiDung">Nội dung</label>
+                    <textarea name="NoiDung" class="form-control" required></textarea>
+                </div>
+                <button asp-controller="SanPham" asp-action="AddComment" type="submit" class="btn btn-primary">Gửi bình luận</button>
+            }
+           
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Ẩn các bình luận không hiển thị
+                var allComments = document.querySelectorAll(".comment");
+                allComments.forEach(function (comment, index) {
+                    if (index >= 5) {
+                        comment.style.display = "none"; // Ẩn bình luận vượt quá 5
+                    }
+                });
+
+                document.getElementById("showMoreComments")?.addEventListener("click", function () {
+                    var comments = document.querySelectorAll(".comment");
+                    comments.forEach(function (comment, index) {
+                        if (index >= 5) {
+                            comment.style.display = "block"; // Hiển thị tất cả bình luận
+                        }
+                    });
+                    this.style.display = "none"; // Ẩn nút sau khi nhấn
+                });
+            });
+        </script>
+    </div>
+    
+
+</body>
+</html>

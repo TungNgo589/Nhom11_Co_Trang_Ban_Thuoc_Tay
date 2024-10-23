@@ -11,7 +11,9 @@ public partial class DanhGium
 
     public int MaNguoiDung { get; set; }
 
-    public string NoiDung { get; set; } = null!;
+    public decimal? SoSao { get; set; }
+
+    public decimal? SoSaoTrungBinh { get; set; }
 
     public DateTime NgayBinhLuan { get; set; }
 

@@ -29,6 +29,8 @@ public partial class SanPham
 
     public int? SoLuong { get; set; }
 
+    public int? SoLuongMua { get; set; }
+
     public string? HinhAnh1 { get; set; }
 
     public string? HinhAnh2 { get; set; }

@@ -1,4 +1,5 @@
 ﻿
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +10,9 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/css/s.css" rel='stylesheet' />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
-    @*     @Styles.Render("~/Content/store")
-    *@
-    <link href="~/css/store.css" rel="stylesheet" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
     <title>NHATHUOCSO1VIETNAM</title>
     <link rel="shortcut icon" href="~/UploadFile/icon.png" type="image/x-icon" />
@@ -35,48 +34,55 @@
             text-align: center;
             top: -10px;
         }
-        #MenuItems li a
 
-        {
-            color:#333;
-            font-size:15px;
-            font-weight:bold;
+        #MenuItems li a {
+            color: #333;
+            font-size: 15px;
+            font-weight: bold;
         }
+
             #MenuItems li a:hover {
                 color: olive;
             }
-            .cus-icon {
-                color: #333;
-                font-size: 14px;
-                font-weight: bold;
-            }
-                .cus-icon:hover {
-                    color: olive;
-                }
-        .userlogin{
-            position:relative;
+
+        .cus-icon {
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
         }
-            .userlogin:hover .userlogged{
-                display:block;
+
+            .cus-icon:hover {
+                color: olive;
             }
-            .userlogged {
-                position: absolute;
-                width: 150px;
-                display: none;
-                left: -35px;
-                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-                z-index: 2;
-                font-size: 14px;
-                border-radius: 5px;
-                padding: 5px 10px;
-                background-color: white;
+
+        .userlogin {
+            position: relative;
+        }
+
+            .userlogin:hover .userlogged {
+                display: block;
             }
+
+        .userlogged {
+            position: absolute;
+            width: 150px;
+            display: none;
+            left: -35px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            z-index: 2;
+            font-size: 14px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            background-color: white;
+        }
+
             .userlogged div a {
                 color: #333 !important;
             }
-        .img-logo{
-            width:200px;
-            height:150px;
+
+        .img-logo {
+            width: 200px;
+            height: 150px;
         }
 
 
@@ -143,8 +149,75 @@
             padding-top: 150px;
         }
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none; /* Ẩn menu dropdown */
+            position: absolute;
+            background-color: #f9f9f9; /* Màu nền cho menu dropdown */
+            min-width: 160px; /* Chiều rộng tối thiểu cho menu dropdown */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Đổ bóng cho menu */
+            z-index: 1; /* Đảm bảo menu nằm trên các phần khác */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block; /* Hiện menu dropdown khi hover */
+        }
+
+        .dropdown-content a {
+            color: black; /* Màu chữ cho các mục trong menu */
+            padding: 12px 16px; /* Padding cho các mục */
+            text-decoration: none; /* Bỏ gạch chân */
+            display: block; /* Hiện các mục dưới dạng khối */
+        }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1; /* Màu nền khi hover trên các mục */
+            }
+
+        .search-box {
+            display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            border: 1px solid #ccc; /* Viền xung quanh hộp tìm kiếm */
+            border-radius: 5px; /* Bo góc cho hộp tìm kiếm */
+            overflow: hidden; /* Ẩn phần thừa ra ngoài hộp */
+            transition: border-color 0.3s; /* Hiệu ứng chuyển tiếp cho viền */
+        }
+
+            .search-box input {
+                border: none; /* Không viền cho input */
+                outline: none; /* Loại bỏ viền khi được chọn */
+                padding: 10px; /* Padding cho input */
+                flex-grow: 1; /* Để input chiếm không gian còn lại */
+            }
+
+                .search-box input::placeholder {
+                    color: #aaa; /* Màu chữ cho placeholder */
+                }
+
+                .search-box input:focus {
+                    border-color: #007bff; /* Đổi màu viền khi input được chọn */
+                }
+
+            .search-box button {
+                background-color: #007bff; /* Màu nền cho nút */
+                border: none; /* Không viền cho nút */
+                color: white; /* Màu chữ cho nút */
+                padding: 10px 15px; /* Padding cho nút */
+                cursor: pointer; /* Con trỏ khi hover qua nút */
+                transition: background-color 0.3s; /* Hiệu ứng chuyển tiếp cho màu nền */
+            }
+
+                .search-box button:hover {
+                    background-color: #0056b3; /* Màu nền khi hover qua nút */
+                }
+
     </style>
 </head>
+
 <body>
     <div class="wrapper">
         <div class="header">
@@ -153,48 +226,71 @@
 
                 <nav style="height:150px">
                     <ul id="MenuItems">
-                        <li><a href="/home/index"><img class="img-logo" src="~/anh/nhathuoc.jpg"></a> <a href="/games/index">TRANG CHỦ</a> </li>
+                        <li><a href="/home/index"><img class="img-logo" src="~/img/logoLC.jpg"></a> <a href="/home/index">TRANG CHỦ</a> </li>
 
-                        <li class="ml-4"><a href="/games/danhmuc/1">THỰC PHẨM CHỨC NĂNG</a> </li>
+                       
+                        <li class="ml-4"><a href="/danhmucs/1">THỰC PHẨM CHỨC NĂNG</a> </li>
                         <li><a href="/games/danhmuc/2">DƯỢC PHẨM</a></li>
                         <li><a href="/games/danhmuc/3">CHĂM SÓC CÁ NHÂN</a></li>
                         <li><a href="/games/danhmuc/4">THUỐC</a></li>
                         <li><a href="/games/danhmuc/5">THIẾT BỊ Y TẾ</a></li>
-
-
+                        <li><a href="/kiemtrasuckhoe/Index">KIỂM TRA SỨC KHỎE</a></li>
+                        <li class="dropdown">
+                            <a>
+                               
+                            </a>
+                            <a href="#" class="dropbtn">KHÁC</a>
+                            <div class="dropdown-content">
+                                <a href="/khac/1">Mục 1</a>
+                                <a href="/khac/2">Mục 2</a>
+                                <a href="/khac/3">Mục 3</a>
+                            </div>
+                        </li>
 
                     </ul>
                 </nav>
                 <div style="height:150px" class="navbar-right d-flex align-items-center">
-                    <div class="search-box">
-                        <input id="search-box" onkeypress="return runScript(event)" value="" type="text" />
-                        <i class='icon-search bx bx-search'></i>
+                    <div class="search-box" style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 300px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                        <form asp-controller="SanPham" asp-action="Search" method="post" style="display: flex; width: 200px;">
+                            <input id="search-box" name="keyword" onkeypress="return runScript(event)" value="" type="text"
+                                   style="width: 100%; border: none; padding: 5px; outline: none;" placeholder="Tìm kiếm sản phẩm..." />
+                            <button type="submit" class="icon-search bx bx-search"
+                                    style="background-color: #3498db; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; display: flex; align-items: center; justify-content: center;height:51px;width:60px;">
+                            </button>
+                        </form>
                     </div>
+
 
 
                     <a class="icon-cart-cus" style="margin-left:10px" href="/giohang"><i class='cus-icon bx bx-cart'></i> <span id="cart"></span></a>
-                    @*    @if (Session["userLogin"] != null)
+
+                    @if (Context.Session.GetString("userLogin") != null)
                     {
-                    <div class="userlogin">
-                    <a style="margin-left:30px" href="/home/donhang">
+                        <div class="userlogin">
+                            <a style="margin-left:30px" href="/home/donhang">
 
-                    <i class='cus-icon bx bx-user-check'></i>
+                                <i class='cus-icon bx bx-user-check'></i>
 
-                    </a>
-                    <div class="userlogged">
-                    <div>
-                    <a href="/home/donhang">Đơn hàng của tôi</a>
-                    </div>
-                    <div>
-                    <a href="/user/dangxuat">Đăng xuất</a>
-                    </div>
-                    </div>
-                    </div>
+                            </a>
+                            <div class="userlogged">
+                                <div>
+                                    <a href="/home/donhang">Đơn hàng của tôi</a>
+                                </div>
+                                <div>
+                                    <a href="/user/dangxuat">Đăng xuất</a>
+                                </div>
+                                <div>
+                                    <a href="/user/ThongTinNguoiDung">Profile</a>
+                                </div>
+                            </div>
+                        </div>
+
                     }
                     else
                     {
-                    <a style="margin-left:30px" href="/user/login"><i class='cus-icon bx bx-user'></i></a>
-                    } *@
+                        <a style="margin-left:30px" href="/user/login"><i class='cus-icon bx bx-user'></i></a>
+                    }
+                    
                 </div>
 
                 <img src="~/UploadFile/menu.png" class="menu-icon" onclick="menutoggle()">
@@ -210,799 +306,118 @@
 
 
 
-        <footer id="footer-map">
+        <footer id="footer-map" style="background-color: #ffffff; color: #1e90ff; padding: 30px 0;">
+            <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <!-- Thông tin cửa hàng -->
+                <div class="store-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff;">HỆ THỐNG NHÀ THUỐC LONG CHÂU</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.762730,106.686638">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                214 Nguyễn Trãi, P.Nguyễn Cư Trinh, Q1
+                                <a href="https://www.google.com/maps/?q=10.762730,106.686638" style="color: #1e90ff;">Xem bản đồ</a>
+                            </span>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.982262,106.658024">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                Kho Pancake.
+                                <a href="https://www.google.com/maps/?q=10.982262,106.658024" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.788053,106.758713">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                110 Nguyễn Duy Trinh, P.Bình Trưng Tây, Q2.
+                                <a href="https://www.google.com/maps/?q=10.788053,106.758713" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
 
-            <div class="name-map">
-                <p style="color:aliceblue"><strong>HỆ THỐNG NHÀ THUỐC</strong></p><br />
-                @*<a href="">Xem địa chỉ hệ thống cửa hàng 85 cửa hàng</a>*@
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.759412,106.675862">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                96 Nguyễn Trãi, P3, Q5.
+                                <a href="https://www.google.com/maps/?q=10.759412,106.675862" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.8332837,106.6662426">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                430 Quang Trung, P.10, Gò Vấp.
+                                <a href="https://www.google.com/maps/?q=10.8332837,106.6662426" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+                        <!-- Thêm các chi nhánh khác tương tự -->
+                    </ul>
+                </div>
+
+                <!-- Thông tin công ty -->
+                <div class="company-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff;">NHÀ THUỐC LONG CHÂU</h4>
+                    <p style="color: #000;">Địa chỉ: Số 7 đường 3A, khu dân cư Ấp 5, X. Phong Phú, H. Bình Chánh, Tp. HCM</p>
+                    <p style="color: #000;">MST: 0314746543</p>
+                    <p style="color: #000;">Số điện thoại: <a href="tel:0123456789" style="color: #1e90ff;">0123 456 789</a></p>
+                    <p style="color: #000;">Email: <a href="mailto:info@longchau.com" style="color: #1e90ff;">info@longchau.com</a></p>
+                </div>
+
+
+                <div class="additional-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff; margin-bottom: 5px;">GIỜ HOẠT ĐỘNG</h4>
+                    <p style="color: #000; margin-bottom: 10px;">Thứ Hai - Thứ Sáu: 7:00 - 21:00</p>
+                    <p style="color: #000; margin-bottom: 10px;">Thứ Bảy - Chủ Nhật: 8:00 - 22:00</p>
+                    <h4 style="color: #1e90ff; margin-bottom: 5px;">PHƯƠNG THỨC THANH TOÁN</h4>
+                    <img src="~/images/visa.png" alt="Visa" style="width: 40px; height: auto; margin-right: 10px;">
+                    <span>Visa</span>
+                    <img src="~/images/mastercard.png" alt="MasterCard" style="width: 40px; height: auto; margin-right: 10px;">
+                    <span>MasterCard</span>
+                    <img src="~/images/cod.png" alt="COD" style="width: 40px; height: auto;">
+                    <span>COD</span>
+                </div>
+
+
+                <!-- Liên kết mạng xã hội -->
+                <div class="social-media" style="flex: 1; margin: 15px;">
+
+                    <h4 style="color: #1e90ff;">THEO DÕI CHÚNG TÔI</h4>
+                    <a href="https://facebook.com" target="_blank">
+                        <img src="~/images/fa.png" alt="Facebook" style="width: 43px; margin-right: 10px;">
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <img src="~/images/twitter.png" alt="Twitter" style="width: 28px; margin-right: 10px;">
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://instagram.com" target="_blank">
+                        <img src="~/images/images.jpg" alt="Instagram" style="width: 37px;margin-right: 10px;">
+                        <span>Instagram</span>
+                    </a>
+
+                    <h4 style="color: #1e90ff;">ĐĂNG KÝ NHẬN TIN</h4>
+                    <form>
+                        <input type="email" placeholder="Nhập email của bạn" style="padding: 10px; width: 80%; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="submit" style="padding: 10px 15px; background-color: #1e90ff; color: white; border: none; border-radius: 5px;">Đăng ký</button>
+                    </form>
+
+
+                </div>
+
             </div>
-            <div id="map">
-                <h4>KHU VỰC TPHCM</h4>
-                <ul>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.762730,106.686638">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            214 Nguyễn Trãi, P.Nguyễn Cư Trinh, Q1.
-                            <a href="https://www.google.com/maps/?q=10.762730,106.686638" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.982262,106.658024">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            Kho Pancake.
-                            <a href="https://www.google.com/maps/?q=10.982262,106.658024" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.788053,106.758713">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            110 Nguyễn Duy Trinh, P.Bình Trưng Tây, Q2.
-                            <a href="https://www.google.com/maps/?q=10.788053,106.758713" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.7552369,106.6729033">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            414-416 Nguyễn Trãi, P.8, Q5.
-                            <a href="https://www.google.com/maps/?q=10.7552369,106.6729033" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.759412,106.675862">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            96 Nguyễn Trãi, P3, Q5.
-                            <a href="https://www.google.com/maps/?q=10.759412,106.675862" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.749816,106.645246">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            126 Hậu Giang, P.6, Q6.
-                            <a href="https://www.google.com/maps/?q=10.749816,106.645246" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.738193,106.720393">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            124 Nguyễn Thị Thập, P.Bình Thuận, Q7.
-                            <a href="https://www.google.com/maps/?q=10.738193,106.720393" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.844134,106.782474">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            199A Lê Văn Việt , P.Hiệp Phú, Q9.
-                            <a href="https://www.google.com/maps/?q=10.844134,106.782474" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.777764,106.664670">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            834 Sư Vạn Hạnh, P13, Q10.
-                            <a href="https://www.google.com/maps/?q=10.777764,106.664670" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.766344,106.643905">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            126 Ông Ích Khiêm, P.3, Q.11.
-                            <a href="https://www.google.com/maps/?q=10.766344,106.643905" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.869960,106.649300">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            201 Lê Văn Khương, Hiệp Thành, Q12.
-                            <a href="https://www.google.com/maps/?q=10.869960,106.649300" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.8504915,106.7572943">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            74/6 Nguyễn Ảnh Thủ, Q.12.
-                            <a href="https://www.google.com/maps/?q=10.8504915,106.7572943" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.8332837,106.6662426">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            430 Quang Trung, P.10, Gò Vấp.
-                            <a href="https://www.google.com/maps/?q=10.8332837,106.6662426" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.803006,106.707628">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            185 Bạch Đằng, P.15, Bình Thạnh.
-                            <a href="https://www.google.com/maps/?q=10.803006,106.707628" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.801223,106.657976">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            120 Cộng Hòa, P.4, Tân Bình.
-                            <a href="https://www.google.com/maps/?q=10.801223,106.657976" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.798598,106.666530">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            326 Nguyễn Trọng Tuyễn, P.1, Tân Bình.
-                            <a href="https://www.google.com/maps/?q=10.798598,106.666530" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.777261,106.646238">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            350 Âu Cơ, P.10, Tân Bình.
-                            <a href="https://www.google.com/maps/?q=10.777261,106.646238" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.803108,106.630038">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            174 Tân Kỳ Tân Quý, Tân Sơn Nhì, Tân Phú.
-                            <a href="https://www.google.com/maps/?q=10.803108,106.630038" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.815031,106.585184">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            338 Nguyễn Thị Tú, Bình Hưng Hòa B, Bình Tân.
-                            <a href="https://www.google.com/maps/?q=10.815031,106.585184" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.777891,106.605658">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            464 Lê Văn Quới, Bình Hưng Hoà A, Bình Tân.
-                            <a href="https://www.google.com/maps/?q=10.777891,106.605658" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.8504915,106.7572943">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            74 Võ Văn Ngân, P.Bình Thọ, Thủ Đức.
-                            <a href="https://www.google.com/maps/?q=10.8504915,106.7572943" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.8566669,106.765303">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            112 Hoàng Diệu 2, P.Linh Chiểu. Thủ Đức.
-                            <a href="https://www.google.com/maps/?q=10.8566669,106.765303" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.8496568,106.7715402">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            356 Võ Văn Ngân, P.Bình Thọ, Thủ Đức.
-                            <a href="https://www.google.com/maps/?q=10.8496568,106.7715402" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.975302,106.498169">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            151 Tỉnh Lộ 8, Thị Trấn Củ Chi, Củ Chi.
-                            <a href="https://www.google.com/maps/?q=10.975302,106.498169" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.865460,106.611968">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            158/5 Nguyễn Ảnh Thủ, xã Trung Chánh, Hóc Môn.
-                            <a href="https://www.google.com/maps/?q=10.865460,106.611968" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.722497380785518,106.5998704923425">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            B12/5, Trần Đại Nghĩa, Xã Tân Kiên, H.Bình Chánh, TPHCM.
-                            <a href="https://www.google.com/maps/?q=10.722497380785518,106.5998704923425" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                </ul>
-                <h4>MIỀN TRUNG & TÂY NGUYÊN</h4>
-                <ul>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=13.783600,109.22323">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            470 Trần Hưng Đạo, TP Quy Nhơn, Bình Định.
-                            <a href="https://www.google.com/maps/?q=13.783600,109.22323" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=13.093764,109.314781">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            116 Nguyễn Huệ, P7, Tp.Tuy Hòa, Phú Yên.
-                            <a href="https://www.google.com/maps/?q=13.093764,109.314781" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=12.2499149,109.1811175">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            272 Thống Nhất, P.Phương Sơn, TP. Nha Trang.
-                            <a href="https://www.google.com/maps/?q=12.2499149,109.1811175" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=12.4853005,109.1251246">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            569 Trần Quý Cáp, TX. Ninh Hòa, Khánh Hòa.
-                            <a href="https://www.google.com/maps/?q=12.4853005,109.1251246" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.917477,109.143682">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            2206 Hùng Vương, Cam Lộc, Tp. Cam Ranh, Khánh Hòa.
-                            <a href="https://www.google.com/maps/?q=11.917477,109.143682" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.558958089257162, 108.99399172058075">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            404 Ngô Gia Tự, Khu 2, P.Tấn Tài, Phan Rang,Ninh Thuận.
-                            <a href="https://www.google.com/maps/?q=11.558958089257162, 108.99399172058075" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.937254,108.103524">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            82 Trần Hưng Đạo, P.Phú Trinh, Phan Thiết,Bình Thuận.
-                            <a href="https://www.google.com/maps/?q=10.937254,108.103524" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.658301,107.772487">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            88 Lê Lợi, P. Phước Hội, TX La Gi, Bình Thuận.
-                            <a href="https://www.google.com/maps/?q=10.658301,107.772487" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.5361475,107.8143929">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            403 Trần Phú, Lộc Sơn, TP. Bảo Lộc,Lâm Đồng.
-                            <a href="https://www.google.com/maps/?q=11.5361475,107.8143929" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.958633,108.3436327">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            59-61 Nguyễn Công Trứ, Phường 2, Thành phố Đà Lạt.
-                            <a href="https://www.google.com/maps/?q=11.958633,108.3436327" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div id="map">
-                <h4>TÂY NAM BỘ</h4>
-                <ul>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.041762,105.766555">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            41G Mậu Thân, Q.Ninh Kiều, Cần Thơ.
-                            <a href="https://www.google.com/maps/?q=10.041762,105.766555" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.034515,105.775134">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            224 Trần Hưng Đạo, Q.Ninh Kiều,Cần Thơ.
-                            <a href="https://www.google.com/maps/?q=10.034515,105.775134" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.278685,105.528850">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            538 Đường 91, P.Thốt Nốt, Quận Thốt Nốt,Cần Thơ.
-                            <a href="https://www.google.com/maps/?q=10.278685,105.528850" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.105936,105.616218">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            131 Đường 26 Tháng 3, Châu Văn Liêm, Ô Môn, Cần Thơ.
-                            <a href="https://www.google.com/maps/?q=10.105936,105.616218" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.255403,106.367642">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            345 Đồng Khởi, P.Phú Tân, Bến Tre.
-                            <a href="https://www.google.com/maps/?q=10.255403,106.367642" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.196750,106.279063">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            882 Ấp Phước Hậu, X.Phước Mỹ Trung, H.Mỏ Cày , Bến Tre.
-                            <a href="https://www.google.com/maps/?q=10.196750,106.279063" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.352444,106.678071">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            147 Nguyễn Huệ, P2, Thị Xã Gò Công,Tiền Giang.
-                            <a href="https://www.google.com/maps/?q=10.352444,106.678071" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.392392,106.122216">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            21 Đường 868, KP1, P.1,TX.Cai Lậy, Tiền Giang.
-                            <a href="https://www.google.com/maps/?q=10.392392,106.122216" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.370087,106.351370">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            542A  Ấp Bắc , T.P Mỹ Tho, Tiền Giang.
-                            <a href="https://www.google.com/maps/?q=10.370087,106.351370" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=,">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            19/2 Khu Phô Ga, Thị Trấn Tân Hiệp, Huyện Châu Thành, Tỉnh Tiền Giang .
-                            <a href="https://www.google.com/maps/?q=," style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.839637,106.429215">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            258 Tỉnh Lộ 825 Ấp Bình Tiền, Đức Hòa Hạ, Đức Hòa, Long An.
-                            <a href="https://www.google.com/maps/?q=10.839637,106.429215" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.530430,106.418060">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            488 Hùng Vương, P.3, Tân An, Long An.
-                            <a href="https://www.google.com/maps/?q=10.530430,106.418060" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.637788,106.489708">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            53 Nguyễn Hữu Thọ, KP3, TT Bến Lức, Huyên Bến Lức,Long An.
-                            <a href="https://www.google.com/maps/?q=10.637788,106.489708" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.598558,106.667174">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            285 QL 50, KP 3, TT Cần Giuộc, H.Cần Giuộc,Long An.
-                            <a href="https://www.google.com/maps/?q=10.598558,106.667174" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.245445,105.977638">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            55F Phạm Thái Bường, P.4,Vĩnh Long.
-                            <a href="https://www.google.com/maps/?q=10.245445,105.977638" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.779377,105.469759">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            10 Trương Vĩnh Ký, Khu 1, TT Trà Ôn,Vĩnh Long.
-                            <a href="https://www.google.com/maps/?q=9.779377,105.469759" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.597817,105.973810">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            99A Lê Hồng Phong, P.13 ,Sóc Trăng.
-                            <a href="https://www.google.com/maps/?q=9.597817,105.973810" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.185063,105.138819">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            274 Ngô Quyền, P.9 ,Cà Mau.
-                            <a href="https://www.google.com/maps/?q=9.185063,105.138819" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.924172,106.338577">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            123 Nguyễn Đáng, P.7,Trà Vinh .
-                            <a href="https://www.google.com/maps/?q=9.924172,106.338577" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.455973,105.637013">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            150 Hùng Vương, P. 2, Tp.Cao Lãnh ,Đồng Tháp.
-                            <a href="https://www.google.com/maps/?q=10.455973,105.637013" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.290464,105.761143">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            434 Nguyễn Sinh Sắc, Sa Đéc,Đồng Tháp.
-                            <a href="https://www.google.com/maps/?q=10.290464,105.761143" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=,">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            323 Nguyễn Sinh Sắc, Sa Đéc,Đồng Tháp  ( khai trương ngày 14/10/2023).
-                            <a href="https://www.google.com/maps/?q=," style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.378161,105.435458">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            867 Hà Hoàng Hổ, P.Mỹ Xuyên, Long Xuyên,An Giang.
-                            <a href="https://www.google.com/maps/?q=10.378161,105.435458" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.706103,105.128958">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            136 Lê Lợi, P.Châu Phú B, Châu Đốc, An Giang.
-                            <a href="https://www.google.com/maps/?q=10.706103,105.128958" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=,">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            247 Quốc Lộ 91, TT Cái Dầu, Châu Phú, An Giang .
-                            <a href="https://www.google.com/maps/?q=," style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.779377,105.469759">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            22 Nguyễn Công Trứ, KP1, P.1, TP.Vị Thanh, Hậu Giang.
-                            <a href="https://www.google.com/maps/?q=9.779377,105.469759" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.823382,105.817489">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            782 Hùng Vương, KV3, P. Ngã Bảy, TP. Ngã Bảy, Hậu Giang.
-                            <a href="https://www.google.com/maps/?q=9.823382,105.817489" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.991748,105.096187">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            542 Nguyễn Trung Trực, Rạch Giá, Kiên Giang .
-                            <a href="https://www.google.com/maps/?q=9.991748,105.096187" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.2873807,105.7200892">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            417 Trần Phú, Phường 7, TP Bạc Liêu.
-                            <a href="https://www.google.com/maps/?q=9.2873807,105.7200892" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=9.225696,105.421947">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            62 QL 1A, Khóm 1, P.Hộ Phòng, TX Giá Rai, Bạc Liêu.
-                            <a href="https://www.google.com/maps/?q=9.225696,105.421947" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div id="map">
-                <h4>ĐÔNG NAM BỘ</h4>
-                <ul>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.902378,106.699791">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            26 Châu Văn Tiếp, P.Lái Thiêu, TX.Thuận An,Bình Dương.
-                            <a href="https://www.google.com/maps/?q=10.902378,106.699791" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.904878,106.768214">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            208 Nguyễn An Ninh, Thị Xã Dĩ An, Bình Dương.
-                            <a href="https://www.google.com/maps/?q=10.904878,106.768214" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.982012,106.653330">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            229a Yersin, P.Phú Cường,TP.Thủ Dầu 1,Bình Dương.
-                            <a href="https://www.google.com/maps/?q=10.982012,106.653330" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.158857,106.593979">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            40 Hùng Vương, phường Mỹ Phước, Bến Cát, Bình Dương.
-                            <a href="https://www.google.com/maps/?q=11.158857,106.593979" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.956929,106.844601">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            1243 Phạm Văn Thuận, P.Thống Nhất, Biên Hòa, Đồng Nai.
-                            <a href="https://www.google.com/maps/?q=10.956929,106.844601" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.952257,106.823411">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            169 Đường 30/4, Trung Dũng, TP Biên Hòa, Đồng Nai.
-                            <a href="https://www.google.com/maps/?q=10.952257,106.823411" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.0322758,107.1719611">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            10/5B Tây Kim, Gia Kiệm, Thống Nhất, Đồng Nai.
-                            <a href="https://www.google.com/maps/?q=11.0322758,107.1719611" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.9191396,107.3979884">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            141 Hùng Vương, TT.Xuân Lộc, Đồng Nai.
-                            <a href="https://www.google.com/maps/?q=10.9191396,107.3979884" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.9637414,106.9481722">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            717 Đường 767, Ấp An Chu, Bắc Sơn, Trảng Bom,Đồng Nai.
-                            <a href="https://www.google.com/maps/?q=10.9637414,106.9481722" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.782650,106.950960">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            295 Lê Duẩn, Long Thành,Đồng Nai.
-                            <a href="https://www.google.com/maps/?q=10.782650,106.950960" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.923297,107.239672">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            575 Hùng Vương, Long Khánh, Đồng Nai.
-                            <a href="https://www.google.com/maps/?q=10.923297,107.239672" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.742597,106.9433474">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            264 Hùng Vương, TT Hiệp Phước, Huyện Nhơn Trạch, Đồng Nai.
-                            <a href="https://www.google.com/maps/?q=10.742597,106.9433474" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.032272169892652,106.35522289478193">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            27 Khu Phố Lộc An Quốc Lộ 22, Trảng Bàng, Tây Ninh.
-                            <a href="https://www.google.com/maps/?q=11.032272169892652,106.35522289478193" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.311055,106.102558">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            437 Cách Mạng Tháng Tám, P.3, Tây Ninh.
-                            <a href="https://www.google.com/maps/?q=11.311055,106.102558" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.083057,106.272232">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            231 Quốc Lộ 22, KP Rạch Sơn, TT Gò Dầu, Huyện Gò Dầu, Tây Ninh.
-                            <a href="https://www.google.com/maps/?q=11.083057,106.272232" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.493245,107.172938">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            144 Nguyễn Hữu Thọ, TP.Bà Rịa.
-                            <a href="https://www.google.com/maps/?q=10.493245,107.172938" style="color: #f04e23 ;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.363337,107.089191">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            510 Trương Công Định, P.8, TP. Vũng Tàu.
-                            <a href="https://www.google.com/maps/?q=10.363337,107.089191" style="color: #f04e23;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.534240,106.899476">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            1035 Phú Riềng Đỏ, KP.Xuân Bình, P.Tân Bình, Đồng Xoài ,Bình Phước .
-                            <a href="https://www.google.com/maps/?q=11.534240,106.899476" style="color: #f04e23;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.413350,106.615801">
-                            <img src="/Images/map.png" style="width:22px;">
-                        </a>
-                        <span>
-                            144 Đường Nguễn Huệ KP 4, TT Chơn Thành, Huyện Chơn Thành, Bình Phước ( Đối diện tiệm vàng Tuấn ).
-                            <a href="https://www.google.com/maps/?q=11.413350,106.615801" style="color: #f04e23;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-            <div id="footer-comany">
-                <p>NHÀ THUỐC LONG CHÂU</p>
-                <p>Địa chỉ: Số 7 đường 3A, khu dân cư Ấp 5, X. Phong Phú, H. Bình Chánh., Tp. HCM</p>
-                <p>MST:0314746543</p>
+
+            <!-- Phần cuối cùng của footer -->
+            <div class="footer-bottom" style="text-align: center; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px;">
+                <p style="color: #888;">© 2024 NHÀ THUỐC LONG CHÂU. All Rights Reserved.</p>
             </div>
         </footer>
 
@@ -1011,8 +426,10 @@
 
 
 
-        <!----footer------>
-        <!-- script for menu -->
+
+
+
+
         <script language="JavaScript">
             var MenuItems = document.getElementById("MenuItems");
 
@@ -1059,19 +476,17 @@
 
         </script>
 
-        @*   @Scripts.Render("~/bundles/modernizr")
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-        ></script>
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false) *@
 </body>
 
-</html>
 
 
-@*    @Styles.Render("~/Content/css")
-           @Scripts.Render("~/bundles/modernizr")
 
-           @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false
-    @Scripts.Render("~/bundles/bootstrap"))*@
+        <!----footer------>
+        <!-- script for menu -->
+      
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+ 

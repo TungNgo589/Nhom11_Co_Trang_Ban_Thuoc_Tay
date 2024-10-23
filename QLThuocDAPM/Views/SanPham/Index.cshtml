@@ -1,0 +1,70 @@
+﻿@model IEnumerable<QLThuocDAPM.Data.SanPham>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="~/css/listSanPham.css" />
+    <title>Danh sách sản phẩm</title>
+    <style>
+     
+
+    </style>
+</head>
+<body >
+    <div style="justify-content:center;margin:auto ;width:1100px">
+        <h2 class="title">TẤT CẢ SẢN PHẨM</h2>
+        <div style=""  class="row mb-2">
+ 
+                        @foreach (var item in Model.Take(6))
+                        {
+                            <div class="col-3 mt-2 card-product">
+                                <a asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                                    <img class="img-product" src="@Url.Content(item.HinhAnh1)">
+                                    <div style="font-weight:300;" class="name-product">@item.TenSp</div>
+
+                                    <div class="price-product">Giá: @item.GiaTien,000 VNĐ</div>
+
+
+                                </a>
+                            </div>
+                        }
+
+        </div>
+        <br style="margin-top:100px;" />
+
+        <div>
+            <h2 style="text-align:center;justify-items:center">Sản Phẩm Bán Chạy</h2>
+
+            <div class="row" >
+                @foreach (var item in Model.OrderByDescending(sp => sp.SoLuongMua).Take(3))
+                {
+                    <div class="col-3 mt-2 card-product" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
+                        <a href="/games/ChiTietSP/@item.MaSp">
+                            <img class="img-product" src="@Url.Content(item.HinhAnh1)" alt="@item.TenSp" style="width: 100%; height: auto;">
+                            <div class="name-product" style="font-weight: bold; font-size: 16px; margin-top: 10px;">
+                                @item.TenSp
+                            </div>
+                            <div class="price-product" style="color: #e74c3c; font-size: 14px; margin-top: 5px;">
+                                Giá: @String.Format("{0:0,0}", item.GiaTien) VNĐ
+                            </div>
+                            <div class="purchase-count" style="color: #2ecc71; font-size: 13px; margin-top: 5px;">
+                                Lượt Mua: @item.SoLuongMua
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+
+
+        </div>
+    </div>
+   <br style="margin-top:100px;" />
+</body>
+
+</html>
