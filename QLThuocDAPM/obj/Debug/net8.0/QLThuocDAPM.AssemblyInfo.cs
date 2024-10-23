@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QLThuocDAPM")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02742ed5048d12cbcadffa53e05a2d17c0a11021")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd56303a9d6861a16f3cf246cc4efd6345bee23f")]
 [assembly: System.Reflection.AssemblyProductAttribute("QLThuocDAPM")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QLThuocDAPM")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

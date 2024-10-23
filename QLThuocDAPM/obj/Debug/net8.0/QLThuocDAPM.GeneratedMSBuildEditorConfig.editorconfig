@@ -98,6 +98,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2FuUGhhbXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ADMIN/Downloads/DAPM/QLThuocDAPM/Views/Benh/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmVuaFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ADMIN/Downloads/DAPM/QLThuocDAPM/Views/Benh/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmVuaFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ADMIN/Downloads/DAPM/QLThuocDAPM/Views/GioHang/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lvSGFuZ1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
