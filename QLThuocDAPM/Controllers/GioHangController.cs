@@ -11,9 +11,9 @@ namespace QLThuocDAPM.Controllers
 {
     public class GioHangController : Controller
     {
-        private readonly QlthuocDapm2Context _context;
+        private readonly QlthuocDapm3Context _context;
 
-        public GioHangController(QlthuocDapm2Context context)
+        public GioHangController(QlthuocDapm3Context context)
         {
             _context = context;
         }

@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class SanPhamsController : Controller
     {
-        private readonly QlthuocDapm2Context _context;
+        private readonly QlthuocDapm3Context _context;
 
-        public SanPhamsController(QlthuocDapm2Context context)
+        public SanPhamsController(QlthuocDapm3Context context)
         {
             _context = context;
         }

@@ -11,9 +11,9 @@ namespace QLThuocDAPM.Controllers
 {
     public class UserController : Controller
     {
-        private readonly QlthuocDapm2Context _context;
+        private readonly QlthuocDapm3Context _context;
 
-        public UserController(QlthuocDapm2Context context)
+        public UserController(QlthuocDapm3Context context)
 
         {
             _context = context;
@@ -84,20 +84,20 @@ namespace QLThuocDAPM.Controllers
         {
             user.TrangThai = "Chưa mua hàng";
             //user.Role = 0;
-            
-                var existingUser = _context.NguoiDungs.FirstOrDefault(s => s.Username == user.Username);
-                if (existingUser == null)
-                {
-                    _context.NguoiDungs.Add(user);
-                    _context.SaveChanges();
-                    return RedirectToAction("Login");
-                }
-                else
-                {
-                    ViewBag.error = "Tài khoản đã tồn tại";
-                    return View();
-                }
-            
+
+            var existingUser = _context.NguoiDungs.FirstOrDefault(s => s.Username == user.Username);
+            if (existingUser == null)
+            {
+                _context.NguoiDungs.Add(user);
+                _context.SaveChanges();
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                ViewBag.error = "Tài khoản đã tồn tại";
+                return View();
+            }
+
             return View();
         }
 
@@ -229,22 +229,22 @@ namespace QLThuocDAPM.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ThongTinNguoiDung(NguoiDung model)
         {
-          
-                // Tìm người dùng theo username từ session
-                string username = HttpContext.Session.GetString("userLogin");
-                var user = _context.NguoiDungs.FirstOrDefault(u => u.Username == username);
+
+            // Tìm người dùng theo username từ session
+            string username = HttpContext.Session.GetString("userLogin");
+            var user = _context.NguoiDungs.FirstOrDefault(u => u.Username == username);
 
 
             user.HoTen = model.HoTen;
-                    user.Email = model.Email;
-                    user.Sdt = model.Sdt;
+            user.Email = model.Email;
+            user.Sdt = model.Sdt;
 
-                    _context.Entry(user).State = EntityState.Modified;
-                    _context.SaveChanges();
-                    ViewData["Message"] = "Cập nhật thông tin thành công!";
-                    return View(model);
+            _context.Entry(user).State = EntityState.Modified;
+            _context.SaveChanges();
+            ViewData["Message"] = "Cập nhật thông tin thành công!";
+            return View(model);
 
-          
+
         }
     }
 }

@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Controllers
     public class SanPhamController : Controller
     {
      
-            private readonly QlthuocDapm2Context db;
+            private readonly QlthuocDapm3Context db;
 
-            public SanPhamController(QlthuocDapm2Context context)
+            public SanPhamController(QlthuocDapm3Context context)
             {
                 db = context;
             }
