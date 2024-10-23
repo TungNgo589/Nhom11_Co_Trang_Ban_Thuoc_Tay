@@ -45,40 +45,42 @@
     .alert {
         margin-top: 20px;
     }
-</style>
+</style >
+<div style="width:800px; justify-content:center;margin:auto">
+    <h2 class="text-center">Quản lý thông tin cá nhân</h2>
 
-<h2 class="text-center">Quản lý thông tin cá nhân</h2>
-
-@using (Html.BeginForm("ThongTinNguoiDung", "User", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.HoTen)
-        @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(m => m.Sdt)
-        @Html.TextBoxFor(m => m.Sdt, new { @class = "form-control" })
-    </div>
-    <a asp-action="ThongTinCaNhan" asp-controller="User">
-
-    
-    <button type="submit" class="btn btn-primary">Cập nhật</button>
-    </a>
-    if (ViewBag.Message != null)
+    @using (Html.BeginForm("ThongTinNguoiDung", "User", FormMethod.Post))
     {
-        <div class="alert alert-success">@ViewBag.Message</div>
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.HoTen)
+            @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Sdt)
+            @Html.TextBoxFor(m => m.Sdt, new { @class = "form-control" })
+        </div>
+        <a asp-action="ThongTinCaNhan" asp-controller="User">
+
+
+            <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </a>
+        if (ViewBag.Message != null)
+        {
+            <div class="alert alert-success">@ViewBag.Message</div>
+        }
+
+        if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
     }
 
-    if (ViewBag.Error != null)
-    {
-        <div class="alert alert-danger">@ViewBag.Error</div>
-    }
-}
+</div>

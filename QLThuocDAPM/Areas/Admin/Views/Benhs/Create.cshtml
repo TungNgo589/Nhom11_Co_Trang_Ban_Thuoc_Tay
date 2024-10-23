@@ -19,31 +19,25 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            Tên
             <div class="form-group">
                 <label asp-for="TenBenh" class="control-label"></label>
                 <input asp-for="TenBenh" class="form-control" />
                 <span asp-validation-for="TenBenh" class="text-danger"></span>
             </div>
-            Mô tả
             <div class="form-group">
                 <label asp-for="MoTa" class="control-label"></label>
                 <input asp-for="MoTa" class="form-control" />
                 <span asp-validation-for="MoTa" class="text-danger"></span>
             </div>
-                <div  class="form-group">
-                  
-                    <a asp-area="Admin" asp-controller="Benhs" asp-action="Create" class="btn btn-primary">
-                        <input type="submit" value="Create" class="btn btn-primary" />
-
-                    </a>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-        <a asp-area="Admin" asp-controller="Benhs" asp-action="Index">  <input type="submit" class="btn btn-primary" value="Back to List" /></a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 </body>

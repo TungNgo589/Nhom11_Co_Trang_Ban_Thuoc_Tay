@@ -13,6 +13,8 @@ public partial class DanhGium
 
     public decimal? SoSao { get; set; }
 
+    public decimal? SoSaoTrungBinh { get; set; }
+
     public DateTime NgayBinhLuan { get; set; }
 
     public virtual NguoiDung MaNguoiDungNavigation { get; set; } = null!;

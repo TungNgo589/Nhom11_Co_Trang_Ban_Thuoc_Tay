@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class SanPhamsController : Controller
     {
-        private readonly QlthuocDapm2Context _context;
+        private readonly QlthuocDapm3Context _context;
 
-        public SanPhamsController(QlthuocDapm2Context context)
+        public SanPhamsController(QlthuocDapm3Context context)
         {
             _context = context;
         }
@@ -46,31 +46,77 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
             }
 
             return View(sanPham);
-        }
+       }
 
         // GET: Admin/SanPhams/Create
         public IActionResult Create()
         {
-            ViewData["MaBenh"] = new SelectList(_context.Benhs, "MaBenh", "TenBenh"); // Thay đổi "MaBenh" thành "TenBenh" nếu cần
-            ViewData["MaDm"] = new SelectList(_context.DanhMucs, "MaDm", "TenDm"); // Thay đổi "MaDm" thành "TenDm" nếu cần
-            ViewData["MaGiamGia"] = new SelectList(_context.GiamGia, "MaGiamGia", "TenGiamGia"); // Thay đổi nếu cần
-            ViewData["MaNhaCungCap"] = new SelectList(_context.NhaCungCaps, "MaNhaCungCap", "TenNhaCungCap"); // Thay đổi nếu cần
+            ViewData["MaBenh"] = new SelectList(_context.Benhs, "MaBenh", "MaBenh");
+            ViewData["MaDm"] = new SelectList(_context.DanhMucs, "MaDm", "MaDm");
+            ViewData["MaGiamGia"] = new SelectList(_context.GiamGia, "MaGiamGia", "MaGiamGia");
+            ViewData["MaNhaCungCap"] = new SelectList(_context.NhaCungCaps, "MaNhaCungCap", "MaNhaCungCap");
             return View();
         }
 
         // POST: Admin/SanPhams/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSp,TenSp,MaBenh,MaNhaCungCap,MaGiamGia,ThanhPhan,GiaTien,DonVi,HansuDung,ChitietSp,MaDm,SoLuong,SoLuongMua,HinhAnh1,HinhAnh2,HinhAnh3,HinhAnh4")] SanPham sanPham)
+        public async Task<IActionResult> Create([Bind("MaSp,TenSp,MaBenh,MaNhaCungCap,MaGiamGia,ThanhPhan,GiaTien,DonVi,HansuDung,ChitietSp,MaDm,SoLuong,SoLuongMua,HinhAnh1,HinhAnh2,HinhAnh3,HinhAnh4")]
+        SanPham sanPham, IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4)
         {
-         
-                _context.Add(sanPham);
-                await _context.SaveChangesAsync();
-                //return RedirectToAction(nameof(Index));
-            
-           
-            return View(sanPham);
+            if (ModelState.IsValid)
+            {
+                // Kiểm tra xem file có được upload không
+                if ((file1 != null && file1.Length > 0) &&(file2 != null && file2.Length > 0) &&(file3 != null && file4.Length > 0) &&(file4 != null && file4.Length > 0))
+                {
+                    // Tạo tên file duy nhất để tránh xung đột
+                    var fileName1 = Path.GetFileName(file1.FileName);
+                    var fileName2 = Path.GetFileName(file2.FileName);
+                    var fileName3 = Path.GetFileName(file3.FileName);
+                    var fileName4 = Path.GetFileName(file4.FileName);
+                    var filePath1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName1);
+                    var filePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName2);
+                    var filePath3 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName3);
+                    var filePath4 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName4);
+
+                    // Lưu file vào thư mục wwwroot/images
+                    using (var stream = new FileStream(filePath1, FileMode.Create))
+                    {
+                        await file1.CopyToAsync(stream);
+                    }
+                    using (var stream = new FileStream(filePath2, FileMode.Create))
+                    {
+                        await file2.CopyToAsync(stream);
+                    }
+                    using (var stream = new FileStream(filePath3, FileMode.Create))
+                    {
+                        await file3.CopyToAsync(stream);
+                    }
+                    using (var stream = new FileStream(filePath4, FileMode.Create))
+                    {
+                        await file4.CopyToAsync(stream);
+                    }
+
+                    // Gán đường dẫn của ảnh cho thuộc tính AnhSp của sản phẩm
+                    sanPham.HinhAnh1 = "/images/" + fileName1; // Đảm bảo đường dẫn hợp lệ
+                    sanPham.HinhAnh2 = "/images/" + fileName2; // Đảm bảo đường dẫn hợp lệ
+                    sanPham.HinhAnh3 = "/images/" + fileName3; // Đảm bảo đường dẫn hợp lệ
+                    sanPham.HinhAnh4 = "/images/" + fileName4; // Đảm bảo đường dẫn hợp lệ
+                    _context.Add(sanPham);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                ViewData["MaBenh"] = new SelectList(_context.Benhs, "MaBenh", "MaBenh", sanPham.MaBenh);
+                ViewData["MaDm"] = new SelectList(_context.DanhMucs, "MaDm", "MaDm", sanPham.MaDm);
+                ViewData["MaGiamGia"] = new SelectList(_context.GiamGia, "MaGiamGia", "MaGiamGia", sanPham.MaGiamGia);
+                ViewData["MaNhaCungCap"] = new SelectList(_context.NhaCungCaps, "MaNhaCungCap", "MaNhaCungCap", sanPham.MaNhaCungCap);
+                return View(sanPham);
+            }
+            return View();
         }
+
         // GET: Admin/SanPhams/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

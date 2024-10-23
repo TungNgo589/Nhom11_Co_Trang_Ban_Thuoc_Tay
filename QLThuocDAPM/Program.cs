@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Add database context
-builder.Services.AddDbContext<QlthuocDapm2Context>(options =>
+builder.Services.AddDbContext<QlthuocDapm3Context>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Hshop"));
 });

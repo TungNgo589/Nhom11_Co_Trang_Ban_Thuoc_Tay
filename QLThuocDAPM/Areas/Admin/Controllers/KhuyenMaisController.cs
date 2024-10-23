@@ -10,9 +10,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class KhuyenMaisController : Controller
     {
-        private readonly QlthuocDapm2Context db;
+        private readonly QlthuocDapm3Context db;
 
-        public KhuyenMaisController(QlthuocDapm2Context context)
+        public KhuyenMaisController(QlthuocDapm3Context context)
         {
             db = context;
         }

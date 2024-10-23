@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class DonHangsController : Controller
     {
-        private readonly QlthuocDapm2Context _context;
+        private readonly QlthuocDapm3Context _context;
 
-        public DonHangsController(QlthuocDapm2Context context)
+        public DonHangsController(QlthuocDapm3Context context)
         {
             _context = context;
         }

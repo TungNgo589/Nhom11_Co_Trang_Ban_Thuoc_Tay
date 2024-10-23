@@ -11,9 +11,9 @@ namespace QLThuocDAPM.Controllers
 {
     public class UserController : Controller
     {
-        private readonly QlthuocDapm2Context _context;
+        private readonly QlthuocDapm3Context _context;
 
-        public UserController(QlthuocDapm2Context context)
+        public UserController(QlthuocDapm3Context context)
 
         {
             _context = context;

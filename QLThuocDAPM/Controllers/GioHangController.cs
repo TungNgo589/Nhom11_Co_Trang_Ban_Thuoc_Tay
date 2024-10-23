@@ -11,9 +11,9 @@ namespace QLThuocDAPM.Controllers
 {
     public class GioHangController : Controller
     {
-        private readonly QlthuocDapm2Context _context;
+        private readonly QlthuocDapm3Context _context;
 
-        public GioHangController(QlthuocDapm2Context context)
+        public GioHangController(QlthuocDapm3Context context)
         {
             _context = context;
         }
@@ -168,7 +168,20 @@ namespace QLThuocDAPM.Controllers
                 };
 
                 _context.ChiTietDonHangs.Add(chitiet);
+                var sanPham = _context.SanPhams.FirstOrDefault(sp => sp.MaSp == item.MaHh);
+                if (sanPham != null)
+                {
+                    sanPham.SoLuongMua += item.SoLuong; // Cộng số lượng mua
+                    sanPham.SoLuong -= item.SoLuong; // Giảm số lượng tồn kho
+                                                     // Nếu bạn cần thêm kiểm tra để không giảm số lượng tồn kho âm
+                    if (sanPham.SoLuong < 0)
+                    {
+                        sanPham.SoLuong = 0; // Đảm bảo không âm
+                    }
+                    _context.SanPhams.Update(sanPham); // Cập nhật sản phẩm
+                }
             }
+
             _context.SaveChanges();
 
             // Clear the shopping cart
