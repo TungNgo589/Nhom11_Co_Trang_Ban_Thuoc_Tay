@@ -1,32 +1,44 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using QLThuocDAPM.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<QlthuocDapmContext>(options =>
+
+// Add database context
+builder.Services.AddDbContext<QlthuocDapm3Context>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Hshop"));
 });
 
+// Add session support
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(10); // Timeout after 10 minutes
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
-
+// Cấu hình routing hỗ trợ Areas
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+app.UseSession(); // Sử dụng session trước khi dùng authentication và authorization
 app.UseRouting();
 
+app.UseAuthentication(); // Đảm bảo authentication được dùng trước khi authorization
 app.UseAuthorization();
 
+// Cấu hình endpoints cho Areas
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+// Cấu hình routing mặc định
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

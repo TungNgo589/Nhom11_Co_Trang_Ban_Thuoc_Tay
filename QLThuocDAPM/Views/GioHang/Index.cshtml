@@ -1,0 +1,87 @@
+﻿@model IEnumerable<QLThuocDAPM.Models.CartItem>
+
+@{
+    ViewBag.Title = "Giỏ Hàng";
+    Layout = Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Sản phẩm</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Đơn giá</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Tổng tiền</th> <!-- Total price column -->
+            <th scope="col">Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="6" class="text-center">Giỏ hàng của bạn đang trống.</td>
+            </tr>
+        }
+        else
+        {
+         
+
+          
+            decimal grandTotal = 0; // Variable to hold total amount
+            foreach (var item in Model)
+            {
+                    <table>
+
+                    
+                <tr>
+                    <td>
+                        <img src="~/Hinh/HangHoa/@item.Hinh" class="img-cus" alt="@item.TenHH" />
+                    </td>
+                    <td>
+                        <a asp-action="ChiTietSanPham" asp-controller="SanPham" asp-route-id="@item.MaHh">
+                            @item.TenHH
+                        </a>
+                    </td>
+                    <td>
+                        @String.Format("{0:C}", item.DonGia) 
+                    </td>
+                    <td>
+                        <form asp-action="UpdateQuantity" asp-controller="GioHang" method="post" style="display:inline;">
+                            <input type="number" name="quantity" value="@item.SoLuong" min="0" class="form-control" style="width: 60px; display: inline-block;" />
+                            <input type="hidden" name="id" value="@item.MaHh" />
+                            <button asp-action="UpdateQuantity" asp-controller="GioHang" type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
+                        </form>
+                    </td>
+                    <td>
+                        @String.Format("{0:C}", item.TongTien) 
+                    </td>
+                    <td>
+                        <a asp-action="RemoveCart" asp-controller="GioHang" asp-route-id="@item.MaHh" class="btn btn-danger">
+                            Xóa
+                        </a>
+                    </td>
+                    <td>
+                     
+
+                    </td>
+                </tr>
+                    </table>
+            }
+
+            <a asp-action="ThanhToan" asp-controller="GioHang"
+               style="display: inline-block; padding: 10px 20px; font-size: 16px;
+          color: #fff; background-color: #007bff; border: none;
+          border-radius: 5px; text-decoration: none;
+          transition: background-color 0.3s ease;"
+               onmouseover="this.style.backgroundColor='#0056b3';"
+               onmouseout="this.style.backgroundColor='#007bff';">
+                Thanh toán
+            </a>
+            // Display the grand total
+           
+        }
+       
+    </tbody>
+</table>

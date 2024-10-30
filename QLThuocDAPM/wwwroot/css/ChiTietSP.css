@@ -1,0 +1,240 @@
+﻿/* ChiTietSP.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.col-5, .col-7 {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.col-5 {
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+}
+
+.col-7 {
+    width: 55%;
+    padding: 20px;
+}
+
+img.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 22px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.btn-success {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+@media (max-width: 768px) {
+    .col-5, .col-7 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+    .icon-cart-cus {
+        position: relative;
+    }
+
+    #cart {
+        position: absolute;
+        display: block;
+        width: 25px;
+        height: 25px;
+        background: blue;
+        color: white;
+        border-radius: 50%;
+        right: -10px;
+        text-align: center;
+        top: -10px;
+    }
+
+    #MenuItems li a {
+        color: #333;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+        #MenuItems li a:hover {
+            color: olive;
+        }
+
+    .cus-icon {
+        color: #333;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+        .cus-icon:hover {
+            color: olive;
+        }
+
+    .userlogin {
+        position: relative;
+    }
+
+        .userlogin:hover .userlogged {
+            display: block;
+        }
+
+    .userlogged {
+        position: absolute;
+        width: 150px;
+        display: none;
+        left: -35px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        z-index: 2;
+        font-size: 14px;
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: white;
+    }
+
+        .userlogged div a {
+            color: #333 !important;
+        }
+
+    .img-logo {
+        width: 200px;
+        height: 150px;
+    }
+
+
+
+
+
+
+
+    #footer-map {
+        vertical-align: bottom;
+        width: 100%;
+        height: 1100px;
+        background-color: black;
+        color: #fff;
+        /* padding: 50px;*/
+    }
+
+        #footer-map .name-map {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+        }
+
+            #footer-map .name-map p {
+                font-size: 24px;
+                text-transform: uppercase;
+                margin-bottom: 8px
+            }
+
+            #footer-map .name-map a {
+                text-decoration: none;
+                margin-top: 50px;
+            }
+
+    #map {
+        float: left;
+        width: 29%;
+        padding: 0px;
+        margin: 3px;
+    }
+
+        #map a {
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        #map li {
+            list-style-type: none;
+            font-size: 14px;
+        }
+
+        #map h4 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+    #footer-comany {
+        color: #fff;
+        float: left;
+        padding-top: 150px;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none; /* Ẩn menu dropdown */
+        position: absolute;
+        background-color: #f9f9f9; /* Màu nền cho menu dropdown */
+        min-width: 160px; /* Chiều rộng tối thiểu cho menu dropdown */
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Đổ bóng cho menu */
+        z-index: 1; /* Đảm bảo menu nằm trên các phần khác */
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block; /* Hiện menu dropdown khi hover */
+    }
+
+    .dropdown-content a {
+        color: black; /* Màu chữ cho các mục trong menu */
+        padding: 12px 16px; /* Padding cho các mục */
+        text-decoration: none; /* Bỏ gạch chân */
+        display: block; /* Hiện các mục dưới dạng khối */
+    }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1; /* Màu nền khi hover trên các mục */
+        }
+}

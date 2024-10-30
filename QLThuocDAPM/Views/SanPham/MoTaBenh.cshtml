@@ -1,0 +1,95 @@
+﻿
+@model QLThuocDAPM.Data.Benh
+@{
+    ViewBag.Title = "Chi tiết bệnh: " + Model.TenBenh;
+}
+
+<head>
+
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-box {
+            background-color: white;
+            margin: 50px auto; /* Canh giữa khung nội dung */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 1000px; /* Giới hạn chiều rộng của khung */
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Để phần nội dung và hình ảnh không bị tràn */
+            gap: 20px; /* Khoảng cách giữa hình ảnh và nội dung */
+        }
+
+        .img-container {
+            flex: 1; /* Chiếm 1 phần của chiều ngang */
+            display: flex;
+            justify-content: center; /* Căn giữa hình ảnh */
+        }
+
+            .img-container img {
+                width: 100%; /* Hình ảnh chiếm toàn bộ chiều ngang của container */
+                height: auto; /* Tự động điều chỉnh chiều cao dựa trên tỷ lệ gốc */
+                border-radius: 10px;
+            }
+
+        .info-container {
+            flex: 2; /* Chiếm 2 phần của chiều ngang */
+        }
+
+        .title {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 10px;
+            text-align: left; /* Căn trái phần nội dung */
+        }
+
+        .description {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+    </style>
+
+</head>
+
+<div class="content-box">
+    <!-- Hình ảnh bệnh nằm bên trái -->
+    <div class="img-container">
+        <img src="~/img/khambenh1.jpg" alt="Hình ảnh bệnh" />
+    </div>
+
+    <!-- Thông tin bệnh nằm bên phải -->
+    <div class="info-container">
+        <div style="margin-left:100px" class="title">Tên bệnh: @Model.TenBenh</div>
+        <div style="margin-left:100px" class="description">Mô tả về bệnh: @Model.MoTa</div>
+    </div>
+</div>
+@if (Model.SanPhams != null && Model.SanPhams.Any())
+{
+    <div class="sanpham-list">
+        @foreach (var sanPham in Model.SanPhams)
+        {
+            <div class="sanpham-item">
+                <a href="@Url.Action("ChiTietSanPham", "SanPham", new { id = sanPham.MaSp })" class="sanpham-link">
+                    <img class="img-product" src="~/UploadFile/@sanPham.HinhAnh1" alt="@sanPham.TenSp">
+                    <h4>@sanPham.TenSp</h4>
+                    <div class="price-product">Giá: @sanPham.GiaTien,000 VNĐ</div>
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Không có sản phẩm nào liên quan đến bệnh này.</p>
+}

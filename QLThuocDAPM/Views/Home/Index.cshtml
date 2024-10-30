@@ -1,8 +1,328 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model QLThuocDAPM.ViewModels.HomeViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    /* Header section */
+    .header-cus {
+        padding: 20px;
+        text-align: center;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+        .header-cus h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .header-cus p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .header-cus .btn-success {
+            background-color: #28a745;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+            .header-cus .btn-success:hover {
+                background-color: #218838;
+            }
+
+    /* Category Table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    td {
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        text-align: left;
+        border: 1px solid #ddd;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+
+        td img {
+            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+        }
+
+        td:hover {
+            background-color: #f1f1f1;
+        }
+
+    /* Recommended Section */
+    .recommended {
+        padding: 20px;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .recommended .items {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+    /* Product List */
+    .sanpham-section {
+        padding: 20px;
+        text-align: center;
+    }
+
+        .sanpham-section h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+
+    .category-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+        .category-buttons button {
+            background-color: #fff;
+            border: 1px solid #d1d1d1;
+            color: #333;
+            border-radius: 20px;
+            padding: 5px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+            .category-buttons button.active,
+            .category-buttons button:hover {
+                background-color: #1a73e8;
+                color: #fff;
+            }
+
+    /* Khu vực danh sách sản phẩm */
+    .sanpham-list {
+        margin-top:10px;
+        display: flex;
+        width:1200px;
+        height:350px;
+       margin: 25px 0px 0px 452px;
+     
+       /* /* /* /*  justify-content: space-around;
+        
+        padding: 20px; /* Có thể thêm padding nếu cần thiết */
+        background-color: #1a73e8;
+        border-radius: 8px;   
+    }
+
+    /* Thẻ sản phẩm */
+    .sanpham-item {
+
+        background-color: #ffffff;
+        border-radius: 10px;
+        border: 2px solid #1a73e8;
+        width: 180px;
+        padding: 10px; /* Giảm padding */
+        text-align: center;
+        position: relative;
+        margin: 1px; /* Giảm margin giữa các khung sản phẩm */
+    }
+
+
+        /* Hình ảnh sản phẩm */
+        .sanpham-item img.img-product {
+            width: 160px ;
+            height: 160px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .sanpham-item h4 {
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            line-height: 1.4em;
+            height: 44px;
+            overflow: hidden;
+            margin-top: 10px; /* Giữ lại khoảng cách hợp lý */
+            margin-bottom: 5px; /* Thêm khoảng cách dưới tên sản phẩm */
+        }
+
+    /* Giá sản phẩm */
+    .price-product {
+        color: #1a73e8;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    /* Nút "Chọn mua" */
+    .btn-buy {
+        display: inline-block;
+        margin-top: 10px; /* Giảm khoảng cách giữa tên sản phẩm và nút */
+        padding: 8px 16px;
+        background-color: #1a73e8;
+        color: #ffffff;
+        border: none;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        .btn-buy:hover {
+            background-color: #0f5abd;
+
+</style>
+
+<body>
+    <div class="header-cus">
+        <div class="container">
+            <div class="row">
+                <div class="col-5">
+                    <h1>Nhà thuốc online nơi cung cấp đầy đủ các sản phẩm cho bạn thoải mái lựa chọn</h1>
+                    <p>Xem nhanh tất cả sản phẩm có sẵn của chúng tôi tại đây.</p>
+                    <a asp-controller="SanPham" asp-action="DanhSachSanPham" role="button" class="btn btn-success">Xem ngay &#8594;</a>
+                </div>
+                <div class="col-5">
+                    <img class="w-100" src="/img/logoLC.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="width:1100px; justify-content:center; margin:auto;">
+        <table>
+            <tr style="height:90px">
+                <td>
+                    <img src="~/img/ktsk.png" />
+                    Kiểm tra sức khỏe
+                </td>
+                <td>
+                    <img src="~/img/nhathuoc.png" />
+                    Nhà thuốc
+                </td>
+                <td>
+                    <img src="~/img/vacxin.png" />
+                    Vacxin
+                </td>
+                <td>
+                    <img src="~/img/duocsi.png" />
+                    Tư vấn với dược sĩ
+                </td>
+                <td>
+                    <img src="~/img/thuoccanmua.png" />
+                    Cần mua thuốc
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="recommended">
+        <div class="container2">
+            <div class="row">
+                <div class="items">
+                    <img src="https://pacificcross.com.vn/wp-content/uploads/2023/06/Anh-huong-suc-khoe-3.jpeg">
+                </div>
+                <div class="items">
+                    <img src="https://images2.thanhnien.vn/528068263637045248/2023/7/17/1-mai-han-group-16895629488332053660025.jpg">
+                </div>
+                <div class="items">
+                    <img src="https://images2.thanhnien.vn/528068263637045248/2023/8/14/1-mai-han-16920015254312085844847.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin:auto; width:2000px" class="sanpham-section">
+        <h2 style =" width: 1180px; height: 24px; margin: 0px 0px 0px 8px;">Sản phẩm theo đối tượng</h2>
+        <div style=" width: 1180px; height: 35px; margin: 20px 0px 0px 68px;" class="category-buttons">
+            @foreach (var danhMuc in Model.DanhMucs.Take(4)) // Chỉ lấy 4 danh mục
+            {
+                <button class="category-btn" data-category="@danhMuc.MaDm">@danhMuc.TenDm</button>
+            }
+        </div>
+
+        <div class="sanpham-lists">
+            
+
+            @foreach (var danhMuc in Model.DanhMucs.Take(4))
+            {
+                <div class="sanpham-list" data-category="@danhMuc.MaDm" style="display: none;">
+
+                    <div style="display:flex" class="sanpham-container">
+                        <!-- Thêm div này để chứa các sản phẩm -->
+                        @if (Model.SanPhams.ContainsKey(danhMuc.MaDm) && Model.SanPhams[danhMuc.MaDm].Any())
+                        {
+                            foreach (var sanPham in Model.SanPhams[danhMuc.MaDm])
+                            {
+                                <div style="margin-top:10px;margin-left:10px; border-radius:14px" class="sanpham-item">
+                                    <a href="@Url.Action("ChiTietSanPham", "SanPham", new { id = sanPham.MaSp })" class="sanpham-link">
+                                        <img class="img-product" src="@Url.Content(@sanPham.HinhAnh1)" alt="@sanPham.TenSp">
+                                        <h4>@sanPham.TenSp</h4>
+                                        <div class="price-product">Giá: @sanPham.GiaTien,000 VNĐ</div>
+                                    </a>
+                                    <a href="@Url.Action("ChiTietSanPham", "SanPham", new { id = sanPham.MaSp })" class="btn-buy">Chọn mua</a>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            }
+            <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" class="pagination-button">Tiếp theo »</a>
+            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+            {
+                <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" class="pagination-button">Tiếp theo »</a>
+            }
+        </div>
+
+
+
+
+    <script >
+        document.addEventListener('DOMContentLoaded', function () {
+            const buttons = document.querySelectorAll('.category-btn');
+            const lists = document.querySelectorAll('.sanpham-list');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const category = this.getAttribute('data-category');
+
+                    // Ẩn tất cả danh sách sản phẩm
+                    lists.forEach(list => {
+                        list.style.display = 'none';
+                    });
+
+                    // Hiện danh sách sản phẩm tương ứng với danh mục đã chọn
+                    const selectedList = document.querySelector(`.sanpham-list[data-category="${category}"]`);
+                    if (selectedList) {
+                        selectedList.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>

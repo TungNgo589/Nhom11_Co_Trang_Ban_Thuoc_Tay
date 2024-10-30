@@ -1,0 +1,56 @@
+﻿.container {
+    margin: 20px auto;
+    max-width: 1200px; /* Đặt chiều rộng tối đa cho container */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các sản phẩm xuống dòng khi không đủ chỗ */
+    gap: 20px; /* Khoảng cách giữa các sản phẩm */
+}
+
+.product-card {
+    border: 1px solid #ddd; /* Đường viền xung quanh sản phẩm */
+    border-radius: 5px; /* Bo góc */
+    padding: 15px; /* Padding bên trong */
+    text-align: center; /* Căn giữa nội dung */
+    background-color: #f9f9f9; /* Màu nền cho sản phẩm */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    transition: transform 0.2s; /* Hiệu ứng chuyển động khi hover */
+}
+
+    .product-card:hover {
+        transform: scale(1.05); /* Phóng to sản phẩm khi hover */
+    }
+
+.product-image {
+    max-width: 100%; /* Chiều rộng tối đa của hình ảnh */
+    height: auto; /* Chiều cao tự động */
+    border-radius: 5px; /* Bo góc cho hình ảnh */
+}
+
+.product-name {
+    font-size: 18px; /* Kích thước font chữ cho tên sản phẩm */
+    font-weight: bold; /* Chữ in đậm */
+    margin: 10px 0; /* Khoảng cách trên và dưới */
+}
+
+.product-price {
+    font-size: 16px; /* Kích thước font chữ cho giá tiền */
+    color: #d9534f; /* Màu đỏ cho giá tiền */
+    margin: 5px 0; /* Khoảng cách trên và dưới */
+}
+.btn-mua-hang {
+    background-color: #007bff; /* Màu xanh dương */
+    color: white; /* Màu chữ trắng */
+    border: none; /* Không có đường viền */
+    border-radius: 5px; /* Bo góc cho nút */
+    padding: 10px 15px; /* Padding cho nút */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Hiệu ứng con trỏ khi hover */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+    .btn-mua-hang:hover {
+        background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+    }

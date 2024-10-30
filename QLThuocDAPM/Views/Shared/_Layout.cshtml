@@ -1,49 +1,502 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - QLThuocDAPM</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/QLThuocDAPM.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/css/s.css" rel='stylesheet' />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <title>NHATHUOCSO1VIETNAM</title>
+    <link rel="shortcut icon" href="~/UploadFile/icon.png" type="image/x-icon" />
+
+    <style>
+        .icon-cart-cus {
+            position: relative;
+        }
+
+        #cart {
+            position: absolute;
+            display: block;
+            width: 25px;
+            height: 25px;
+            background: blue;
+            color: white;
+            border-radius: 50%;
+            right: -10px;
+            text-align: center;
+            top: -10px;
+        }
+
+        #MenuItems li a {
+            color: #333;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+            #MenuItems li a:hover {
+                color: olive;
+            }
+
+        .cus-icon {
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+            .cus-icon:hover {
+                color: olive;
+            }
+
+        .userlogin {
+            position: relative;
+        }
+
+            .userlogin:hover .userlogged {
+                display: block;
+            }
+
+        .userlogged {
+            position: absolute;
+            width: 150px;
+            display: none;
+            left: -35px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            z-index: 2;
+            font-size: 14px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            background-color: white;
+        }
+
+            .userlogged div a {
+                color: #333 !important;
+            }
+
+        .img-logo {
+            width: 200px;
+            height: 150px;
+        }
+
+
+
+
+
+
+
+        #footer-map {
+            vertical-align: bottom;
+            width: 100%;
+            height: 1100px;
+            background-color: black;
+            color: #fff;
+            /* padding: 50px;*/
+        }
+
+            #footer-map .name-map {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+            }
+
+                #footer-map .name-map p {
+                    font-size: 24px;
+                    text-transform: uppercase;
+                    margin-bottom: 8px
+                }
+
+                #footer-map .name-map a {
+                    text-decoration: none;
+                    margin-top: 50px;
+                }
+
+        #map {
+            float: left;
+            width: 29%;
+            padding: 0px;
+            margin: 3px;
+        }
+
+            #map a {
+                text-decoration: none;
+                font-size: 14px;
+            }
+
+            #map li {
+                list-style-type: none;
+                font-size: 14px;
+            }
+
+            #map h4 {
+                font-size: 18px;
+                font-weight: 500;
+                color: #fff;
+                margin-bottom: 20px;
+                margin-top: 20px;
+            }
+
+        #footer-comany {
+            color: #fff;
+            float: left;
+            padding-top: 150px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none; /* Ẩn menu dropdown */
+            position: absolute;
+            background-color: #f9f9f9; /* Màu nền cho menu dropdown */
+            min-width: 160px; /* Chiều rộng tối thiểu cho menu dropdown */
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Đổ bóng cho menu */
+            z-index: 1; /* Đảm bảo menu nằm trên các phần khác */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block; /* Hiện menu dropdown khi hover */
+        }
+
+        .dropdown-content a {
+            color: black; /* Màu chữ cho các mục trong menu */
+            padding: 12px 16px; /* Padding cho các mục */
+            text-decoration: none; /* Bỏ gạch chân */
+            display: block; /* Hiện các mục dưới dạng khối */
+        }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1; /* Màu nền khi hover trên các mục */
+            }
+
+        .search-box {
+            display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            border: 1px solid #ccc; /* Viền xung quanh hộp tìm kiếm */
+            border-radius: 5px; /* Bo góc cho hộp tìm kiếm */
+            overflow: hidden; /* Ẩn phần thừa ra ngoài hộp */
+            transition: border-color 0.3s; /* Hiệu ứng chuyển tiếp cho viền */
+        }
+
+            .search-box input {
+                border: none; /* Không viền cho input */
+                outline: none; /* Loại bỏ viền khi được chọn */
+                padding: 10px; /* Padding cho input */
+                flex-grow: 1; /* Để input chiếm không gian còn lại */
+            }
+
+                .search-box input::placeholder {
+                    color: #aaa; /* Màu chữ cho placeholder */
+                }
+
+                .search-box input:focus {
+                    border-color: #007bff; /* Đổi màu viền khi input được chọn */
+                }
+
+            .search-box button {
+                background-color: #007bff; /* Màu nền cho nút */
+                border: none; /* Không viền cho nút */
+                color: white; /* Màu chữ cho nút */
+                padding: 10px 15px; /* Padding cho nút */
+                cursor: pointer; /* Con trỏ khi hover qua nút */
+                transition: background-color 0.3s; /* Hiệu ứng chuyển tiếp cho màu nền */
+            }
+
+                .search-box button:hover {
+                    background-color: #0056b3; /* Màu nền khi hover qua nút */
+                }
+
+    </style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">QLThuocDAPM</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+    <div class="wrapper">
+        <div class="header">
+
+            <div class="navbar p-4 d-flex align-items-center">
+
+                <nav style="height:150px">
+                    <ul id="MenuItems">
+                        <li><a href="/home/index"><img class="img-logo" src="~/img/logoLC.jpg"></a> <a href="/home/index">TRANG CHỦ</a> </li>
+
+                       
+                        <li class="ml-4"><a href="/danhmucs/1">THỰC PHẨM CHỨC NĂNG</a> </li>
+                        <li><a href="/games/danhmuc/2">DƯỢC PHẨM</a></li>
+                        <li><a href="/games/danhmuc/3">CHĂM SÓC CÁ NHÂN</a></li>
+                        <li><a href="/games/danhmuc/4">THUỐC</a></li>
+                        <li><a href="/games/danhmuc/5">THIẾT BỊ Y TẾ</a></li>
+                        <li><a href="/kiemtrasuckhoe/Index">KIỂM TRA SỨC KHỎE</a></li>
+                        <li class="dropdown">
+                            <a>
+                               
+                            </a>
+                            <a href="#" class="dropbtn">KHÁC</a>
+                            <div class="dropdown-content">
+                                <a href="/khac/1">Mục 1</a>
+                                <a href="/khac/2">Mục 2</a>
+                                <a href="/khac/3">Mục 3</a>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                    </ul>
+                </nav>
+                <div style="height:150px" class="navbar-right d-flex align-items-center">
+                    <div class="search-box" style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 300px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                        <form asp-controller="SanPham" asp-action="Search" method="post" style="display: flex; width: 200px;">
+                            <input id="search-box" name="keyword" onkeypress="return runScript(event)" value="" type="text"
+                                   style="width: 100%; border: none; padding: 5px; outline: none;" placeholder="Tìm kiếm sản phẩm..." />
+                            <button type="submit" class="icon-search bx bx-search"
+                                    style="background-color: #3498db; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; display: flex; align-items: center; justify-content: center;height:51px;width:60px;">
+                            </button>
+                        </form>
+                    </div>
+
+
+
+                    <a class="icon-cart-cus" style="margin-left:10px" href="/giohang"><i class='cus-icon bx bx-cart'></i> <span id="cart">  @(ViewBag.CartItemCount ?? 0)</span></a>
+
+                    @* <a class="cart-count" style="position: absolute; top: -8px; right: -20px; background-color: red; color: white; border-radius: 50%; padding: 3px;">
+                        @(ViewBag.CartItemCount ?? 0)
+                    </a> *@
+
+
+
+                    @if (Context.Session.GetString("userLogin") != null)
+                    {
+                        <div class="userlogin">
+                            <a style="margin-left:30px" href="/home/donhang">
+
+                                <i class='cus-icon bx bx-user-check'></i>
+
+                            </a>
+                            <div class="userlogged">
+                                <div>
+                                    <a href="/home/donhang">Đơn hàng của tôi</a>
+                                </div>
+                                <div>
+                                    <a href="/user/dangxuat">Đăng xuất</a>
+                                </div>
+                                <div>
+                                    <a href="/user/ThongTinNguoiDung">Profile</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <a style="margin-left:30px" href="/user/login"><i class='cus-icon bx bx-user'></i></a>
+                    }
+                    
+                </div>
+
+                <img src="~/UploadFile/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+
+
+        </div>
+        <div class="main">
+            @RenderBody()
+        </div>
+
+        <!-- Button trigger modal -->
+
+
+
+        <footer id="footer-map" style="background-color: #ffffff; color: #1e90ff; padding: 30px 0;">
+            <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <!-- Thông tin cửa hàng -->
+                <div class="store-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff;">HỆ THỐNG NHÀ THUỐC LONG CHÂU</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.762730,106.686638">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                214 Nguyễn Trãi, P.Nguyễn Cư Trinh, Q1
+                                <a href="https://www.google.com/maps/?q=10.762730,106.686638" style="color: #1e90ff;">Xem bản đồ</a>
+                            </span>
                         </li>
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.982262,106.658024">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                Kho Pancake.
+                                <a href="https://www.google.com/maps/?q=10.982262,106.658024" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.788053,106.758713">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                110 Nguyễn Duy Trinh, P.Bình Trưng Tây, Q2.
+                                <a href="https://www.google.com/maps/?q=10.788053,106.758713" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.759412,106.675862">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                96 Nguyễn Trãi, P3, Q5.
+                                <a href="https://www.google.com/maps/?q=10.759412,106.675862" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.8332837,106.6662426">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                430 Quang Trung, P.10, Gò Vấp.
+                                <a href="https://www.google.com/maps/?q=10.8332837,106.6662426" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+                        <!-- Thêm các chi nhánh khác tương tự -->
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - QLThuocDAPM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+                <!-- Thông tin công ty -->
+                <div class="company-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff;">NHÀ THUỐC LONG CHÂU</h4>
+                    <p style="color: #000;">Địa chỉ: Số 7 đường 3A, khu dân cư Ấp 5, X. Phong Phú, H. Bình Chánh, Tp. HCM</p>
+                    <p style="color: #000;">MST: 0314746543</p>
+                    <p style="color: #000;">Số điện thoại: <a href="tel:0123456789" style="color: #1e90ff;">0123 456 789</a></p>
+                    <p style="color: #000;">Email: <a href="mailto:info@longchau.com" style="color: #1e90ff;">info@longchau.com</a></p>
+                </div>
+
+
+                <div class="additional-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff; margin-bottom: 5px;">GIỜ HOẠT ĐỘNG</h4>
+                    <p style="color: #000; margin-bottom: 10px;">Thứ Hai - Thứ Sáu: 7:00 - 21:00</p>
+                    <p style="color: #000; margin-bottom: 10px;">Thứ Bảy - Chủ Nhật: 8:00 - 22:00</p>
+                    <h4 style="color: #1e90ff; margin-bottom: 5px;">PHƯƠNG THỨC THANH TOÁN</h4>
+                    <img src="~/images/visa.png" alt="Visa" style="width: 40px; height: auto; margin-right: 10px;">
+                    <span>Visa</span>
+                    <img src="~/images/mastercard.png" alt="MasterCard" style="width: 40px; height: auto; margin-right: 10px;">
+                    <span>MasterCard</span>
+                    <img src="~/images/cod.png" alt="COD" style="width: 40px; height: auto;">
+                    <span>COD</span>
+                </div>
+
+
+                <!-- Liên kết mạng xã hội -->
+                <div class="social-media" style="flex: 1; margin: 15px;">
+
+                    <h4 style="color: #1e90ff;">THEO DÕI CHÚNG TÔI</h4>
+                    <a href="https://facebook.com" target="_blank">
+                        <img src="~/images/fa.png" alt="Facebook" style="width: 43px; margin-right: 10px;">
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <img src="~/images/twitter.png" alt="Twitter" style="width: 28px; margin-right: 10px;">
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://instagram.com" target="_blank">
+                        <img src="~/images/images.jpg" alt="Instagram" style="width: 37px;margin-right: 10px;">
+                        <span>Instagram</span>
+                    </a>
+
+                    <h4 style="color: #1e90ff;">ĐĂNG KÝ NHẬN TIN</h4>
+                    <form>
+                        <input type="email" placeholder="Nhập email của bạn" style="padding: 10px; width: 80%; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="submit" style="padding: 10px 15px; background-color: #1e90ff; color: white; border: none; border-radius: 5px;">Đăng ký</button>
+                    </form>
+
+
+                </div>
+
+            </div>
+
+            <!-- Phần cuối cùng của footer -->
+            <div class="footer-bottom" style="text-align: center; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px;">
+                <p style="color: #888;">© 2024 NHÀ THUỐC LONG CHÂU. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+
+
+
+        <script language="JavaScript">
+            var MenuItems = document.getElementById("MenuItems");
+
+            MenuItems.style.maxHeight = "0px";
+            function menutoggle() {
+                var MenuItems = document.getElementById("MenuItems");
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "200px";
+
+                }
+                else {
+                    MenuItems.style.maxHeight = "0px";
+                }
+            }
+
+            const keyword = document.getElementById('search-box');
+
+
+            const iconSearch = document.querySelector('.icon-search')
+
+
+            iconSearch.addEventListener('click', e => {
+                if (keyword.value.trim()) {
+                    window.location.href = `/games/Search?keyword=${keyword.value}`
+                }
+            })
+
+            function runScript(e) {
+                //See notes about 'which' and 'key'
+                if (e.keyCode == 13) {
+                    if (keyword.value.trim()) {
+                        window.location.href = `/games/Search?keyword=${keyword.value}`
+                    }
+                }
+            }
+
+            const cart = document.getElementById("cart");
+
+
+
+            fetch('/home/GetData')
+                .then((response) => response.json())
+                .then((data) => cart.innerHTML = data);
+
+            // JavaScript function to add item to cart and update count
+            
+
+        </script>
+      
+
+</body>
+
+
+
+
+        <!----footer------>
+        <!-- script for menu -->
+      
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+ 
