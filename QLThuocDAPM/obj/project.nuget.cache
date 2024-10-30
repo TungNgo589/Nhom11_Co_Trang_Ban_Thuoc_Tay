@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0qBM8xYb4p0=",
+  "dgSpecHash": "L9nFfqnXodc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ron\\Desktop\\QLThuocDAPM1\\QLThuocDAPM\\QLThuocDAPM.csproj",
+  "projectFilePath": "C:\\Users\\Ron\\Desktop\\QLThuocDAPM\\QLThuocDAPM\\QLThuocDAPM.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ron\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Ron\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

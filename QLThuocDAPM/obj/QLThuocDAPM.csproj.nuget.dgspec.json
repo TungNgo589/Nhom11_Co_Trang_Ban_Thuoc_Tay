@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ron\\Desktop\\QLThuocDAPM1\\QLThuocDAPM\\QLThuocDAPM.csproj": {}
+    "C:\\Users\\Ron\\Desktop\\QLThuocDAPM\\QLThuocDAPM\\QLThuocDAPM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ron\\Desktop\\QLThuocDAPM1\\QLThuocDAPM\\QLThuocDAPM.csproj": {
+    "C:\\Users\\Ron\\Desktop\\QLThuocDAPM\\QLThuocDAPM\\QLThuocDAPM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ron\\Desktop\\QLThuocDAPM1\\QLThuocDAPM\\QLThuocDAPM.csproj",
+        "projectUniqueName": "C:\\Users\\Ron\\Desktop\\QLThuocDAPM\\QLThuocDAPM\\QLThuocDAPM.csproj",
         "projectName": "QLThuocDAPM",
-        "projectPath": "C:\\Users\\Ron\\Desktop\\QLThuocDAPM1\\QLThuocDAPM\\QLThuocDAPM.csproj",
+        "projectPath": "C:\\Users\\Ron\\Desktop\\QLThuocDAPM\\QLThuocDAPM\\QLThuocDAPM.csproj",
         "packagesPath": "C:\\Users\\Ron\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ron\\Desktop\\QLThuocDAPM1\\QLThuocDAPM\\obj\\",
+        "outputPath": "C:\\Users\\Ron\\Desktop\\QLThuocDAPM\\QLThuocDAPM\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
