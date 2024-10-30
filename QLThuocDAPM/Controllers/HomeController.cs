@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using QLThuocDAPM.Data;
 using QLThuocDAPM.Models;
+using QLThuocDAPM.ViewModels;
 using System.Diagnostics;
 
 namespace QLThuocDAPM.Controllers
@@ -18,11 +19,30 @@ namespace QLThuocDAPM.Controllers
             _context = context;
 
         }
-       
+
         public IActionResult Index()
         {
-            return View();
-        }
+            var danhMucList = _context.DanhMucs.ToList(); // Lấy danh sách danh mục
+
+            var viewModel = new HomeViewModel
+            {
+                DanhMucs = danhMucList,
+                SanPhams = new Dictionary<int, List<SanPham>>() // Khởi tạo từ điển để lưu sản phẩm theo danh mục
+            };
+
+            // Lặp qua từng danh mục và lấy sản phẩm theo mã danh mục
+            foreach (var danhMuc in danhMucList)
+            {
+                var sanPhamTheoDanhMuc = _context.SanPhams
+                    .Where(sp => sp.MaDm == danhMuc.MaDm) // Lọc sản phẩm theo mã danh mục
+                    .ToList();
+
+                viewModel.SanPhams[danhMuc.MaDm] = sanPhamTheoDanhMuc; // Thêm sản phẩm vào từ điển
+            }
+
+            return View(viewModel);
+        }              
+
 
         public IActionResult Privacy()
         {

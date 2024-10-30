@@ -153,8 +153,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
+/*             margin: 20px;
+ */            background-color: #f4f4f4;
+ 
         }
 
         h1 {
@@ -163,11 +164,11 @@
         }
 
         .table {
-            width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             background-color: #fff;
+            width:1500px;
         }
 
             .table th, .table td {
@@ -193,8 +194,8 @@
         }
 
         .btn {
-            padding: 6px 12px;
-            margin: 2px;
+/*             padding: 6px 12px;
+ */            margin: 2px;
             border: none;
             border-radius: 4px;
             background-color: #007bff;
@@ -204,12 +205,11 @@
         }
 
             .btn:hover {
-                background-color: #0056b3;
-            }
+/*                 background-color: #0056b3;
+ */            }
 
         .action-buttons {
-            display: flex;
-            gap: 5px;
+
         }
     </style>
 </head>
@@ -221,6 +221,8 @@
     <table class="table">
         <thead>
             <tr>
+                <th>@Html.DisplayNameFor(model => model.First().MaSp)</th>
+
                 <th>@Html.DisplayNameFor(model => model.First().TenSp)</th>
                 <th>@Html.DisplayNameFor(model => model.First().ThanhPhan)</th>
                 <th>@Html.DisplayNameFor(model => model.First().GiaTien)</th>
@@ -232,8 +234,8 @@
                 <th>@Html.DisplayNameFor(model => model.First().HinhAnh1)</th>
                 <th>@Html.DisplayNameFor(model => model.First().HinhAnh2)</th>
                 <th>@Html.DisplayNameFor(model => model.First().HinhAnh3)</th>
-                <th>@Html.DisplayNameFor(model => model.First().HinhAnh4)</th>
-                <th>@Html.DisplayNameFor(model => model.First().MaBenhNavigation)</th>
+@*                 <th>@Html.DisplayNameFor(model => model.First().HinhAnh4)</th>
+ *@                <th>@Html.DisplayNameFor(model => model.First().MaBenhNavigation)</th>
                 <th>@Html.DisplayNameFor(model => model.First().MaDmNavigation)</th>
                 <th>@Html.DisplayNameFor(model => model.First().MaGiamGiaNavigation)</th>
                 <th>@Html.DisplayNameFor(model => model.First().MaNhaCungCapNavigation)</th>
@@ -244,6 +246,8 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>@Html.DisplayFor(modelItem => item.MaSp)</td>
+
                     <td>@Html.DisplayFor(modelItem => item.TenSp)</td>
                     <td>@Html.DisplayFor(modelItem => item.ThanhPhan)</td>
                     <td>@Html.DisplayFor(modelItem => item.GiaTien)</td>
@@ -255,16 +259,16 @@
                     <td><img src="@Url.Content(item.HinhAnh1)" alt="Hình 1" class="image-thumbnail" /></td>
                     <td><img src="@Url.Content(item.HinhAnh2)" alt="Hình 2" class="image-thumbnail" /></td>
                     <td><img src="@Url.Content(item.HinhAnh3)" alt="Hình 3" class="image-thumbnail" /></td>
-                    <td><img src="@Url.Content(item.HinhAnh4)" alt="Hình 4" class="image-thumbnail" /></td>
-                    <td>@Html.DisplayFor(modelItem => item.MaBenhNavigation.MaBenh)</td>
+@*                     <td><img src="@Url.Content(item.HinhAnh4)" alt="Hình 4" class="image-thumbnail" /></td>
+ *@                    <td>@Html.DisplayFor(modelItem => item.MaBenhNavigation.MaBenh)</td>
                     <td>@Html.DisplayFor(modelItem => item.MaDmNavigation.MaDm)</td>
                     <td>@Html.DisplayFor(modelItem => item.MaGiamGiaNavigation.MaGiamGia)</td>
                     <td>@Html.DisplayFor(modelItem => item.MaNhaCungCapNavigation.MaNhaCungCap)</td>
                     <td>
-                        <div class="action-buttons">
-                            <a class="btn" asp-action="Edit" asp-route-id="@item.MaSp">Sửa</a>
-                            <a class="btn" asp-action="Details" asp-route-id="@item.MaSp">Chi Tiết</a>
-                            <a class="btn" asp-action="Delete" asp-route-id="@item.MaSp">Xóa</a>
+                        <div style="color:white" class="action-buttons">
+                            <a  class="btn" asp-action="Edit" asp-route-id="@item.MaSp">Sửa</a>
+                            <a  class="btn" asp-action="Details" asp-route-id="@item.MaSp">Chi Tiết</a>
+                            <a  class="btn" asp-action="Delete" asp-route-id="@item.MaSp">Xóa</a>
                         </div>
                     </td>
                 </tr>

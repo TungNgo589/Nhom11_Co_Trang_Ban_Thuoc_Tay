@@ -166,5 +166,19 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         {
             return _context.DonHangs.Any(e => e.MaDh == id);
         }
+        [HttpPost]
+        public IActionResult UpdateOrderStatus(string id)
+        {
+            var donHang = _context.DonHangs.FirstOrDefault(d => d.MaDh == id); // Tìm đơn hàng theo ID
+
+            if (donHang != null)
+            {
+                donHang.TrangThai = "Đã giao"; // Cập nhật trạng thái đơn hàng
+                _context.SaveChanges(); // Lưu thay đổi vào DB
+                return RedirectToAction("Index"); // Chuyển hướng về trang danh sách đơn hàng (hoặc trang phù hợp)
+            }
+
+            return NotFound(); // Trả về lỗi nếu không tìm thấy đơn hàng
+        }
     }
 }

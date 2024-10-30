@@ -49,28 +49,30 @@ public partial class QlthuocDapm3Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-Q5EI430;Initial Catalog=QLThuocDAPM3;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=LAPTOP-JULVIGMI;Initial Catalog=QLThuocDAPM3;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Benh>(entity =>
         {
-            entity.HasKey(e => e.MaBenh).HasName("PK__Benh__E84E00CFEF7868A7");
+            entity.HasKey(e => e.MaBenh).HasName("PK__Benh__E84E00CFB27273BC");
 
             entity.ToTable("Benh");
 
             entity.Property(e => e.MaBenh).HasColumnName("maBenh");
             entity.Property(e => e.MoTa)
+                .IsRequired()
                 .HasMaxLength(900)
                 .HasColumnName("moTa");
             entity.Property(e => e.TenBenh)
+                .IsRequired()
                 .HasMaxLength(700)
                 .HasColumnName("tenBenh");
         });
 
         modelBuilder.Entity<BinhLuan>(entity =>
         {
-            entity.HasKey(e => e.MaBinhLuan).HasName("PK__BinhLuan__87CB66A0464FD5A4");
+            entity.HasKey(e => e.MaBinhLuan).HasName("PK__BinhLuan__87CB66A049E1DA3D");
 
             entity.ToTable("BinhLuan");
 
@@ -78,6 +80,7 @@ public partial class QlthuocDapm3Context : DbContext
             entity.Property(e => e.NgayBinhLuan)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.NoiDung).IsRequired();
 
             entity.HasOne(d => d.MaNguoiDungNavigation).WithMany(p => p.BinhLuans)
                 .HasForeignKey(d => d.MaNguoiDung)
@@ -92,12 +95,13 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<ChiTietDonHang>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ChiTietD__3213E83F9C17154D");
+            entity.HasKey(e => e.Id).HasName("PK__ChiTietD__3213E83F239285EC");
 
             entity.ToTable("ChiTietDonHang");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.MaDh)
+                .IsRequired()
                 .HasMaxLength(255)
                 .HasColumnName("maDH");
             entity.Property(e => e.MaSp).HasColumnName("maSP");
@@ -117,7 +121,7 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<ChiTietGioHang>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ChiTietG__3213E83F12DB5A57");
+            entity.HasKey(e => e.Id).HasName("PK__ChiTietG__3213E83FAB01BF9F");
 
             entity.ToTable("ChiTietGioHang");
 
@@ -138,15 +142,13 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<DanhGium>(entity =>
         {
-            entity.HasKey(e => e.MaDanhGia).HasName("PK__DanhGia__AA9515BF3324C062");
+            entity.HasKey(e => e.MaDanhGia).HasName("PK__DanhGia__AA9515BF34DCD5BD");
 
             entity.Property(e => e.NgayBinhLuan)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.SoSao).HasColumnType("decimal(18, 0)");
-            entity.Property(e => e.SoSaoTrungBinh)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("soSaoTrungBinh");
+            entity.Property(e => e.SoSaoTrungBinh).HasColumnType("decimal(18, 0)");
 
             entity.HasOne(d => d.MaNguoiDungNavigation).WithMany(p => p.DanhGia)
                 .HasForeignKey(d => d.MaNguoiDung)
@@ -161,19 +163,20 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<DanhMuc>(entity =>
         {
-            entity.HasKey(e => e.MaDm).HasName("PK__DanhMuc__7A3EF408379071EC");
+            entity.HasKey(e => e.MaDm).HasName("PK__DanhMuc__7A3EF40880956A12");
 
             entity.ToTable("DanhMuc");
 
             entity.Property(e => e.MaDm).HasColumnName("maDM");
             entity.Property(e => e.TenDm)
+                .IsRequired()
                 .HasMaxLength(100)
                 .HasColumnName("tenDM");
         });
 
         modelBuilder.Entity<DonHang>(entity =>
         {
-            entity.HasKey(e => e.MaDh).HasName("PK__DonHang__7A3EF40F7B258B88");
+            entity.HasKey(e => e.MaDh).HasName("PK__DonHang__7A3EF40FC6DFAAEF");
 
             entity.ToTable("DonHang");
 
@@ -184,19 +187,24 @@ public partial class QlthuocDapm3Context : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("createdAt");
             entity.Property(e => e.Diachi)
+                .IsRequired()
                 .HasMaxLength(700)
                 .HasColumnName("diachi");
-            entity.Property(e => e.HoTen).HasMaxLength(1);
+            entity.Property(e => e.HoTen)
+                .IsRequired()
+                .HasMaxLength(1);
             entity.Property(e => e.MaNguoiDung).HasColumnName("maNguoiDung");
             entity.Property(e => e.SoLuong).HasColumnName("soLuong");
             entity.Property(e => e.TongTien).HasColumnName("tongTien");
             entity.Property(e => e.TrangThai)
+                .IsRequired()
                 .HasMaxLength(700)
                 .HasColumnName("trangThai");
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updatedAt");
             entity.Property(e => e.Username)
+                .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnName("username");
 
@@ -212,12 +220,12 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<GiamGium>(entity =>
         {
-            entity.HasKey(e => e.MaGiamGia).HasName("PK__GiamGia__EF9458E4DDC24A14");
+            entity.HasKey(e => e.MaGiamGia).HasName("PK__GiamGia__EF9458E415129365");
         });
 
         modelBuilder.Entity<GioHang>(entity =>
         {
-            entity.HasKey(e => e.MaGh).HasName("PK__GioHang__7A3E2D6B58044E7E");
+            entity.HasKey(e => e.MaGh).HasName("PK__GioHang__7A3E2D6B22341E77");
 
             entity.ToTable("GioHang");
 
@@ -232,13 +240,14 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<HinhAnh>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__HinhAnh__3213E83FBF288B6C");
+            entity.HasKey(e => e.Id).HasName("PK__HinhAnh__3213E83F79791AF0");
 
             entity.ToTable("HinhAnh");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.MaSp).HasColumnName("maSP");
             entity.Property(e => e.UrlHinh)
+                .IsRequired()
                 .HasMaxLength(2000)
                 .HasColumnName("urlHinh");
 
@@ -249,7 +258,7 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<KhuyenMai>(entity =>
         {
-            entity.HasKey(e => e.MaKhuyenMai).HasName("PK__KhuyenMa__6F56B3BD34130266");
+            entity.HasKey(e => e.MaKhuyenMai).HasName("PK__KhuyenMa__6F56B3BDD4732BD2");
 
             entity.ToTable("KhuyenMai");
 
@@ -268,28 +277,34 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<NguoiDung>(entity =>
         {
-            entity.HasKey(e => e.MaNguoiDung).HasName("PK__NguoiDun__446439EA5162AE7E");
+            entity.HasKey(e => e.MaNguoiDung).HasName("PK__NguoiDun__446439EAE661A337");
 
             entity.ToTable("NguoiDung");
 
             entity.Property(e => e.MaNguoiDung).HasColumnName("maNguoiDung");
             entity.Property(e => e.Email)
+                .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnName("email");
             entity.Property(e => e.HoTen)
+                .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnName("hoTen");
             entity.Property(e => e.Matkhau)
+                .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnName("matkhau");
             entity.Property(e => e.RoleId).HasColumnName("roleID");
             entity.Property(e => e.Sdt)
+                .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnName("sdt");
             entity.Property(e => e.TrangThai)
+                .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("trangThai");
             entity.Property(e => e.Username)
+                .IsRequired()
                 .HasMaxLength(200)
                 .HasColumnName("username");
 
@@ -301,7 +316,7 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<NhaCungCap>(entity =>
         {
-            entity.HasKey(e => e.MaNhaCungCap).HasName("PK__NhaCungC__53DA92052A1B0E02");
+            entity.HasKey(e => e.MaNhaCungCap).HasName("PK__NhaCungC__53DA920511CEC4F6");
 
             entity.ToTable("NhaCungCap");
 
@@ -312,24 +327,27 @@ public partial class QlthuocDapm3Context : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("SDT");
-            entity.Property(e => e.TenNhaCungCap).HasMaxLength(100);
+            entity.Property(e => e.TenNhaCungCap)
+                .IsRequired()
+                .HasMaxLength(100);
         });
 
         modelBuilder.Entity<PhanQuyen>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__PhanQuye__CD98460A46ACDD34");
+            entity.HasKey(e => e.RoleId).HasName("PK__PhanQuye__CD98460A629D9256");
 
             entity.ToTable("PhanQuyen");
 
             entity.Property(e => e.RoleId).HasColumnName("roleID");
             entity.Property(e => e.RoleName)
+                .IsRequired()
                 .HasMaxLength(20)
                 .HasColumnName("roleName");
         });
 
         modelBuilder.Entity<SanPham>(entity =>
         {
-            entity.HasKey(e => e.MaSp).HasName("PK__SanPham__7A227A7A6687779F");
+            entity.HasKey(e => e.MaSp).HasName("PK__SanPham__7A227A7A415F82FD");
 
             entity.ToTable("SanPham");
 
@@ -357,9 +375,11 @@ public partial class QlthuocDapm3Context : DbContext
             entity.Property(e => e.SoLuong).HasColumnName("soLuong");
             entity.Property(e => e.SoLuongMua).HasColumnName("soLuongMua");
             entity.Property(e => e.TenSp)
+                .IsRequired()
                 .HasMaxLength(700)
                 .HasColumnName("tenSP");
             entity.Property(e => e.ThanhPhan)
+                .IsRequired()
                 .HasMaxLength(700)
                 .HasColumnName("thanhPhan");
 
@@ -386,17 +406,20 @@ public partial class QlthuocDapm3Context : DbContext
 
         modelBuilder.Entity<ThanhToan>(entity =>
         {
-            entity.HasKey(e => e.MaThanhToan).HasName("PK__ThanhToa__D4B2584450FD7B40");
+            entity.HasKey(e => e.MaThanhToan).HasName("PK__ThanhToa__D4B2584441CCC19E");
 
             entity.ToTable("ThanhToan");
 
             entity.Property(e => e.MaDh)
+                .IsRequired()
                 .HasMaxLength(255)
                 .HasColumnName("maDH");
             entity.Property(e => e.NgayThanhToan)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
-            entity.Property(e => e.PhuongThucThanhToan).HasMaxLength(50);
+            entity.Property(e => e.PhuongThucThanhToan)
+                .IsRequired()
+                .HasMaxLength(50);
 
             entity.HasOne(d => d.MaDhNavigation).WithMany(p => p.ThanhToans)
                 .HasForeignKey(d => d.MaDh)

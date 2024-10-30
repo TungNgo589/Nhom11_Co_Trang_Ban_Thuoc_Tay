@@ -16,6 +16,51 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
     <title>NHATHUOCSO1VIETNAM</title>
     <link rel="shortcut icon" href="~/UploadFile/icon.png" type="image/x-icon" />
+    <script language="JavaScript">
+            var MenuItems = document.getElementById("MenuItems");
+
+            MenuItems.style.maxHeight = "0px";
+            function menutoggle() {
+                var MenuItems = document.getElementById("MenuItems");
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "200px";
+
+                }
+                else {
+                    MenuItems.style.maxHeight = "0px";
+                }
+            }
+
+            const keyword = document.getElementById('search-box');
+
+
+            const iconSearch = document.querySelector('.icon-search')
+
+
+            iconSearch.addEventListener('click', e => {
+                if (keyword.value.trim()) {
+                    window.location.href = `/games/Search?keyword=${keyword.value}`
+                }
+            })
+
+            function runScript(e) {
+                //See notes about 'which' and 'key'
+                if (e.keyCode == 13) {
+                    if (keyword.value.trim()) {
+                        window.location.href = `/games/Search?keyword=${keyword.value}`
+                    }
+                }
+            }
+
+            const cart = document.getElementById("cart");
+
+
+
+            fetch('/home/GetData')
+                .then((response) => response.json())
+                .then((data) => cart.innerHTML = data);
+
+        </script>
 
     <style>
         .icon-cart-cus {
@@ -234,18 +279,9 @@
                         <li><a href="/games/danhmuc/3">CHĂM SÓC CÁ NHÂN</a></li>
                         <li><a href="/games/danhmuc/4">THUỐC</a></li>
                         <li><a href="/games/danhmuc/5">THIẾT BỊ Y TẾ</a></li>
-                        <li><a href="/kiemtrasuckhoe/Index">KIỂM TRA SỨC KHỎE</a></li>
-                        <li class="dropdown">
-                            <a>
-                               
-                            </a>
-                            <a href="#" class="dropbtn">KHÁC</a>
-                            <div class="dropdown-content">
-                                <a href="/khac/1">Mục 1</a>
-                                <a href="/khac/2">Mục 2</a>
-                                <a href="/khac/3">Mục 3</a>
-                            </div>
-                        </li>
+                        <li><a href="/benh/Index/6">BỆNH</a></li>
+                        <li><a href="/kiemtrasuckhoe/Index/7">KIỂM TRA SỨC KHỎE</a></li>
+                        
 
                     </ul>
                 </nav>
@@ -430,51 +466,8 @@
 
 
 
-        <script language="JavaScript">
-            var MenuItems = document.getElementById("MenuItems");
 
-            MenuItems.style.maxHeight = "0px";
-            function menutoggle() {
-                var MenuItems = document.getElementById("MenuItems");
-                if (MenuItems.style.maxHeight == "0px") {
-                    MenuItems.style.maxHeight = "200px";
-
-                }
-                else {
-                    MenuItems.style.maxHeight = "0px";
-                }
-            }
-
-            const keyword = document.getElementById('search-box');
-
-
-            const iconSearch = document.querySelector('.icon-search')
-
-
-            iconSearch.addEventListener('click', e => {
-                if (keyword.value.trim()) {
-                    window.location.href = `/games/Search?keyword=${keyword.value}`
-                }
-            })
-
-            function runScript(e) {
-                //See notes about 'which' and 'key'
-                if (e.keyCode == 13) {
-                    if (keyword.value.trim()) {
-                        window.location.href = `/games/Search?keyword=${keyword.value}`
-                    }
-                }
-            }
-
-            const cart = document.getElementById("cart");
-
-
-
-            fetch('/home/GetData')
-                .then((response) => response.json())
-                .then((data) => cart.innerHTML = data);
-
-        </script>
+      
 
 </body>
 

@@ -17,7 +17,7 @@ public partial class DanhGium
 
     public DateTime NgayBinhLuan { get; set; }
 
-    public virtual NguoiDung MaNguoiDungNavigation { get; set; } = null!;
+    public virtual NguoiDung MaNguoiDungNavigation { get; set; }
 
-    public virtual SanPham MaSanPhamNavigation { get; set; } = null!;
+    public virtual SanPham MaSanPhamNavigation { get; set; }
 }

@@ -11,6 +11,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="~/css/listSanPham.css" />
     <title>Danh sách sản phẩm</title>
+    <!-- Thêm CSS Slick -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+
+    <!-- Thêm jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Thêm JS Slick -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
     <style>
      
 
@@ -45,7 +54,7 @@
                 @foreach (var item in Model.OrderByDescending(sp => sp.SoLuongMua).Take(3))
                 {
                     <div class="col-3 mt-2 card-product" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
-                        <a href="/games/ChiTietSP/@item.MaSp">
+                        <a href="/SanPham/ChiTietSanPham/@item.MaSp">
                             <img class="img-product" src="@Url.Content(item.HinhAnh1)" alt="@item.TenSp" style="width: 100%; height: auto;">
                             <div class="name-product" style="font-weight: bold; font-size: 16px; margin-top: 10px;">
                                 @item.TenSp

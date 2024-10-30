@@ -1,0 +1,154 @@
+﻿@model IEnumerable<QLThuocDAPM.Data.SanPham>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="~/css/listSanPham.css" />
+    <title>Danh sách sản phẩm</title>
+</head>
+<body>
+    <h2 class="title">TẤT CẢ SẢN PHẨM</h2>
+    <div class="row mb-2">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <a href="@Url.Action("DanhSachSanPham", new { page = ViewBag.CurrentPage - 1 })" class="pagination-button">« Trước</a>
+        }
+
+        @foreach (var item in Model.Take(6))
+        {
+            <div class="col-3 mt-2 card-product">
+                <a asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp" class="product-link">
+                    <img class="img-product" src="@Url.Content(item.HinhAnh1)" alt="@item.TenSp">
+                    <div class="name-product">@item.TenSp</div>
+                    <div class="price-product">Giá: @String.Format("{0:0,0}", item.GiaTien) VNĐ</div>
+                </a>
+            </div>
+        }
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <a href="@Url.Action("DanhSachSanPham", new { page = ViewBag.CurrentPage + 1 })" class="pagination-button">Tiếp theo »</a>
+        }
+    </div>
+
+    <div>
+        <h2 class="title">Sản Phẩm Bán Chạy</h2>
+        <div class="row">
+            @if (ViewBag.BestsellingProduct != null) // Check if there's a bestselling product
+            {
+                var product = ViewBag.BestsellingProduct;
+                <div class="col-3 mt-2 card-product">
+                    <a href="/SanPham/ChiTietSanPham/@product.MaSp" class="product-link">
+                        <img class="img-product" src="@Url.Content(product.HinhAnh1)" alt="@product.TenSp">
+                        <div class="name-product">@product.TenSp</div>
+                        <div class="price-product">Giá: @String.Format("{0:0,0}", product.GiaTien) VNĐ</div>
+                        <div class="purchase-count">Lượt Mua: @product.SoLuongMua</div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <style>
+        /* listSanPham.css */
+
+          body {
+              font-family: Arial, sans-serif;
+              background-color: #f5f5f5;
+              margin: 0;
+              padding: 0;
+          }
+
+          h2.title {
+              text-align: center;
+              font-size: 1.8em;
+              color: #004aad;
+              margin: 20px 0;
+          }
+
+          .row {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 15px;
+              padding: 0 20px;
+          }
+
+          .card-product {
+              background-color: #fff;
+              border-radius: 8px;
+              box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+              overflow: hidden;
+              width: 200px;
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              display: flex;
+              flex-direction: column;
+              align-items: center; /* Center content horizontally */
+          }
+
+          .img-product {
+              width: 260px;
+              height: auto;
+              display: block;
+              margin-top: 10px; /* Optional: adds some spacing from the top of the card */
+          }
+
+          .card-product:hover {
+              transform: translateY(-5px);
+              box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+          }
+
+          .product-link {
+              text-decoration: none;
+              color: inherit;
+          }
+
+
+          .name-product {
+              font-size: 1em;
+              font-weight: 600;
+              color: #333;
+              padding: 10px;
+              text-align: center;
+          }
+
+          .price-product {
+              font-size: 1em;
+              color: #e67e22;
+              text-align: center;
+              margin: 0 10px 10px;
+          }
+
+          .purchase-count {
+              font-size: 0.9em;
+              color: #888;
+              text-align: center;
+              margin: 0 10px 10px;
+          }
+
+          .pagination-button {
+              background-color: #004aad;
+              color: #fff;
+              padding: 8px 16px;
+              border-radius: 4px;
+              text-decoration: none;
+              font-size: 0.9em;
+              margin: 10px;
+              transition: background-color 0.3s ease;
+          }
+
+              .pagination-button:hover {
+                  background-color: #00338a;
+              }
+
+    </style>
+
+</body>
+</html>

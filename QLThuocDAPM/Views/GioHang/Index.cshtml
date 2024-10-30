@@ -26,13 +26,19 @@
         }
         else
         {
+         
+
+          
             decimal grandTotal = 0; // Variable to hold total amount
             foreach (var item in Model)
             {
- 
+                    <table>
+
+                    
                 <tr>
                     <td>
-                        <img src="~/Hinh/HangHoa/@item.Hinh" class="img-cus" alt="@item.TenHH" />
+                           
+                            <img src="@Url.Content(@item.Hinh)" class="img-cus" alt="@item.TenHH" />
                     </td>
                     <td>
                         <a asp-action="ChiTietSanPham" asp-controller="SanPham" asp-route-id="@item.MaHh">
@@ -58,15 +64,25 @@
                         </a>
                     </td>
                     <td>
-                        <a asp-action="ThanhToan" asp-controller="GioHang">
-                            Thanh toán
-                        </a>
+                     
+
                     </td>
                 </tr>
-              
+                    </table>
             }
+
+            <a asp-action="ThanhToan" asp-controller="GioHang"
+               style="display: inline-block; padding: 10px 20px; font-size: 16px;
+          color: #fff; background-color: #007bff; border: none;
+          border-radius: 5px; text-decoration: none;
+          transition: background-color 0.3s ease;"
+               onmouseover="this.style.backgroundColor='#0056b3';"
+               onmouseout="this.style.backgroundColor='#007bff';">
+                Thanh toán
+            </a>
             // Display the grand total
-          
+           
         }
+       
     </tbody>
 </table>

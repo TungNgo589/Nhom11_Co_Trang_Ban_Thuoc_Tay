@@ -3,50 +3,54 @@
 @{
     ViewData["Title"] = "Thanh Toán";
 }
+<body>
+    <div style="width:1200px; justify-content:center;margin:auto">
+        <h2>Thanh Toán</h2>
+        <hr />
+        <div>
+            <h4>Thông tin người dùng</h4>
+            <p>Họ tên: @ViewData["HoTen"]</p>
+            <p>Email: @ViewData["Email"]</p>
+            <p>Số điện thoại: @ViewData["Sdt"]</p>
+        </div>
 
-<h2>Thanh Toán</h2>
-<hr />
-<div>
-    <h4>Thông tin người dùng</h4>
-    <p>Họ tên: @ViewData["HoTen"]</p>
-    <p>Email: @ViewData["Email"]</p>
-    <p>Số điện thoại: @ViewData["Sdt"]</p>
-</div>
+        <h4>Giỏ hàng</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Tổng tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.TenHH</td>
+                        <td>@item.SoLuong</td>
+                        <td>@item.DonGia.ToString("C")</td>
+                        <td>@item.TongTien.ToString("C")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 
-<h4>Giỏ hàng</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Tên sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Đơn giá</th>
-            <th>Tổng tiền</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.TenHH</td>
-                <td>@item.SoLuong</td>
-                <td>@item.DonGia.ToString("C")</td>
-                <td>@item.TongTien.ToString("C")</td>
-            </tr>
-        }
-    </tbody>
-</table>
+        <p><strong>Tổng tiền: @Model.Sum(item => item.TongTien).ToString("C")</strong></p>
 
-<p><strong>Tổng tiền: @Model.Sum(item => item.TongTien).ToString("C")</strong></p>
+        <h4>Địa chỉ giao hàng</h4>
+        <form asp-action="Index" method="post">
+            <div class="form-group">
+                <label for="address">Địa chỉ:</label>
+                <input type="text" name="address" class="form-control" required />
+            </div>
+            <button asp-action="LuuDonHang" asp-controller="GioHang" type="submit" class="btn btn-primary">Thanh toán</button>
+        </form>
 
-<h4>Địa chỉ giao hàng</h4>
-<form asp-action="Index" method="post">
-    <div class="form-group">
-        <label for="address">Địa chỉ:</label>
-        <input type="text" name="address" class="form-control" required />
+        <div>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại giỏ hàng</a>
+        </div>
+
     </div>
-    <button asp-action="LuuDonHang" asp-controller="GioHang" type="submit" class="btn btn-primary">Thanh toán</button>
-</form>
-
-<div>
-    <a asp-action="Index" class="btn btn-secondary">Quay lại giỏ hàng</a>
-</div>
+</body>
