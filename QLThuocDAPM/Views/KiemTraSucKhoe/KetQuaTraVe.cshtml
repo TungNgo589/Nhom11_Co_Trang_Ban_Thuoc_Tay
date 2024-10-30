@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Hiển thị kết quả";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="return-result-container">
+    <h2 class="return-result-title">Hiển thị kết quả khảo sát sức khỏe</h2>
+    <p class="return-result-message">Kết quả sức khỏe của bạn sẽ được hiển thị ở đây sau khi hoàn thành khảo sát.</p>
+
+    <a asp-action="Index" asp-controller="KiemTraSucKhoe" class="btn-return">Quay lại trang kiểm tra sức khỏe</a>
+</div>
+
+<!-- CSS -->
+<style>
+    .return-result-container {
+        text-align: center;
+        background-color: #e0f2f1;
+        padding: 40px;
+        border-radius: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .return-result-title {
+        font-size: 24px;
+        color: #00796b;
+        margin-bottom: 20px;
+    }
+
+    .return-result-message {
+        font-size: 18px;
+        color: #555555;
+        margin-bottom: 30px;
+    }
+
+    .btn-return {
+        padding: 12px 25px;
+        background-color: #0277bd;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 16px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+        .btn-return:hover {
+            background-color: #01579b;
+        }
+</style>

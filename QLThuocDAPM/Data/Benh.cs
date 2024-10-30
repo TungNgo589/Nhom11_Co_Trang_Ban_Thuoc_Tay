@@ -7,9 +7,9 @@ public partial class Benh
 {
     public int MaBenh { get; set; }
 
-    public string TenBenh { get; set; } = null!;
+    public string TenBenh { get; set; }
 
-    public string MoTa { get; set; } = null!;
+    public string MoTa { get; set; }
 
     public virtual ICollection<SanPham> SanPhams { get; set; } = new List<SanPham>();
 }
