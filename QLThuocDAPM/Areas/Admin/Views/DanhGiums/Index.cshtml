@@ -1,0 +1,63 @@
+﻿@model IEnumerable<QLThuocDAPM.Data.DanhGium>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SoSao)
+            </th>
+       
+            <th>
+                @Html.DisplayNameFor(model => model.NgayBinhLuan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaNguoiDungNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaSanPhamNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoSao)
+            </td>
+         
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayBinhLuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNguoiDungNavigation.MaNguoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSanPhamNavigation.MaSp)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaDanhGia">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MaDanhGia">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaDanhGia">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

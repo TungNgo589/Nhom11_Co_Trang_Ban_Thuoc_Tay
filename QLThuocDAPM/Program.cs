@@ -1,13 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using QLThuocDAPM.Common;
+using Common = QLThuocDAPM.Common.Common;
 using QLThuocDAPM.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<Common>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 // Add database context
-builder.Services.AddDbContext<QlthuocDapm3Context>(options =>
+builder.Services.AddDbContext<QlthuocDapm4Context>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Hshop"));
 });

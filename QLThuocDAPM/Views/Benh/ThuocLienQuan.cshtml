@@ -1,0 +1,138 @@
+﻿@model QLThuocDAPM.Data.Benh
+
+@{
+    ViewBag.Title = "Chi tiết bệnh: " + Model.TenBenh;
+}
+
+<!-- Tiêu đề bệnh -->
+<div style="margin-top: 30px; margin-bottom:30px" class="benh-container">
+    <h2 class="benh-title">Tên bệnh: @Model.TenBenh</h2>
+    <p class="benh-description">Mô tả về bệnh: @Model.MoTa1</p>
+
+    <!-- Sản phẩm tương tự -->
+    <h3 class="section-title">Các sản phẩm trị bệnh tương tự:</h3>
+    @if (Model.SanPhams != null && Model.SanPhams.Any())
+    {
+        <div class="sanpham-list">
+            @foreach (var sanPham in Model.SanPhams)
+            {
+                <div class="sanpham-item">
+                    <a href="@Url.Action("ChiTietSP", "Games", new { id = sanPham.MaSp })" class="sanpham-link">
+                        <img src="@Url.Content(sanPham.HinhAnh1)" alt="@sanPham.TenSp" class="img-fluid" />                        <h4>@sanPham.TenSp</h4>
+                        <div class="price-product">Giá: @sanPham.GiaTien,000 VNĐ</div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Không có sản phẩm nào liên quan đến bệnh này.</p>
+    }
+</div>
+
+<!-- CSS -->
+<style>
+    /* Tổng quan về giao diện */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 20px;
+        background-color: #f7f7f7;
+    }
+
+    /* Container chính */
+    .benh-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 1500px;
+        margin: 0 auto;
+    }
+
+    /* Tiêu đề bệnh */
+    .benh-title {
+        font-size: 28px;
+        color: black; /* Màu xanh đậm hơn */
+        margin-bottom: 10px;
+    }
+
+    .benh-description {
+        font-size: 16px;
+        color: grey; /* Màu xám nhạt hơn */
+        margin-bottom: 20px;
+    }
+
+    /* Tiêu đề phần sản phẩm */
+    .section-title {
+        font-size: 22px;
+        color: #16a085;
+        margin-bottom: 20px;
+    }
+
+    /* Danh sách sản phẩm */
+    .sanpham-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    /* Item sản phẩm */
+    .sanpham-item {
+        background-color: #fff;
+        border: 1px solid #ecf0f1;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        width: calc(25% - 20px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+        .sanpham-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+        }
+
+    /* Ảnh sản phẩm */
+    .img-product {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    /* Tên và giá sản phẩm */
+    .sanpham-link {
+        text-decoration: none;
+        color: blue;
+    }
+
+    .price-product {
+        font-size: 16px;
+        color: blue;
+        margin-top: 5px;
+    }
+</style>
+
+
+@*<h3>Các sản phẩm gợi ý khác:</h3>
+    @if (ViewBag.DanhSachSanPhamKhac != null && ((List<GameStore.Models.SanPham>)ViewBag.DanhSachSanPhamKhac).Any())
+    {
+        <ul>
+            @foreach (var sanPham in (List<GameStore.Models.SanPham>)ViewBag.DanhSachSanPhamKhac)
+            {
+                <li>
+                    <a href="@Url.Action("Details", "SanPham", new { id = sanPham.maSP })">
+                        @sanPham.tenSP
+                    </a> - @sanPham.chitietSP
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Không có sản phẩm gợi ý nào cho bệnh này.</p>
+    }*@

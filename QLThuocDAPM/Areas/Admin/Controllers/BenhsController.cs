@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class BenhsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public BenhsController(QlthuocDapm3Context context)
+        public BenhsController(QlthuocDapm4Context context)
         {
             _context = context;
         }
@@ -50,18 +50,18 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         }
 
         // POST: Admin/Benhs/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaBenh,TenBenh,MoTa")] Benh benh)
         {
-             // Add the new Benh record to the context
+            if (ModelState.IsValid)
+            {
                 _context.Add(benh);
                 await _context.SaveChangesAsync();
-
-              
-          
-
-            // If we reach this point, something went wrong, so return the same view with the current model
+                return RedirectToAction(nameof(Index));
+            }
             return View(benh);
         }
 

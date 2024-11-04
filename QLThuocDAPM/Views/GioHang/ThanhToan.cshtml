@@ -1,52 +1,67 @@
 ﻿@model List<CartItem>
 
-@{
-    ViewData["Title"] = "Thanh Toán";
-}
 
-<h2>Thanh Toán</h2>
-<hr />
-<div>
-    <h4>Thông tin người dùng</h4>
-    <p>Họ tên: @ViewData["HoTen"]</p>
-    <p>Email: @ViewData["Email"]</p>
-    <p>Số điện thoại: @ViewData["Sdt"]</p>
-</div>
+<body>
+    <div style="width:1200px; justify-content:center;margin:auto">
+        <h2>Thanh Toán</h2>
+        <hr />
+        <div>
+            <h4>Thông tin người dùng</h4>
+            <p>Họ tên: @ViewData["HoTen"]</p>
+            <p>Email: @ViewData["Email"]</p>
+            <p>Số điện thoại: @ViewData["Sdt"]</p>
+        </div>
 
-<h4>Giỏ hàng</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Tên sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Đơn giá</th>
-            <th>Tổng tiền</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
+        <h4>Giỏ hàng</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Tổng tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.TenHH</td>
+                        <td>@item.SoLuong</td>
+                        <td>@item.DonGia.ToString("C")</td>
+                        @item.TongTien.000vnđ
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h4>Tổng tiền: @ViewData["TotalAmount"] vnđ</h4>
+
+
+        <h4>Địa chỉ giao hàng</h4>
+        <form asp-action="Index" method="post">
+            <div class="form-group">
+                <label for="address">Địa chỉ:</label>
+                <input type="text" name="address" class="form-control" required />
+            </div>
+          
+            <button asp-action="LuuDonHang" asp-controller="GioHang" type="submit" class="btn btn-primary">Thanh toán</button>
+
+        </form>
+        <form asp-action="ApDungMaGiamGia" asp-controller="GioHang" method="post" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="maKhuyenMai" class="form-control" placeholder="Nhập mã giảm giá" />
+            </div>
+            <button type="submit" class="btn btn-success">Áp dụng</button>
+        </form>
+        @if (ViewData["DiscountMessage"] != null)
         {
-            <tr>
-                <td>@item.TenHH</td>
-                <td>@item.SoLuong</td>
-                <td>@item.DonGia.ToString("C")</td>
-                <td>@item.TongTien.ToString("C")</td>
-            </tr>
+            <div class="alert alert-info">
+                @ViewData["DiscountMessage"]
+            </div>
         }
-    </tbody>
-</table>
+        <div>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại giỏ hàng</a>
+        </div>
 
-<p><strong>Tổng tiền: @Model.Sum(item => item.TongTien).ToString("C")</strong></p>
-
-<h4>Địa chỉ giao hàng</h4>
-<form asp-action="Index" method="post">
-    <div class="form-group">
-        <label for="address">Địa chỉ:</label>
-        <input type="text" name="address" class="form-control" required />
     </div>
-    <button asp-action="LuuDonHang" asp-controller="GioHang" type="submit" class="btn btn-primary">Thanh toán</button>
-</form>
-
-<div>
-    <a asp-action="Index" class="btn btn-secondary">Quay lại giỏ hàng</a>
-</div>
+</body>

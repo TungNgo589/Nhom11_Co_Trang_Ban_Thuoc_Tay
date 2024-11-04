@@ -16,6 +16,51 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
     <title>NHATHUOCSO1VIETNAM</title>
     <link rel="shortcut icon" href="~/UploadFile/icon.png" type="image/x-icon" />
+    <script language="JavaScript">
+            var MenuItems = document.getElementById("MenuItems");
+
+            MenuItems.style.maxHeight = "0px";
+            function menutoggle() {
+                var MenuItems = document.getElementById("MenuItems");
+                if (MenuItems.style.maxHeight == "0px") {
+                    MenuItems.style.maxHeight = "200px";
+
+                }
+                else {
+                    MenuItems.style.maxHeight = "0px";
+                }
+            }
+
+            const keyword = document.getElementById('search-box');
+
+
+            const iconSearch = document.querySelector('.icon-search')
+
+
+            iconSearch.addEventListener('click', e => {
+                if (keyword.value.trim()) {
+                    window.location.href = `/games/Search?keyword=${keyword.value}`
+                }
+            })
+
+            function runScript(e) {
+                //See notes about 'which' and 'key'
+                if (e.keyCode == 13) {
+                    if (keyword.value.trim()) {
+                        window.location.href = `/games/Search?keyword=${keyword.value}`
+                    }
+                }
+            }
+
+            const cart = document.getElementById("cart");
+
+
+
+            fetch('/home/GetData')
+                .then((response) => response.json())
+                .then((data) => cart.innerHTML = data);
+
+        </script>
 
     <style>
         .icon-cart-cus {
@@ -178,9 +223,46 @@
                 background-color: #f1f1f1; /* Màu nền khi hover trên các mục */
             }
 
+        .search-box {
+            display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
+            align-items: center; /* Căn giữa theo chiều dọc */
+            border: 1px solid #ccc; /* Viền xung quanh hộp tìm kiếm */
+            border-radius: 5px; /* Bo góc cho hộp tìm kiếm */
+            overflow: hidden; /* Ẩn phần thừa ra ngoài hộp */
+            transition: border-color 0.3s; /* Hiệu ứng chuyển tiếp cho viền */
+        }
+
+            .search-box input {
+                border: none; /* Không viền cho input */
+                outline: none; /* Loại bỏ viền khi được chọn */
+                padding: 10px; /* Padding cho input */
+                flex-grow: 1; /* Để input chiếm không gian còn lại */
+            }
+
+                .search-box input::placeholder {
+                    color: #aaa; /* Màu chữ cho placeholder */
+                }
+
+                .search-box input:focus {
+                    border-color: #007bff; /* Đổi màu viền khi input được chọn */
+                }
+
+            .search-box button {
+                background-color: #007bff; /* Màu nền cho nút */
+                border: none; /* Không viền cho nút */
+                color: white; /* Màu chữ cho nút */
+                padding: 10px 15px; /* Padding cho nút */
+                cursor: pointer; /* Con trỏ khi hover qua nút */
+                transition: background-color 0.3s; /* Hiệu ứng chuyển tiếp cho màu nền */
+            }
+
+                .search-box button:hover {
+                    background-color: #0056b3; /* Màu nền khi hover qua nút */
+                }
+
     </style>
 </head>
-
+@RenderSection("Scripts", required: false)
 <body>
     <div class="wrapper">
         <div class="header">
@@ -194,25 +276,34 @@
                        
                         <li class="ml-4"><a href="/danhmucs/1">THỰC PHẨM CHỨC NĂNG</a> </li>
                         <li><a href="/games/danhmuc/2">DƯỢC PHẨM</a></li>
-                        <li><a href="/games/danhmuc/3">CHĂM SÓC CÁ NHÂN</a></li>
-                        <li><a href="/games/danhmuc/4">THUỐC</a></li>
+                    
                         <li><a href="/games/danhmuc/5">THIẾT BỊ Y TẾ</a></li>
+                        <li><a href="/kiemtrasuckhoe/Index">KIỂM TRA SỨC KHỎE</a></li>
+                        <li class="dropdown">
+                            <a>
+                               
+                            </a>
+                            <a href="#" class="dropbtn">KHÁC</a>
+                            <div class="dropdown-content">
+                                <a href="/khac/1">Mục 1</a>
+                                <a href="/khac/2">Mục 2</a>
+                                <a href="/khac/3">Mục 3</a>
+                            </div>
+                        </li>
 
-
-                        <li><a href="/benh/Index/6">BỆNH</a></li>
-                        <li><a href="/kiemtrasuckhoe/Index/7">KIỂM TRA SỨC KHỎE</a></li>
-                
-
-
-
-                       
                     </ul>
                 </nav>
                 <div style="height:150px" class="navbar-right d-flex align-items-center">
-                    <div class="search-box">
-                        <input id="search-box" onkeypress="return runScript(event)" value="" type="text" />
-                        <i class='icon-search bx bx-search'></i>
+                    <div class="search-box" style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 5px; padding: 5px; width: 300px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+                        <form asp-controller="SanPham" asp-action="Search" method="post" style="display: flex; width: 200px;">
+                            <input id="search-box" name="keyword" onkeypress="return runScript(event)" value="" type="text"
+                                   style="width: 100%; border: none; padding: 5px; outline: none;" placeholder="Tìm kiếm sản phẩm..." />
+                            <button type="submit" class="icon-search bx bx-search"
+                                    style="background-color: #3498db; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; display: flex; align-items: center; justify-content: center;height:51px;width:60px;">
+                            </button>
+                        </form>
                     </div>
+
 
 
                     <a class="icon-cart-cus" style="margin-left:10px" href="/giohang"><i class='cus-icon bx bx-cart'></i> <span id="cart"></span></a>
@@ -233,7 +324,7 @@
                                     <a href="/user/dangxuat">Đăng xuất</a>
                                 </div>
                                 <div>
-                                    <a href="/user/ThongTinNguoiDung">Thông tin cá nhân</a>
+                                    <a href="/user/ThongTinNguoiDung">Profile</a>
                                 </div>
                             </div>
                         </div>
@@ -259,161 +350,132 @@
 
 
 
-        <footer id="footer-map">
+        <footer id="footer-map" style="background-color: #ffffff; color: #1e90ff; padding: 30px 0;">
+            <div class="container" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <!-- Thông tin cửa hàng -->
+                <div class="store-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff;">HỆ THỐNG NHÀ THUỐC LONG CHÂU</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.762730,106.686638">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                214 Nguyễn Trãi, P.Nguyễn Cư Trinh, Q1
+                                <a href="https://www.google.com/maps/?q=10.762730,106.686638" style="color: #1e90ff;">Xem bản đồ</a>
+                            </span>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.982262,106.658024">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                Kho Pancake.
+                                <a href="https://www.google.com/maps/?q=10.982262,106.658024" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.788053,106.758713">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                110 Nguyễn Duy Trinh, P.Bình Trưng Tây, Q2.
+                                <a href="https://www.google.com/maps/?q=10.788053,106.758713" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
 
-            <div class="name-map">
-                <p style="color:aliceblue"><strong>HỆ THỐNG NHÀ THUỐC</strong></p><br />
-                @*<a href="">Xem địa chỉ hệ thống cửa hàng 85 cửa hàng</a>*@
-            </div>
-            <div id="map">
-      
-                <h4>MIỀN TRUNG & TÂY NGUYÊN</h4>
-                <ul>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=13.783600,109.22323">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            470 Trần Hưng Đạo, TP Quy Nhơn, Bình Định.
-                            <a href="https://www.google.com/maps/?q=13.783600,109.22323" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=13.093764,109.314781">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            116 Nguyễn Huệ, P7, Tp.Tuy Hòa, Phú Yên.
-                            <a href="https://www.google.com/maps/?q=13.093764,109.314781" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=12.2499149,109.1811175">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            272 Thống Nhất, P.Phương Sơn, TP. Nha Trang.
-                            <a href="https://www.google.com/maps/?q=12.2499149,109.1811175" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=12.4853005,109.1251246">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            569 Trần Quý Cáp, TX. Ninh Hòa, Khánh Hòa.
-                            <a href="https://www.google.com/maps/?q=12.4853005,109.1251246" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.917477,109.143682">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            2206 Hùng Vương, Cam Lộc, Tp. Cam Ranh, Khánh Hòa.
-                            <a href="https://www.google.com/maps/?q=11.917477,109.143682" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.558958089257162, 108.99399172058075">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            404 Ngô Gia Tự, Khu 2, P.Tấn Tài, Phan Rang,Ninh Thuận.
-                            <a href="https://www.google.com/maps/?q=11.558958089257162, 108.99399172058075" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.937254,108.103524">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            82 Trần Hưng Đạo, P.Phú Trinh, Phan Thiết,Bình Thuận.
-                            <a href="https://www.google.com/maps/?q=10.937254,108.103524" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=10.658301,107.772487">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            88 Lê Lợi, P. Phước Hội, TX La Gi, Bình Thuận.
-                            <a href="https://www.google.com/maps/?q=10.658301,107.772487" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.5361475,107.8143929">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            403 Trần Phú, Lộc Sơn, TP. Bảo Lộc,Lâm Đồng.
-                            <a href="https://www.google.com/maps/?q=11.5361475,107.8143929" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                    <li>
-                        <a href="https://www.google.com/maps/?q=11.958633,108.3436327">
-                            <img src="/Images/map.png" style="width:20px;">
-                        </a>
-                        <span>
-                            59-61 Nguyễn Công Trứ, Phường 2, Thành phố Đà Lạt.
-                            <a href="https://www.google.com/maps/?q=11.958633,108.3436327" style="color: #f04e23 !important;"> Xem bản đồ </a>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-           
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.759412,106.675862">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                96 Nguyễn Trãi, P3, Q5.
+                                <a href="https://www.google.com/maps/?q=10.759412,106.675862" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
 
-            <div id="footer-comany">
-                <p>NHÀ THUỐC LONG CHÂU</p>
-                <p>Địa chỉ: Số 7 đường 3A, khu dân cư Ấp 5, X. Phong Phú, H. Bình Chánh., Tp. HCM</p>
-                <p>MST:0314746543</p>
+                        <li>
+                            <a href="https://www.google.com/maps/?q=10.8332837,106.6662426">
+                                <img src="~/images/235861.png" style="width: 20px; vertical-align: middle;">
+                            </a>
+                            <span style="color: #000;">
+                                430 Quang Trung, P.10, Gò Vấp.
+                                <a href="https://www.google.com/maps/?q=10.8332837,106.6662426" style="color: #1e90ff;"> Xem bản đồ </a>
+                            </span>
+                        </li>
+                        <!-- Thêm các chi nhánh khác tương tự -->
+                    </ul>
+                </div>
+
+                <!-- Thông tin công ty -->
+                <div class="company-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff;">NHÀ THUỐC LONG CHÂU</h4>
+                    <p style="color: #000;">Địa chỉ: Số 7 đường 3A, khu dân cư Ấp 5, X. Phong Phú, H. Bình Chánh, Tp. HCM</p>
+                    <p style="color: #000;">MST: 0314746543</p>
+                    <p style="color: #000;">Số điện thoại: <a href="tel:0123456789" style="color: #1e90ff;">0123 456 789</a></p>
+                    <p style="color: #000;">Email: <a href="mailto:info@longchau.com" style="color: #1e90ff;">info@longchau.com</a></p>
+                </div>
+
+
+                <div class="additional-info" style="flex: 1; margin: 15px;">
+                    <h4 style="color: #1e90ff; margin-bottom: 5px;">GIỜ HOẠT ĐỘNG</h4>
+                    <p style="color: #000; margin-bottom: 10px;">Thứ Hai - Thứ Sáu: 7:00 - 21:00</p>
+                    <p style="color: #000; margin-bottom: 10px;">Thứ Bảy - Chủ Nhật: 8:00 - 22:00</p>
+                    <h4 style="color: #1e90ff; margin-bottom: 5px;">PHƯƠNG THỨC THANH TOÁN</h4>
+                    <img src="~/images/visa.png" alt="Visa" style="width: 40px; height: auto; margin-right: 10px;">
+                    <span>Visa</span>
+                    <img src="~/images/mastercard.png" alt="MasterCard" style="width: 40px; height: auto; margin-right: 10px;">
+                    <span>MasterCard</span>
+                    <img src="~/images/cod.png" alt="COD" style="width: 40px; height: auto;">
+                    <span>COD</span>
+                </div>
+
+
+                <!-- Liên kết mạng xã hội -->
+                <div class="social-media" style="flex: 1; margin: 15px;">
+
+                    <h4 style="color: #1e90ff;">THEO DÕI CHÚNG TÔI</h4>
+                    <a href="https://facebook.com" target="_blank">
+                        <img src="~/images/fa.png" alt="Facebook" style="width: 43px; margin-right: 10px;">
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <img src="~/images/twitter.png" alt="Twitter" style="width: 28px; margin-right: 10px;">
+                        <span>Twitter</span>
+                    </a>
+                    <a href="https://instagram.com" target="_blank">
+                        <img src="~/images/images.jpg" alt="Instagram" style="width: 37px;margin-right: 10px;">
+                        <span>Instagram</span>
+                    </a>
+
+                    <h4 style="color: #1e90ff;">ĐĂNG KÝ NHẬN TIN</h4>
+                    <form>
+                        <input type="email" placeholder="Nhập email của bạn" style="padding: 10px; width: 80%; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="submit" style="padding: 10px 15px; background-color: #1e90ff; color: white; border: none; border-radius: 5px;">Đăng ký</button>
+                    </form>
+
+
+                </div>
+
+            </div>
+
+            <!-- Phần cuối cùng của footer -->
+            <div class="footer-bottom" style="text-align: center; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px;">
+                <p style="color: #888;">© 2024 NHÀ THUỐC LONG CHÂU. All Rights Reserved.</p>
             </div>
         </footer>
-        <script language="JavaScript">
-            var MenuItems = document.getElementById("MenuItems");
-
-            MenuItems.style.maxHeight = "0px";
-            function menutoggle() {
-                var MenuItems = document.getElementById("MenuItems");
-                if (MenuItems.style.maxHeight == "0px") {
-                    MenuItems.style.maxHeight = "200px";
-
-                }
-                else {
-                    MenuItems.style.maxHeight = "0px";
-                }
-            }
-
-            const keyword = document.getElementById('search-box');
-
-
-            const iconSearch = document.querySelector('.icon-search')
-
-
-            iconSearch.addEventListener('click', e => {
-                if (keyword.value.trim()) {
-                    window.location.href = `/games/Search?keyword=${keyword.value}`
-                }
-            })
-
-            function runScript(e) {
-                //See notes about 'which' and 'key'
-                if (e.keyCode == 13) {
-                    if (keyword.value.trim()) {
-                        window.location.href = `/games/Search?keyword=${keyword.value}`
-                    }
-                }
-            }
-
-            const cart = document.getElementById("cart");
 
 
 
-            fetch('/home/GetData')
-                .then((response) => response.json())
-                .then((data) => cart.innerHTML = data);
 
-        </script>
+
+
+
+
+
+
+
+      
 
 </body>
 

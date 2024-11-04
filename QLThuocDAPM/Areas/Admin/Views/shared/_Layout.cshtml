@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="~/img/logoLC.jpg" type="image/x-icon" />
+    <title>NHATHUOCSO1VN</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Content/admin/style.css" />
+    <link rel="stylesheet" href="~/Content/admin/custom.css" />
+    <link rel="stylesheet" href="~/Content/admin/base.css" />
+</head>
+<body>
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+            <div>
+                <div class="logo-header d-flex flex-column align-items-center">
+                    <a href="/Admin/AdminHome/Index">
+                        <img src="~/img/logoLC.jpg" alt="Logo" class="logo" />
+                    </a>
+                    <a href="/Admin/sanpham" class="logo-title">NHATHUOCSO1VN</a>
+                </div>
+
+                <div class="pl-4 pr-4">
+                    <ul class="list-unstyled components mb-5">
+                        <li><a href="/Admin/SanPhams/Index">Sản phẩm</a></li>
+                        <li><a href="/Admin/DonHangs/Index">Đơn hàng</a></li>
+                        <li><a href="/Admin/Benhs/Index">Bệnh</a></li>
+                        <li><a href="/Admin/NguoiDungs/Index">Người dùng</a></li>
+                        <li><a href="/Admin/KhuyenMais/Index">Mã giảm giá</a></li>
+                        <li><a href="/home/Index">Xem cửa hàng</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="content">
+            <div class="content-top">
+                <div class="header-left">
+                    <h4 class="hello-user"><span>QUẢN LÝ NHÀ THUỐC</span></h4>
+                    <div class="real-time">
+                        <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+@*                         <div id="today">29/05/2022</div>
+ *@                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="icon-user">
+                        <img src="https://colorlib.com/polygon/cooladmin/images/icon/avatar-01.jpg" alt="Admin" />
+                        <div class="icon-user-fullname">Hello Admin</div>
+                        <div class="icon-user-dropdown">
+                            <span class="box-triangle">
+                                <svg viewBox="0 0 20 9" role="presentation">
+                                    <path d="M.47108938 9c.2694725-.26871321.57077721-.56867841.90388257-.89986354C3.12384116 6.36134886 5.74788116 3.76338565 9.2467995.30653888c.4145057-.4095171 1.0844277-.40860098 1.4977971.00205122L19.4935156 9H.47108938z" fill="#ffffff"></path>
+                                </svg>
+                            </span>
+                            <div class="user-logout">
+                                <a href="/user/DangXuat">
+                                    <i class="bx bxs-log-out"></i> Đăng xuất
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-main p-4">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script>
+        fetch('/Home/GetUserInfo')
+            .then(response => response.json())
+            .then(data => {
+                // Assuming you have elements with classes info-fullName and info-email in your HTML
+                $('.info-fullName').html(data.Result[0].fullName);
+                $('.info-email').html(data.Result[0].email);
+            });
+    </script>
+
+
+    <style>
+        .logo-header {
+            text-align: center;
+        }
+
+        .logo {
+            width: 50px; /* Adjust size as needed */
+            height: 50px;
+            margin-bottom: 10px; /* Adds space between logo and text */
+        }
+
+        .logo-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+        }
+
+            .logo-title:hover {
+                color: #007bff; /* Optional hover effect */
+            }
+
+
+        /* General styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+
+        #sidebar {
+            min-width: 250px;
+            max-width: 250px;
+            background: #f8f9fa;
+            color: #000;
+            padding-top: 20px;
+        }
+
+            #sidebar .logo-header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            #sidebar .logo img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+
+            #sidebar ul.components {
+                padding: 0;
+                list-style: none;
+            }
+
+            #sidebar ul li {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+                #sidebar ul li a {
+                    text-decoration: none;
+                    color: #000;
+                    display: block;
+                    padding-left: 15px;
+                    transition: all 0.3s;
+                }
+
+                    #sidebar ul li a:hover,
+                    #sidebar ul li a.active {
+                        background: #ffd100;
+                        color: #fff;
+                    }
+
+        /* Header styles */
+        .content-top {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .hello-user span {
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .real-time {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .clock, #today {
+            margin-left: 10px;
+        }
+
+        .icon-user {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+            .icon-user img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+        .icon-user-fullname {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .icon-user-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .icon-user:hover .icon-user-dropdown {
+            display: block;
+        }
+
+        .user-logout {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+            .user-logout a {
+                color: #333;
+                text-decoration: none;
+            }
+
+                .user-logout a:hover {
+                    color: #007bff;
+                }
+
+        /* Main content */
+        .content-main {
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        h4.hello-user {
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* User Table */
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
+        }
+
+            .table th,
+            .table td {
+                padding: 12px 15px;
+                border-top: 1px solid #dee2e6;
+                text-align: center;
+            }
+
+            .table thead th {
+                border-bottom: 2px solid #dee2e6;
+                font-weight: 600;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+
+            .table a {
+                color: #6f42c1;
+                text-decoration: none;
+            }
+
+                .table a:hover {
+                    text-decoration: underline;
+                }
+
+            .table .actions {
+                display: flex;
+                justify-content: space-around;
+            }
+
+        /* Create New Button */
+        a.create-new {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            background-color: #6f42c1;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+            a.create-new:hover {
+                background-color: #563d7c;
+            }
+
+
+        html, body {
+            max-width: 100%; /* Ngăn chặn cuộn ngang */
+            overflow-x: hidden; /* Ẩn cuộn ngang */
+        }
+
+        .wrapper {
+            width: 100vw; /* Đặt chiều rộng cho wrapper không vượt quá kích thước màn hình */
+            overflow-x: hidden; /* Ngăn cuộn ngang nếu nội dung quá rộng */
+        }
+
+        #content {
+            width: 100%;
+            overflow-x: hidden; /* Ngăn cuộn ngang bên trong content */
+        }
+
+        /* Giới hạn chiều rộng cho bảng */
+        .table {
+            width: 100%;
+            table-layout: fixed; /* Đảm bảo bảng không vượt quá màn hình */
+            word-wrap: break-word; /* Đảm bảo từ trong bảng không làm cho bảng quá rộng */
+        }
+
+        /* Đảm bảo hình ảnh không vượt quá kích thước màn hình */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Đảm bảo các nút, tiêu đề không quá rộng */
+        a.create-new {
+            display: inline-block;
+            max-width: 100%;
+        }
+
+    </style>
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using QLThuocDAPM.Data;
-
+using QLThuocDAPM.Common;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
@@ -11,12 +11,16 @@ namespace QLThuocDAPM.Controllers
 {
     public class UserController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
+        private readonly Common.Common _common;
 
-        public UserController(QlthuocDapm3Context context)
+         // Lưu thời gian mã khôi phục được gửi lần cuối
+                    private const int RecoveryCodeExpiryTimeInMinutes = 1;
 
+        public UserController(QlthuocDapm4Context context, Common.Common common)
         {
             _context = context;
+            _common = common;
         }
 
         public IActionResult Index()
@@ -46,6 +50,8 @@ namespace QLThuocDAPM.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(string username, string matkhau)
         {
+
+
             if (ModelState.IsValid)
             {
                 NguoiDung check = _context.NguoiDungs.FirstOrDefault(s => s.Username == username);
@@ -59,19 +65,19 @@ namespace QLThuocDAPM.Controllers
                 HttpContext.Session.SetString("hoTen", check.HoTen);
                 HttpContext.Session.SetString("email", check.Email);
                 HttpContext.Session.SetString("sdt", check.Sdt);
+                HttpContext.Session.SetString("userLogin", check.Username);
 
-                if (check.RoleId == 1)
+                // Kiểm tra quyền Admin
+                if (check.RoleId == 2) // RoleId = 2 nghĩa là Admin
                 {
-                    HttpContext.Session.SetString("userLogin", check.Username);
-                }
-                else
-                {
-                    HttpContext.Session.SetString("userLogin", check.Username);
                     HttpContext.Session.SetString("adminLogin", check.Username);
-                    return RedirectToAction("sanpham", "Admin");
+                    return RedirectToAction("Index", "SanPhams", new { area = "Admin" });
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home"); // Người dùng thông thường
+            
+
+           
             }
 
             return View();
@@ -83,25 +89,26 @@ namespace QLThuocDAPM.Controllers
         public IActionResult Register(NguoiDung user)
         {
             user.TrangThai = "Chưa mua hàng";
-            //user.Role = 0;
+            //user.Role = 2;
 
             var existingUser = _context.NguoiDungs.FirstOrDefault(s => s.Username == user.Username);
-            if (existingUser == null)
-            {
-                _context.NguoiDungs.Add(user);
-                _context.SaveChanges();
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                ViewBag.error = "Tài khoản đã tồn tại";
-                return View();
-            }
-
+                if (existingUser == null)
+                {
+                    _context.NguoiDungs.Add(user);
+                    _context.SaveChanges();
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    ViewBag.error = "Tài khoản đã tồn tại";
+                    return View();
+                }
+            
             return View();
         }
 
         // Quên mật khẩu
+
         public IActionResult ForgotPassword()
         {
             return View();
@@ -109,41 +116,52 @@ namespace QLThuocDAPM.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public IActionResult ForgotPassword(string email)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = _context.NguoiDungs.FirstOrDefault(u => u.Email == email);
-        //        if (user != null)
-        //        {
-        //            // Tạo mã khôi phục
-        //            string recoveryCode = Guid.NewGuid().ToString(); // Tạo mã khôi phục
+        public async Task<IActionResult> ForgotPassword(string email)
+        {
+            if (ModelState.IsValid)
+            {
+                // Kiểm tra xem email có tồn tại trong hệ thống không
+                var account = _context.NguoiDungs.FirstOrDefault(u => u.Email == email);
+                var user = _context.NguoiDungs.FirstOrDefault(u => u.Username == account.Username);
 
-        //            // Gửi mã khôi phục qua email
-        //            string subject = "Khôi phục mật khẩu";
-        //            string content = $"Mã khôi phục của bạn là: {recoveryCode}";
+                if (user != null)
+                {
+                    // Tạo mã khôi phục gồm 6 chữ số
+                    Random random = new Random();
+                    string recoveryCode = random.Next(100000, 999999).ToString(); // Mã gồm 6 chữ số
 
-        //            if (Common.Common.SendMail(user.hoTen, subject, content, user.email))
-        //            {
-        //                HttpContext.Session.SetString("RecoveryCode", recoveryCode); // Lưu mã khôi phục vào session
-        //                HttpContext.Session.SetString("Email", user.email); // Lưu email để khôi phục sau
-        //                ViewBag.Message = "Mã khôi phục đã được gửi tới email của bạn.";
-        //                return RedirectToAction("VerifyRecoveryCode");
-        //            }
-        //            else
-        //            {
-        //                ViewBag.Error = "Có lỗi xảy ra trong việc gửi email.";
-        //            }
-        //        }
-        //        else
-        //        {
-        //            ViewBag.Error = "Email không tồn tại.";
-        //        }
-        //    }
-        //    return View();
-        //}
+                    // Gửi mã khôi phục qua email
+                    string subject = "Khôi phục mật khẩu";
+                    string content = $"Mã khôi phục mật khẩu của bạn là: {recoveryCode}. <br>Lưu ý: mã khôi phục sẽ hết hạn trong 1 phút !";
+
+
+                    // Mã tồn tại trong 1 phút
+                    HttpContext.Session.SetString("RecoveryCodeCreationTime", DateTime.Now.ToString());
+
+
+
+                    if (Common.Common.SendMail(user.Username, subject, content, account.Email))
+                    {
+                        HttpContext.Session.SetString("RecoveryCode", recoveryCode);
+                        HttpContext.Session.SetString("email", account.Email); // Lưu email để khôi phục sau
+                        ViewBag.Message = "Mã khôi phục đã được gửi tới email của bạn.";
+                        return RedirectToAction("VerifyRecoveryCode");
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Có lỗi xảy ra trong việc gửi email.";
+                    }
+                }
+                else
+                {
+                    ViewBag.Error = "Email không tồn tại.";
+                }
+            }
+            return View();
+        }
 
         // Xác nhận mã khôi phục
+        [HttpGet]
         public IActionResult VerifyRecoveryCode()
         {
             return View();
@@ -155,23 +173,42 @@ namespace QLThuocDAPM.Controllers
         {
             if (ModelState.IsValid)
             {
-                var sessionRecoveryCode = HttpContext.Session.GetString("RecoveryCode");
-                var email = HttpContext.Session.GetString("Email");
+                string sessionRecoveryCode = HttpContext.Session.GetString("RecoveryCode");
+                string recoveryCodeCreationTime = HttpContext.Session.GetString("RecoveryCodeCreationTime");
 
-                if (sessionRecoveryCode == recoveryCode)
+                // Kiểm tra nếu mã tồn tại và thời gian không quá 1 phút
+                if (sessionRecoveryCode != null && recoveryCodeCreationTime != null)
                 {
-                    // Mã khôi phục hợp lệ, chuyển sang trang đặt lại mật khẩu
-                    return RedirectToAction("ResetPassword", new { email = email });
+                    DateTime creationTime = DateTime.Parse(recoveryCodeCreationTime);
+                    if ((DateTime.Now - creationTime).TotalMinutes <= 1)
+                    {
+                        if (sessionRecoveryCode == recoveryCode)
+                        {
+                            // Mã khôi phục hợp lệ, chuyển sang trang đặt lại mật khẩu
+                            return RedirectToAction("ResetPassword");
+                        }
+                        else
+                        {
+                            ViewBag.Error = "Mã khôi phục không hợp lệ.";
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Mã khôi phục đã hết hạn. Vui lòng thử lại.";
+                    }
                 }
                 else
                 {
-                    ViewBag.Error = "Mã khôi phục không hợp lệ.";
+                    ViewBag.Error = "Mã khôi phục không hợp lệ hoặc đã hết hạn.";
                 }
             }
             return View();
         }
 
+
+
         // Đặt lại mật khẩu
+        [HttpGet]
         public IActionResult ResetPassword()
         {
             return View();
@@ -179,21 +216,26 @@ namespace QLThuocDAPM.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ResetPassword(string newPassword, string confirmPassword)
+        public async Task<IActionResult> ResetPassword(string newPassword, string confirmPassword)
         {
-            var email = HttpContext.Session.GetString("Email");
-            var user = _context.NguoiDungs.FirstOrDefault(u => u.Email == email);
-
-            if (user != null && newPassword == confirmPassword)
+            string email = HttpContext.Session.GetString("email");
+            if (newPassword != confirmPassword)
             {
-                // Cập nhật mật khẩu mới
-                user.Matkhau = newPassword;
-                _context.Update(user);
-                _context.SaveChanges();
+                ViewBag.Error = "Mật khẩu không khớp.";
+                return View();
+            }
+            var account = await _context.NguoiDungs.FirstOrDefaultAsync(u => u.Email == email);
+            if (account != null)
+            {
+                // Mã hóa mật khẩu mới trước khi lưu
+                // Mã hóa mật khẩu
+                string hashedPassword = newPassword;
 
-                // Xóa session RecoveryCode và Email
-                HttpContext.Session.Remove("RecoveryCode");
-                HttpContext.Session.Remove("Email");
+                account.Matkhau = hashedPassword;
+                // Cập nhật tài khoản
+                _context.NguoiDungs.Update(account);
+                await _context.SaveChangesAsync();
+
 
                 ViewBag.Message = "Mật khẩu đã được đặt lại thành công.";
                 return RedirectToAction("Login");
@@ -205,6 +247,7 @@ namespace QLThuocDAPM.Controllers
 
             return View();
         }
+
         // Quản lý thông tin cá nhân
         public IActionResult ThongTinNguoiDung()
         {
@@ -229,22 +272,24 @@ namespace QLThuocDAPM.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult ThongTinNguoiDung(NguoiDung model)
         {
-
-            // Tìm người dùng theo username từ session
-            string username = HttpContext.Session.GetString("userLogin");
-            var user = _context.NguoiDungs.FirstOrDefault(u => u.Username == username);
+          
+                // Tìm người dùng theo username từ session
+                string username = HttpContext.Session.GetString("userLogin");
+                var user = _context.NguoiDungs.FirstOrDefault(u => u.Username == username);
 
 
             user.HoTen = model.HoTen;
-            user.Email = model.Email;
-            user.Sdt = model.Sdt;
+                    user.Email = model.Email;
+                    user.Sdt = model.Sdt;
 
-            _context.Entry(user).State = EntityState.Modified;
-            _context.SaveChanges();
-            ViewData["Message"] = "Cập nhật thông tin thành công!";
-            return View(model);
+                    _context.Entry(user).State = EntityState.Modified;
+                    _context.SaveChanges();
+                    ViewData["Message"] = "Cập nhật thông tin thành công!";
+                    return View(model);
 
-
+          
         }
+       
+
     }
 }

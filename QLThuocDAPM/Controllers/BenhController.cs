@@ -1,44 +1,45 @@
-﻿using QLThuocDAPM.Models;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using QLThuocDAPM.Data;
 
 namespace QLThuocDAPM.Controllers
 {
     public class BenhController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public BenhController(QlthuocDapm3Context context)
+        public BenhController(QlthuocDapm4Context context)
         {
             _context = context;
         }
-
-        // GET: Benh
-        public IActionResult Index()
+        // GET: BenhController
+        public IActionResult ThuocLienQuan(string tenBenh)
         {
-            // Lấy danh sách các bệnh từ database và chuyển vào view
-            var listBenh = _context.Benhs.ToList(); // Sử dụng ToList() ngay lập tức
-            return View(listBenh);
-        }
-
-
-        // GET: Benh/Details/5
-        public IActionResult Details(int? id)
-        {
-            if (id == null)
+            if (string.IsNullOrEmpty(tenBenh))
             {
-                return BadRequest();
+                return BadRequest(); // Trả về mã trạng thái 400 nếu tên bệnh rỗng
             }
 
-            // Tìm bệnh dựa theo id
-            var benh = _context.Benhs.Find(id);
+            // Tìm bệnh dựa theo tên bệnh
+            var benh = _context.Benhs
+                .Include(b => b.SanPhams)
+                .FirstOrDefault(b => b.TenBenh.ToLower() == tenBenh.ToLower()); // So sánh không phân biệt chữ hoa chữ thường
+
             if (benh == null)
             {
-                return NotFound();
+                return NotFound(); // Trả về mã trạng thái 404 nếu không tìm thấy bệnh
             }
 
-            return View(benh);  // Trả về view chi tiết của bệnh
+            // Lấy danh sách sản phẩm khác cùng loại bệnh
+            var danhSachSanPhamKhac = _context.SanPhams
+                .Where(sp => sp.MaBenh == benh.MaBenh && sp.MaSp != null)
+                .ToList();
+
+            ViewBag.DanhSachSanPhamKhac = danhSachSanPhamKhac;
+
+            return View(benh); // Trả về view với đối tượng bệnh
         }
+
     }
 }

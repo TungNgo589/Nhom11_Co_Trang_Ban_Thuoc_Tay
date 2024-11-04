@@ -1,4 +1,6 @@
-﻿namespace QLThuocDAPM.Models
+﻿using QLThuocDAPM.Data;
+
+namespace QLThuocDAPM.Models
 {
     public class CartItem
     {
@@ -9,6 +11,8 @@
         public int SoLuong { get; set; } // Số lượng
         public double TongTien { get; set; }
         public int TongTien2 { get; set; }
+        public List<KhuyenMai> KhuyenMais { get; set; }
+
 
     }
 }
