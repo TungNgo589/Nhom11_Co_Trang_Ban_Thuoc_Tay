@@ -1,0 +1,273 @@
+﻿@model QLThuocDAPM.Data.SanPham
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web</title>
+    <link rel="stylesheet" href="~/css/CTSP.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+
+</head>
+<body style="background-color:#EDF0F3">
+    <div style="width: 1200px; margin: 0 auto;padding-top:30px;  ">
+    <div class="thanhcongcu ">
+        <p class="p1">
+            Trang Chủ
+        </p>
+        <p style="margin-left:10px;    color: #1250DC;
+">
+            /
+        </p>
+        <p class="p2">
+            Chi Tiết Sản phẩm
+        </p>
+    </div>
+    </div>
+    <div style="width: 1200px; margin: 0 auto;background-color:white;border-radius:5px;  ">
+   
+        <div class="tonghop" style="padding-left:40px">
+            <div class="anhchitietsanpham">
+                <div>
+                    <img class="anhsanpham" src="/img/logoLC.jpg">
+
+                </div>
+                <div class="cacanhkhac">
+                    <div class="anhsanphamphu2">
+                        <img class="anhsanpham2" src="/img/logoLC.jpg">
+
+                    </div>
+                    <div class="anhsanphamphu2">
+                        <img class="anhsanpham2" src="/img/logoLC.jpg">
+
+                    </div>
+                    <div class="anhsanphamphu2">
+                        <img class="anhsanpham2" src="/img/logoLC.jpg">
+                    </div>
+                </div>
+              
+            </div>
+            <div style="padding-left:100px">
+               <div style="display:flex;padding-top:40px">
+                   <p class="p4">
+                       Thương hiệu:
+
+                   </p>
+                    <p class="p5">
+                     @Model.MaNhaCungCapNavigation.TenNhaCungCap
+                   </p>
+               </div>
+               <div class="tensp">
+                   <p>
+                       VIÊN UỐNG COLLAGEN
+                   </p>
+               </div>
+                <div class="soDanhGia">
+                    <p>
+                      00345339
+                    </p>
+                    <p style="padding-left:5px;    color: #1250DC;
+">
+                        34 đánh giá
+                    </p>
+                    <a style="padding-left:5px;    color: #1250DC;
+">
+                        |
+                    </a>
+                    <p style="padding-left:5px;    color: #1250DC;
+">
+                       0 bình luận
+                    </p>
+              </div>
+
+                    <div>
+                        <table border="0">
+                            <tr>
+                                <td>
+                                Đơn vị tính
+                                </td>
+                                <td class="abc">
+                                    Hộp
+                                </td>
+                            </tr>
+                        <tr>
+                            <td>
+                       Bệnh
+                            </td>
+                            <td class="abc">
+                                Cảm
+                            </td>
+                        </tr>
+                            <tr>
+                                <td>
+                                Danh mục
+                                </td>
+                            <td class="abc">
+                                Da
+                                </td>
+                            </tr>
+                        <tr>
+                            <td>
+                         Xuất xứ
+                            </td>
+                            <td class="abc">
+                                Hoa Kỳ
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Nhà sản xuất
+                            </td>
+                            <td class="abc">
+                                NATURES BOUNTY
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               Mô tả ngắn
+                            </td>
+                            <td class="abc">
+                                Collagen With Vitamin C xuất xứ từ Mỹ
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                              Ngày sản xuất
+                            </td>
+                            <td class="abc">
+                              2/12/2023
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               Hạn sử dụng
+                            </td>
+                            <td class="abc">
+                                2/12/2024
+                            </td>
+                        </tr>
+                        </table>
+                    </div>
+
+                <div style="padding-top:10px">
+
+                  <table >
+                      <tr style="background-color:#FFF3E1">
+                          <td style="color:#DC8603">
+                              Khuyến mãi được áp dụng
+                          </td>
+                          <td>
+
+                          </td>
+                      </tr>
+                        <tr >
+                            
+                            <td style="display:flex">
+                                <a>
+                                    <img style="height:24px;width:24px" class="" src="/img/nayne.png">
+                                </a>
+                               <p>
+                                   Giảm 20% khi mua online đến ngày 30
+                               </p>
+                            </td>
+                        </tr>
+                  </table>
+              </div>
+              <div>
+                  <div class="nutthemvaogio">
+
+                        <a style="color:white;padding-bottom:30px">
+                            Thêm vào giỏ hàng
+                      </a>
+                   
+                  </div>
+              </div>
+
+            </div>
+        </div>
+        <div style="display:flex;padding-left:100px;padding-top:100px" >
+            <div>
+                <table class="bang1" border="0" >
+                    <tr >
+                        <td style="    width:250px;">
+                            <p style="float:left;padding-left:10px;font-size:18px;font-family:Arial">
+
+                                Mô tả
+                       </p>
+                        </td>
+                    </tr>
+                 
+                    <tr>
+                        <td style="    width:250px;">
+                            <p style="float:left;padding-left:10px;font-size:18px;font-family:Arial">
+
+                                Công dụng
+                            </p>
+                     
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="    width:250px;">
+                            <p style="float:left;padding-left:10px;font-size:18px;font-family:Arial">
+
+                                Cách sử dụng
+                            </p>
+                       
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="    width:250px;">
+                            <p style="float:left;padding-left:10px;font-size:18px;font-family:Arial">
+
+                                Tác dụng phụ
+                            </p>
+                    
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding-left:270px">
+                <div>
+                    <p class="p10">
+                        Mô tả sản phẩm
+                    </p>
+                    <p>
+                        Hỗ trợ cung cấp collagen để làn da luôn căng mịn
+                    </p>
+                </div>
+                <div>
+                    <p class="p10">
+                        Thành phần
+                    </p>
+                    <p>
+                        Collagen, Vitamin C, Sodium
+                    </p>
+                </div>
+                <div>
+                    <p class="p10">
+                        Công dụng
+                    </p>
+                   
+                        Chống lão hóa
+                    </p>
+                </div>
+                <div>
+                    <p class="p10">
+                        Tác dụng phụ
+                    <p>
+                        Không có
+                    </p>
+                </div>
+            </div>
+            </div>
+           
+    </div>
+    
+
+</body>
+</html>

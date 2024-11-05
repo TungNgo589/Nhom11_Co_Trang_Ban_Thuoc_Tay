@@ -1,52 +1,115 @@
 ﻿@model List<CartItem>
+<style>
+    .form-group
+    {
+        width:380px;
+        height:56px;
+    }
 
-@{
-    ViewData["Title"] = "Thanh Toán";
-}
+    .form-group {
+        width: 600px;
+        height: 56px;
+    }
+</style>
 
-<h2>Thanh Toán</h2>
-<hr />
-<div>
-    <h4>Thông tin người dùng</h4>
-    <p>Họ tên: @ViewData["HoTen"]</p>
-    <p>Email: @ViewData["Email"]</p>
-    <p>Số điện thoại: @ViewData["Sdt"]</p>
-</div>
+<body>
+    <div style=" justify-content:center;margin:auto">
+        <h2>Thanh Toán</h2>
+        <div style="display:flex;">
+            <div>
+                <table class="">
 
-<h4>Giỏ hàng</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Tên sản phẩm</th>
-            <th>Số lượng</th>
-            <th>Đơn giá</th>
-            <th>Tổng tiền</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.TenHH</td>
-                <td>@item.SoLuong</td>
-                <td>@item.DonGia.ToString("C")</td>
-                <td>@item.TongTien.ToString("C")</td>
-            </tr>
-        }
-    </tbody>
-</table>
+                    <tr>
+                        <th style="background-color:#1250DC">
+                            Hình ảnh
+                        </th>
+                        <th style="background-color:#1250DC">
+                            Tên sản phẩm
+                        </th>
+                        <th style="background-color:#1250DC">
 
-<p><strong>Tổng tiền: @Model.Sum(item => item.TongTien).ToString("C")</strong></p>
+                            Số lượng</th>
+                        <th style="background-color:#1250DC">
 
-<h4>Địa chỉ giao hàng</h4>
-<form asp-action="Index" method="post">
-    <div class="form-group">
-        <label for="address">Địa chỉ:</label>
-        <input type="text" name="address" class="form-control" required />
+                            Đơn giá</th>
+                        <th style="background-color:#1250DC">
+
+                            Tổng tiền</th>
+                    </tr>
+
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>   <img width="48" height="48" class="anhsanpham" src="@Url.Content(item.Hinh)"></td>
+
+                            <td style="font-family:Arial;font-size:14px">@item.TenHH</td>
+                            <td> x @item.SoLuong</td>
+                            <td style="font-family:Arial;font-size:14px;font-weight:400">@item.DonGia.000vnđ</td>
+
+                            <td style="font-family:Arial;font-size:14px;font-weight:400">
+                                
+                                @item.TongTien.000vnđ
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+
+                <h4>Thông tin người đặt</h4>
+                <form asp-action="Index" method="post">
+                    <div style="display:flex">
+                        <div class="form-group">
+                            <label for="address">Tên:</label>
+                            <input style="width:380px;height:40px;border-radius:9px;" type="text" name="tennguoinhan" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Sdt</label>
+                            <input style ="width:380px;height:40px;border-radius:9px;" type="text" name="sdtnguoinhan" class="form-control" required />
+                        </div>
+                    </div>
+                   
+                    <div class="form-group1">
+                        <label for="address">Địa chỉ:</label>
+                        <input type="text" name="address" class="form-control" required />
+                    </div>
+
+                    <button asp-action="LuuDonHang" asp-controller="GioHang" type="submit" class="btn btn-primary">Thanh toán</button>
+
+                </form>
+        
+            </div>
+       
+        <div>
+        
+            <form asp-action="ApDungMaGiamGia" asp-controller="GioHang" method="post" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="maKhuyenMai" class="form-control" placeholder="Nhập mã giảm giá" />
+                </div>
+                <button type="submit" class="btn btn-success">Áp dụng</button>
+            </form>
+                <h4>Giá trị đơn hàng: @ViewData["TotalAmount"] 000vnđ</h4>
+                <div>
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại giỏ hàng</a>
+                </div>
+        </div>
+
+      
+     
+        </div>
+      
+   
+        <div>
+            @if (ViewData["DiscountMessage"] != null)
+            {
+                <div class="alert alert-info">
+                    @ViewData["DiscountMessage"]
+                </div>
+            }
+     
+        </div>
+      
+
     </div>
-    <button asp-action="LuuDonHang" asp-controller="GioHang" type="submit" class="btn btn-primary">Thanh toán</button>
-</form>
-
-<div>
-    <a asp-action="Index" class="btn btn-secondary">Quay lại giỏ hàng</a>
-</div>
+</body>

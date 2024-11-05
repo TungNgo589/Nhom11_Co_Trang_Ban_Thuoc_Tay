@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class BenhsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public BenhsController(QlthuocDapm3Context context)
+        public BenhsController(QlthuocDapm4Context context)
         {
             _context = context;
         }

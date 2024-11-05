@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <style>
+        .success-message {
+            border: 1px solid #4CAF50; /* Đường viền màu xanh */
+            background-color: #e7f9e7; /* Nền màu xanh nhạt */
+            color: #4CAF50; /* Màu chữ */
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px; /* Bo tròn góc */
+            text-align: center;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background-color: #4CAF50; /* Nền nút màu xanh */
+            color: white; /* Màu chữ nút trắng */
+            padding: 10px 20px; /* Khoảng cách trong nút */
+            text-decoration: none; /* Bỏ gạch chân */
+            border-radius: 5px; /* Bo tròn góc */
+            margin-top: 15px; /* Khoảng cách trên nút */
+        }
+
+            .btn-back:hover {
+                background-color: #45a049; /* Màu nền nút khi hover */
+            }
+
+    </style>
+</head>
+<div class="success-message">
+    <h2>Bạn đã mua hàng thành công!</h2>
+    <p>Đơn hàng sẽ sớm được xác nhận.</p>
+    <a href="@Url.Action("Index", "Home")" class="btn-back">Quay lại trang chủ</a>
+</div>

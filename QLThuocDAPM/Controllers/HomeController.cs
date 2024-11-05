@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using QLThuocDAPM.Data;
 using QLThuocDAPM.Models;
+using QLThuocDAPM.ViewModels;
 using System.Diagnostics;
 
 namespace QLThuocDAPM.Controllers
@@ -10,19 +11,38 @@ namespace QLThuocDAPM.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public HomeController(ILogger<HomeController> logger, QlthuocDapm3Context context)
+        public HomeController(ILogger<HomeController> logger, QlthuocDapm4Context context)
         {
             _logger = logger;
             _context = context;
 
         }
-       
+
         public IActionResult Index()
         {
-            return View();
-        }
+            var danhMucList = _context.DanhMucs.ToList(); // Lấy danh sách danh mục
+
+            var viewModel = new HomeViewModel
+            {
+                DanhMucs = danhMucList,
+                SanPhams = new Dictionary<int, List<SanPham>>() // Khởi tạo từ điển để lưu sản phẩm theo danh mục
+            };
+
+            // Lặp qua từng danh mục và lấy sản phẩm theo mã danh mục
+            foreach (var danhMuc in danhMucList)
+            {
+                var sanPhamTheoDanhMuc = _context.SanPhams
+                    .Where(sp => sp.MaDm == danhMuc.MaDm) // Lọc sản phẩm theo mã danh mục
+                    .ToList();
+
+                viewModel.SanPhams[danhMuc.MaDm] = sanPhamTheoDanhMuc; // Thêm sản phẩm vào từ điển
+            }
+
+            return View(viewModel);
+        }              
+
 
         public IActionResult Privacy()
         {
@@ -49,26 +69,45 @@ namespace QLThuocDAPM.Controllers
         }
 
 
+        //public IActionResult DonHang()
+        //{
+        //    if (HttpContext.Session.GetString("userLogin") == null)
+        //    {
+        //        return RedirectToAction("Login", "User");
+        //    }
+        //    else
+        //    {
+        //        string userID = HttpContext.Session.GetString("userLogin");
+
+        //        var donhang = _context.DonHangs
+        //                             .Where(dh => dh.Username == userID)
+        //                             .Include(dh => dh.ChiTietDonHangs)
+        //                             .ThenInclude(ct => ct.MaSpNavigation) // Load sản phẩm liên quan
+        //                             .OrderByDescending(dh => dh.TrangThai)
+        //                             .ToList();
+
+        //        return View(donhang);
+        //    }
+        //}
+
         public IActionResult DonHang()
         {
             if (HttpContext.Session.GetString("userLogin") == null)
             {
                 return RedirectToAction("Login", "User");
             }
-            else
-            {
-                string userID = HttpContext.Session.GetString("userLogin");
 
-                var donhang = _context.DonHangs
-                                     .Where(dh => dh.Username == userID)
-                                     .Include(dh => dh.ChiTietDonHangs)
-                                     .ThenInclude(ct => ct.MaSpNavigation) // Load sản phẩm liên quan
-                                     .OrderByDescending(dh => dh.TrangThai)
-                                     .ToList();
+            string userID = HttpContext.Session.GetString("userLogin");
+            var donhang = _context.DonHangs
+                .Include(dh => dh.ChiTietDonHangs)
+                .ThenInclude(ct => ct.MaSpNavigation) // Bao gồm thông tin sản phẩm
+                .Where(dh => dh.Username == userID)
+                .OrderByDescending(dh => dh.TrangThai)
+                .ToList();
 
-                return View(donhang);
-            }
+            return View(donhang);
         }
+
 
 
 
@@ -87,7 +126,7 @@ namespace QLThuocDAPM.Controllers
             if (donhang != null)
             {
                 donhang.UpdatedAt = DateTime.Now;
-                donhang.TrangThai = "Đã hủy";
+                donhang.TrangThai = "Chờ xác nhận hủy đơn ";
                 _context.SaveChanges();
             }
 

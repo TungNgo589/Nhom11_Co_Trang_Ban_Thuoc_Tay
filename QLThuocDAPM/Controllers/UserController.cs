@@ -11,9 +11,9 @@ namespace QLThuocDAPM.Controllers
 {
     public class UserController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public UserController(QlthuocDapm3Context context)
+        public UserController(QlthuocDapm4Context context)
 
         {
             _context = context;
@@ -46,6 +46,8 @@ namespace QLThuocDAPM.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(string username, string matkhau)
         {
+
+
             if (ModelState.IsValid)
             {
                 NguoiDung check = _context.NguoiDungs.FirstOrDefault(s => s.Username == username);
@@ -59,19 +61,19 @@ namespace QLThuocDAPM.Controllers
                 HttpContext.Session.SetString("hoTen", check.HoTen);
                 HttpContext.Session.SetString("email", check.Email);
                 HttpContext.Session.SetString("sdt", check.Sdt);
+                HttpContext.Session.SetString("userLogin", check.Username);
 
-                if (check.RoleId == 1)
+                // Kiểm tra quyền Admin
+                if (check.RoleId == 2) // RoleId = 2 nghĩa là Admin
                 {
-                    HttpContext.Session.SetString("userLogin", check.Username);
-                }
-                else
-                {
-                    HttpContext.Session.SetString("userLogin", check.Username);
                     HttpContext.Session.SetString("adminLogin", check.Username);
-                    return RedirectToAction("sanpham", "Admin");
+                    return RedirectToAction("Index", "SanPhams", new { area = "Admin" });
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home"); // Người dùng thông thường
+            
+
+           
             }
 
             return View();
@@ -83,9 +85,9 @@ namespace QLThuocDAPM.Controllers
         public IActionResult Register(NguoiDung user)
         {
             user.TrangThai = "Chưa mua hàng";
-            //user.Role = 0;
-            
-                var existingUser = _context.NguoiDungs.FirstOrDefault(s => s.Username == user.Username);
+            //user.Role = 2;
+
+            var existingUser = _context.NguoiDungs.FirstOrDefault(s => s.Username == user.Username);
                 if (existingUser == null)
                 {
                     _context.NguoiDungs.Add(user);
@@ -107,43 +109,7 @@ namespace QLThuocDAPM.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        //public IActionResult ForgotPassword(string email)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = _context.NguoiDungs.FirstOrDefault(u => u.Email == email);
-        //        if (user != null)
-        //        {
-        //            // Tạo mã khôi phục
-        //            string recoveryCode = Guid.NewGuid().ToString(); // Tạo mã khôi phục
-
-        //            // Gửi mã khôi phục qua email
-        //            string subject = "Khôi phục mật khẩu";
-        //            string content = $"Mã khôi phục của bạn là: {recoveryCode}";
-
-        //            if (Common.Common.SendMail(user.hoTen, subject, content, user.email))
-        //            {
-        //                HttpContext.Session.SetString("RecoveryCode", recoveryCode); // Lưu mã khôi phục vào session
-        //                HttpContext.Session.SetString("Email", user.email); // Lưu email để khôi phục sau
-        //                ViewBag.Message = "Mã khôi phục đã được gửi tới email của bạn.";
-        //                return RedirectToAction("VerifyRecoveryCode");
-        //            }
-        //            else
-        //            {
-        //                ViewBag.Error = "Có lỗi xảy ra trong việc gửi email.";
-        //            }
-        //        }
-        //        else
-        //        {
-        //            ViewBag.Error = "Email không tồn tại.";
-        //        }
-        //    }
-        //    return View();
-        //}
-
-        // Xác nhận mã khôi phục
+    
         public IActionResult VerifyRecoveryCode()
         {
             return View();
@@ -246,5 +212,7 @@ namespace QLThuocDAPM.Controllers
 
           
         }
+       
+
     }
 }

@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class NhaCungCapsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public NhaCungCapsController(QlthuocDapm3Context context)
+        public NhaCungCapsController(QlthuocDapm4Context context)
         {
             _context = context;
         }

@@ -26,10 +26,17 @@
         }
         else
         {
+         
+
+          
+           
             decimal grandTotal = 0; // Variable to hold total amount
+          
             foreach (var item in Model)
             {
- 
+                    <table>
+
+                    
                 <tr>
                     <td>
                         <img src="~/Hinh/HangHoa/@item.Hinh" class="img-cus" alt="@item.TenHH" />
@@ -40,7 +47,7 @@
                         </a>
                     </td>
                     <td>
-                        @String.Format("{0:C}", item.DonGia) 
+                       @item.DonGia.000vnđ
                     </td>
                     <td>
                         <form asp-action="UpdateQuantity" asp-controller="GioHang" method="post" style="display:inline;">
@@ -50,23 +57,37 @@
                         </form>
                     </td>
                     <td>
-                        @String.Format("{0:C}", item.TongTien) 
+                            <!-- Hiển thị thông báo áp dụng mã giảm giá -->
+                   
+
+                            <!-- Hiển thị tổng tiền -->
+                            <h4>Tổng tiền: @ViewData["TotalAmount"] vnđ</h4>
+
                     </td>
+                  
                     <td>
-                        <a asp-action="RemoveCart" asp-controller="GioHang" asp-route-id="@item.MaHh" class="btn btn-danger">
-                            Xóa
-                        </a>
-                    </td>
-                    <td>
-                        <a asp-action="ThanhToan" asp-controller="GioHang">
-                            Thanh toán
-                        </a>
+                         
+                            <a asp-action="RemoveCart" asp-controller="GioHang" asp-route-id="@item.MaHh" class="btn btn-danger">
+                                Xóa
+                            </a>
                     </td>
                 </tr>
-              
+                    </table>
             }
+
+            <a asp-action="ThanhToan" asp-controller="GioHang"
+               style="display: inline-block; padding: 10px 20px; font-size: 16px;
+          color: #fff; background-color: #007bff; border: none;
+          border-radius: 5px; text-decoration: none;
+          transition: background-color 0.3s ease;"
+               onmouseover="this.style.backgroundColor='#0056b3';"
+               onmouseout="this.style.backgroundColor='#007bff';">
+                Thanh toán
+            </a>
             // Display the grand total
-          
+           
         }
+        <!-- Form nhập mã giảm giá -->
+     
     </tbody>
 </table>

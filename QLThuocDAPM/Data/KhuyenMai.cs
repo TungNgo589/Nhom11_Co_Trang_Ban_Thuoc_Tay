@@ -5,7 +5,7 @@ namespace QLThuocDAPM.Data;
 
 public partial class KhuyenMai
 {
-    public int MaKhuyenMai { get; set; }
+    public string MaKhuyenMai { get; set; }
 
     public int GiaTri { get; set; }
 

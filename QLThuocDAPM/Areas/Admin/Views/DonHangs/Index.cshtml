@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<QLThuocDAPM.Data.DonHang>
 
 @{
-    Layout = null;
+    Layout = "~/Areas/Admin/Views/shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,6 +10,92 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+        }
+
+        .table thead tr {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-right: 4px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+            button:hover {
+                background-color: #218838;
+            }
+
+            button:disabled {
+                background-color: #6c757d;
+                cursor: not-allowed;
+            }
+
+            button[type="submit"] {
+                background-color: #007bff;
+            }
+
+                button[type="submit"]:hover {
+                    background-color: #0056b3;
+                }
+
+        a {
+            color: #007bff;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+
+            a:hover {
+                color: #0056b3;
+            }
+
+            a:visited {
+                color: #6610f2;
+            }
+
+    </style>
 </head>
 <body>
 <p>
@@ -66,6 +152,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TongTien)
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.SoLuong)
             </td>
@@ -84,11 +171,40 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Sdt)
             </td>
-            <td>
+ @*            <td>
                 @Html.DisplayFor(modelItem => item.MaKhuyenMaiNavigation.MaKhuyenMai)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaNguoiDungNavigation.MaNguoiDung)
+            </td> *@
+            <td>
+          @*       <button>
+                    Xác nhận đơn
+                </button>
+                     <button>
+                            Xác hủy đơn
+                     </button> *@
+                        <form asp-action="UpdateOrderStatus" method="post">
+                            <input type="hidden" name="id" value="@item.MaDh" />
+                            <button type="submit">
+                                Đã giao
+                            </button>
+                        </form>
+                        <form asp-action="XacNhanDon" method="post">
+                            <input type="hidden" name="id" value="@item.MaDh" />
+                            <button type="submit">
+                                Xác nhận đơn
+                            </button>
+                        </form>
+
+                        <form asp-action="ChapNhanHuy" method="post">
+                            <input type="hidden" name="id" value="@item.MaDh" />
+                            <button type="submit">
+                                Chấp nhận hủy đơn
+                            </button>
+                        </form>
+
+
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.MaDh">Edit</a> |

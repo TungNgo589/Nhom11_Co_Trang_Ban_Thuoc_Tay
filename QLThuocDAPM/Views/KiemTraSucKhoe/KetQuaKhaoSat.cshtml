@@ -1,0 +1,58 @@
+﻿@{
+    string resultClass = ViewBag.ResultMessage.Contains("nguy cơ cao") ? "result-high-risk" : "result-no-risk";
+}
+
+<div style="margin-bottom: 25px" class="result-container @resultClass">
+    <h2 class="result-title">Kết quả khảo sát sức khỏe của bạn</h2>
+    <p class="result-message">@ViewBag.ResultMessage</p>
+
+    <a asp-action="Index" asp-controller="KiemTraSucKhoe" class="btn-return">Quay lại trang kiểm tra sức khỏe</a>
+</div>
+
+<!-- CSS -->
+<style>
+    .result-container {
+        text-align: center;
+        padding: 40px;
+        border-radius: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .result-high-risk {
+        background-color: #ffebee; /* Màu nền đỏ nhạt */
+        border: 2px solid #d32f2f; /* Màu viền đỏ */
+    }
+
+    .result-no-risk {
+        background-color: #e8f5e9; /* Màu nền xanh lá nhạt */
+        border: 2px solid #388e3c; /* Màu viền xanh lá */
+    }
+
+    .result-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .result-message {
+        font-size: 18px;
+        color: #555555;
+        margin-bottom: 30px;
+    }
+
+    .btn-return {
+        padding: 12px 25px;
+        background-color: #0277bd;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 16px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+        .btn-return:hover {
+            background-color: #01579b;
+        }
+</style>

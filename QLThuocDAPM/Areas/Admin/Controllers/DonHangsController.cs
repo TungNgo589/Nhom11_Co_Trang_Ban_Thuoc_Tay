@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class DonHangsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public DonHangsController(QlthuocDapm3Context context)
+        public DonHangsController(QlthuocDapm4Context context)
         {
             _context = context;
         }
@@ -166,5 +166,49 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         {
             return _context.DonHangs.Any(e => e.MaDh == id);
         }
+        [HttpPost]
+        public IActionResult UpdateOrderStatus(string id)
+        {
+            var donHang = _context.DonHangs.FirstOrDefault(d => d.MaDh == id); // Tìm đơn hàng theo ID
+
+            if (donHang != null)
+            {
+                donHang.TrangThai = "Đã giao"; // Cập nhật trạng thái đơn hàng
+                _context.SaveChanges(); // Lưu thay đổi vào DB
+                return RedirectToAction("Index"); // Chuyển hướng về trang danh sách đơn hàng (hoặc trang phù hợp)
+            }
+
+            return NotFound(); // Trả về lỗi nếu không tìm thấy đơn hàng
+        }
+        [HttpPost]
+        public IActionResult XacNhanDon(string id)
+        {
+            var donHang = _context.DonHangs.FirstOrDefault(d => d.MaDh == id); // Tìm đơn hàng theo ID
+
+            if (donHang != null)
+            {
+                donHang.TrangThai = "Đã xác nhận đơn hàng sẽ sớm được giao đến bạn"; // Cập nhật trạng thái đơn hàng
+                _context.SaveChanges(); // Lưu thay đổi vào DB
+                return RedirectToAction("Index"); // Chuyển hướng về trang danh sách đơn hàng
+            }
+
+            return NotFound(); // Trả về lỗi nếu không tìm thấy đơn hàng
+        }
+
+        [HttpPost]
+        public IActionResult ChapNhanHuy(string id)
+        {
+            var donHang = _context.DonHangs.FirstOrDefault(d => d.MaDh == id); // Tìm đơn hàng theo ID
+
+            if (donHang != null)
+            {
+                donHang.TrangThai = "Hủy đơn hàng thành công"; // Cập nhật trạng thái đơn hàng
+                _context.SaveChanges(); // Lưu thay đổi vào DB
+                return RedirectToAction("Index"); // Chuyển hướng về trang danh sách đơn hàng
+            }
+
+            return NotFound(); // Trả về lỗi nếu không tìm thấy đơn hàng
+        }
+
     }
 }

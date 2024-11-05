@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class SanPhamsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public SanPhamsController(QlthuocDapm3Context context)
+        public SanPhamsController(QlthuocDapm4Context context)
         {
             _context = context;
         }
@@ -63,13 +63,13 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSp,TenSp,MaBenh,MaNhaCungCap,MaGiamGia,ThanhPhan,GiaTien,DonVi,HansuDung,ChitietSp,MaDm,SoLuong,SoLuongMua,HinhAnh1,HinhAnh2,HinhAnh3,HinhAnh4")]
+        public async Task<IActionResult> Create([Bind("MaSp,TenSp,MaBenh,MaNhaCungCap,MaGiamGia,SoBinhLuan,ThanhPhan,Congdung,Cachdung,Doituongsudung,Tacdungphu,GiaTien,DonVi,Ngaysanxuat,Noisanxuat,HansuDung,ChitietSp,MaDm,SoLuong,SoLuongMua,HinhAnh1,HinhAnh2,HinhAnh3,HinhAnh4")]
         SanPham sanPham, IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4)
         {
             if (ModelState.IsValid)
             {
                 // Kiểm tra xem file có được upload không
-                if ((file1 != null && file1.Length > 0) &&(file2 != null && file2.Length > 0) &&(file3 != null && file4.Length > 0) &&(file4 != null && file4.Length > 0))
+                if ((file1 != null && file1.Length > 0) && (file2 != null && file2.Length > 0) && (file3 != null && file4.Length > 0) && (file4 != null && file4.Length > 0))
                 {
                     // Tạo tên file duy nhất để tránh xung đột
                     var fileName1 = Path.GetFileName(file1.FileName);
@@ -217,5 +217,6 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         {
             return _context.SanPhams.Any(e => e.MaSp == id);
         }
+        
     }
 }

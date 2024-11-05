@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using QLThuocDAPM.Data;
+using QLThuocDAPM.Models;
+using QLThuocDAPM.ViewModels;
 
 namespace QLThuocDAPM.Areas.Admin.Controllers
 {
@@ -7,16 +10,18 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
 
     public class HomeController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public HomeController(QlthuocDapm3Context context)
+        public HomeController(QlthuocDapm4Context context)
         {
             _context = context;
         }
         public IActionResult Index()
         {
+          
             return View();
         }
+
         public IActionResult Create()
         {
             return View();
