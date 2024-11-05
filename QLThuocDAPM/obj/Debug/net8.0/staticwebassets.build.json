@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oMSJwj0mmsWFM6kmbxrD5HIBTEg8HcO4UhhzZoU2Kfk=",
+  "Hash": "UlKdd6v5sG3ewAiot9vUkz+sPUxNhC0SLvObKnhv40E=",
   "Source": "QLThuocDAPM",
   "BasePath": "_content/QLThuocDAPM",
   "Mode": "Default",
@@ -397,6 +397,25 @@
       "OriginalItemSpec": "wwwroot\\images\\fa.png"
     },
     {
+      "Identity": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\g1.webp",
+      "SourceId": "QLThuocDAPM",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\",
+      "BasePath": "_content/QLThuocDAPM",
+      "RelativePath": "images/g1.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\g1.webp"
+    },
+    {
       "Identity": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\h.png",
       "SourceId": "QLThuocDAPM",
       "SourceType": "Discovered",
@@ -452,6 +471,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\images.jpg"
+    },
+    {
+      "Identity": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\khambenh1.jpg",
+      "SourceId": "QLThuocDAPM",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\",
+      "BasePath": "_content/QLThuocDAPM",
+      "RelativePath": "images/khambenh1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\khambenh1.jpg"
     },
     {
       "Identity": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\mastercard.png",

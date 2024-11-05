@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\images\\fa.png"
     },
     {
+      "Id": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\g1.webp",
+      "PackagePath": "staticwebassets\\images\\g1.webp"
+    },
+    {
       "Id": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\h.png",
       "PackagePath": "staticwebassets\\images\\h.png"
     },
@@ -87,6 +91,10 @@
     {
       "Id": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\images.jpg",
       "PackagePath": "staticwebassets\\images\\images.jpg"
+    },
+    {
+      "Id": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\khambenh1.jpg",
+      "PackagePath": "staticwebassets\\images\\khambenh1.jpg"
     },
     {
       "Id": "C:\\DongTrieu_Nam3\\4_11\\QLThuocDAPM\\wwwroot\\images\\mastercard.png",

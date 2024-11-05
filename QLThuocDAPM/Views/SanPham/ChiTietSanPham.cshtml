@@ -11,12 +11,29 @@
 
 
 </head>
+
 <body style="background-color:#EDF0F3">
+    <div>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+    </div>
+  
     <div style="width: 1200px; margin: 0 auto;padding-top:30px;  ">
         <div class="thanhcongcu ">
-            <p class="p1">
+            <a href="@Url.Action("Index", "Home")"  class="p1">
                 Trang Chủ
-            </p>
+            </a>
             <p style="margin-left:10px;    color: #1250DC;
 ">
                 /
@@ -29,7 +46,7 @@
     <div style="width: 1200px; margin: 0 auto;background-color:white;border-radius:5px;  ">
 
         <div class="tonghop" style="padding-left:40px">
-            <div class="anhchitietsanpham">
+            <div class="anhchitietsanpham" style="padding-top:20px;">
                 <div>
                     <img class="anhsanpham" src="@Url.Content(Model.HinhAnh1)">
 
@@ -70,8 +87,8 @@
                         00345339
                     </p>
                     <p style="padding-left:5px;    color: #1250DC;
-">
-                        34 đánh giá
+"> Trung Bình:   @Model.DanhGia.Average(d => d.SoSao) sao
+              
                     </p>
                     <a style="padding-left:5px;    color: #1250DC;
 ">
@@ -79,7 +96,7 @@
                     </a>
                     <p style="padding-left:5px;    color: #1250DC;
 ">
-                        0 bình luận
+                        @Model.SoBinhLuan bình luận
                     </p>
                 </div>
 
@@ -182,7 +199,20 @@
                                     <img style="height:24px;width:24px" class="" src="/img/nayne.png">
                                 </a>
                                 <p>
-                                    Giảm 20% khi mua online đến ngày 30
+                                    @if (Model.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                                    {
+                                       <p> Giảm đến 
+                                     @Model.MaGiamGiaNavigation.GiaTri % khi mua online
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p>
+                                        Hiện chưa có giảm giá nào
+                                        </p>
+                                     
+                                    }
+
                                 </p>
                             </td>
                         </tr>
@@ -190,10 +220,12 @@
                 </div>
                 <div>
                     <div class="nutthemvaogio">
+                 
 
-                        <a asp-controller="GioHang" asp-action="AddToCart" asp-route-id="@Model.MaSp" style="color:white;padding-bottom:30px">
+                        <a class="ajax-add-to-cart" asp-controller="GioHang" asp-action="AddToCart" asp-route-id="@Model.MaSp" style="color:white;padding-bottom:30px">
                             Thêm vào giỏ hàng
                         </a>
+                   
 
                     </div>
                 </div>
@@ -299,41 +331,80 @@ Công dụng
                 </div>
             </div>
         </div>
-        @{
-            var binhLuans = ViewBag.BinhLuans as List<QLThuocDAPM.Data.BinhLuan>; // Chuyển đổi kiểu
-        }
-        <div class="MoTaDanhGia">
-            <h3>Bình luận</h3>
-            @if (binhLuans != null && binhLuans.Count > 0) // Sử dụng Count để kiểm tra số lượng
-            {
-                foreach (var binhLuan in binhLuans)
-                {
-                    <div>
-                        <strong>@binhLuan.MaNguoiDungNavigation.HoTen</strong>
-                        <p>@binhLuan.NoiDung</p>
-                        <small>@binhLuan.NgayBinhLuan.ToString("dd/MM/yyyy HH:mm:ss")</small>
-                    </div>
-                }
-            }
-            else
-            {
-                <p>Chưa có bình luận nào.</p>
-            }
+        <div>
+            <br />
+            <hr />
 
-            <h4>Gửi Bình Luận</h4>
-            @using (Html.BeginForm("AddComment", "SanPham", FormMethod.Post))
-            {
-                @Html.Hidden("maSP", Model.MaSp) <!-- Thêm ID sản phẩm vào form -->
-                <div class="form-group">
-                    <label for="NoiDung">Nội dung</label>
-                    <textarea name="NoiDung" class="form-control" required></textarea>
+     <div>
+                <div style=" display:flex;margin:auto">
+                    <div class="MoTaDanhGia" style="width:650px;">
+                    @{
+                        var binhLuans = ViewBag.BinhLuans as List<QLThuocDAPM.Data.BinhLuan>; // Chuyển đổi kiểu
+                    }
+                
+                        <h3 style="padding-left:50px;">Bình luận</h3>
+                        @if (binhLuans != null && binhLuans.Count > 0) // Sử dụng Count để kiểm tra số lượng
+                        {
+                            foreach (var binhLuan in binhLuans)
+                            {
+                                <div style="padding-left:50px;">
+                                    <strong>@binhLuan.MaNguoiDungNavigation.HoTen</strong>
+                                    <p >@binhLuan.NoiDung</p>
+                                    <small>@binhLuan.NgayBinhLuan.ToString("dd/MM/yyyy HH:mm:ss")</small>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p style="padding-left:50px;">Chưa có bình luận nào.</p>
+                        }
+
+                        <h4 style="padding-left:50px;">Gửi Bình Luận</h4>
+                        @using (Html.BeginForm("AddComment", "SanPham", FormMethod.Post))
+                        {
+                            @Html.Hidden("maSP", Model.MaSp) <!-- Thêm ID sản phẩm vào form -->
+                            <div class="form-group">
+                                <label style="padding-left:50px;" for="NoiDung">Nội dung</label>
+                                <textarea name="NoiDung" class="form-control" required></textarea>
+                            </div>
+                            <button id="addToCartButton" asp-controller="SanPham" asp-action="AddComment" style="padding-left:50px;" type="submit" class="btn btn-primary">Gửi bình luận</button>
+                        }
+
+                    </div>
+                   
+
+                 <div style="width:350px">
+                  
+
+                    <!-- Form đánh giá số sao -->
+                    <form asp-action="AddAndUpdateRating" asp-controller="SanPham" method="post">
+                        <input type="hidden" name="maSP" value="@Model.MaSp" />
+
+                        <label for="rating">Chọn số sao:</label>
+                        <select name="rating" id="rating" class="form-select" required>
+                            <option value="">-- Chọn số sao --</option>
+                            <option value="1">1 sao</option>
+                            <option value="2">2 sao</option>
+                            <option value="3">3 sao</option>
+                            <option value="4">4 sao</option>
+                            <option value="5">5 sao</option>
+                        </select>
+
+                        <button  type="submit" class="btn btn-primary mt-2">Gửi đánh giá</button>
+                    </form>
                 </div>
-                <button asp-controller="SanPham" asp-action="AddComment" type="submit" class="btn btn-primary">Gửi bình luận</button>
-            }
+         </div>
+
+
+
+
+        </div>
+      
     </div>
     <br />
     <br />
 
-
+      
 </body>
+
 </html>

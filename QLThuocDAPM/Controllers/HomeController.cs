@@ -5,6 +5,10 @@ using QLThuocDAPM.Data;
 using QLThuocDAPM.Models;
 using QLThuocDAPM.ViewModels;
 using System.Diagnostics;
+using System.Drawing.Printing;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
 
 namespace QLThuocDAPM.Controllers
 {
@@ -132,6 +136,10 @@ namespace QLThuocDAPM.Controllers
 
             return RedirectToAction("DonHang", "Home");
         }
+
+
+
+
 
     }
 }

@@ -51,9 +51,18 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+            
                 await db.KhuyenMais.AddAsync(khuyenMai);
                 await db.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
+
+                if (khuyenMai.ThoiGianKetThuc > DateTime.Now)
+                {
+                    khuyenMai.TrangThai = false;
+                    await db.KhuyenMais.AddAsync(khuyenMai);
+                    await db.SaveChangesAsync();
+                }                    
+                        
             }
 
             return View(khuyenMai);

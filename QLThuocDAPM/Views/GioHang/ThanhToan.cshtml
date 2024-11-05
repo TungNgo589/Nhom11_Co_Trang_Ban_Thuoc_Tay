@@ -12,11 +12,11 @@
     }
 </style>
 
-<body>
-    <div style=" justify-content:center;margin:auto">
+<body style="width:1520px;justify-content:center">
+    <div style=" justify-content:center;width:1500px">
         <h2>Thanh Toán</h2>
         <div style="display:flex;">
-            <div>
+            <div style="width:800px">
                 <table class="">
 
                     <tr>
@@ -65,14 +65,15 @@
                             <input style="width:380px;height:40px;border-radius:9px;" type="text" name="tennguoinhan" class="form-control" required />
                         </div>
                         <div class="form-group">
-                            <label for="address">Sdt</label>
+                            <label for="address">Số điện thoại</label>
                             <input style ="width:380px;height:40px;border-radius:9px;" type="text" name="sdtnguoinhan" class="form-control" required />
                         </div>
                     </div>
-                   
+                   <br />
+
                     <div class="form-group1">
                         <label for="address">Địa chỉ:</label>
-                        <input type="text" name="address" class="form-control" required />
+                        <input style="height:40px;border-radius:9px;" type="text" name="address" class="form-control" required />
                     </div>
 
                     <button asp-action="LuuDonHang" asp-controller="GioHang" type="submit" class="btn btn-primary">Thanh toán</button>
@@ -81,13 +82,45 @@
         
             </div>
        
-        <div>
-        
-            <form asp-action="ApDungMaGiamGia" asp-controller="GioHang" method="post" class="form-inline">
-                <div class="form-group">
-                    <input type="text" name="maKhuyenMai" class="form-control" placeholder="Nhập mã giảm giá" />
+        <div style="width:320px">
+                <div>
+                    @if (ViewData["DiscountMessage"] != null)
+                    {
+                        <div class="alert alert-info">
+                            @ViewData["DiscountMessage"]
+                        </div>
+                    }
+                    @if (ViewData["QuaHan"] != null)
+                    {
+                        <div style=" color: #f44336;
+    background-color: #fdecea; 
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;" class="alert alert-info">
+                            @ViewData["QuaHan"]
+                        </div>
+                    }
+                    @if (ViewData["KhongHopLe"] != null)
+                    {
+                        <div style=" color: #f44336;
+    background-color: #fdecea;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;" class="alert alert-info">
+                            @ViewData["KhongHopLe"]
+                        </div>
+                    }
                 </div>
-                <button type="submit" class="btn btn-success">Áp dụng</button>
+            <form asp-action="ApDungMaGiamGia" asp-controller="GioHang" method="post" class="form-inline">
+                <div style="display:flex">
+                        <div class="form-group">
+                            <input style="width:200px" type="text" name="maKhuyenMai" class="form-control" placeholder="Nhập mã giảm giá" />
+                        </div>
+                        <button type="submit" class="btn btn-success">Áp dụng</button>
+                </div>
+        
             </form>
                 <h4>Giá trị đơn hàng: @ViewData["TotalAmount"] 000vnđ</h4>
                 <div>
@@ -100,15 +133,7 @@
         </div>
       
    
-        <div>
-            @if (ViewData["DiscountMessage"] != null)
-            {
-                <div class="alert alert-info">
-                    @ViewData["DiscountMessage"]
-                </div>
-            }
-     
-        </div>
+      
       
 
     </div>

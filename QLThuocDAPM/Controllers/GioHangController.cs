@@ -46,7 +46,7 @@ namespace QLThuocDAPM.Controllers
             return View(cart); // Trả về view với danh sách sản phẩm trong giỏ hàng
         }
 
-        public IActionResult AddToCart(int id, int quantity = 1)
+        public IActionResult AddToCart(int id, int quantity = 1, string type = "Normal")
         {
             var gioHang = Cart;
 
@@ -64,6 +64,7 @@ namespace QLThuocDAPM.Controllers
                     MaHh = hangHoa.MaSp,
                     TenHH = hangHoa.TenSp,
                     DonGia = hangHoa.GiaTien,
+                    DonVi=hangHoa.DonVi,
                     Hinh = hangHoa.HinhAnh1 ?? string.Empty,
                     SoLuong = quantity,
                     TongTien = quantity * hangHoa.GiaTien
@@ -75,10 +76,19 @@ namespace QLThuocDAPM.Controllers
                 item.SoLuong += quantity;
             }
 
+
+            //TempData["SuccessMessage"] = $"Sản phẩm đã ở trong giỏ hàng của bạn";
+
+            // Tính lại tổng số lượng trong giỏ
+    
             HttpContext.Session.Set(CART_KEY, gioHang);
+
+            var cartItemCount = gioHang.Sum(item => item.SoLuong);
 
             return RedirectToAction("Index");
         }
+        // Lấy số lượng sản phẩm trong giỏ
+      
         public IActionResult RemoveCart(int id)
         {
             var gioHang = Cart;
@@ -320,10 +330,15 @@ namespace QLThuocDAPM.Controllers
 
             if (khuyenMai == null)
             {
-                // Trả về JSON khi mã không hợp lệ
-                return Json(new { success = false, message = "Mã giảm giá không hợp lệ!" });
+                ViewData["QuaHan"] = "Mã giảm giá không hợp lệ";
+                return View("ThanhToan", cart);
             }
-
+            if (khuyenMai.TrangThai == false)
+            {
+                // Gán thông báo lỗi vào ViewData
+                ViewData["QuaHan"] = "Mã giảm giá đã quá hạn";
+                return View("ThanhToan", cart); // Trả về view cùng với thông báo lỗi trong ViewData
+            }
             // Lưu mã giảm giá vào session
             HttpContext.Session.SetString("DiscountCode", maKhuyenMai);
 

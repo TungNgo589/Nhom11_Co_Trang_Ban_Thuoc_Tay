@@ -21,6 +21,9 @@ else
                 <th>Giá trị đơn hàng</th>
                 <th>Trạng Thái</th>
                 <th>Ngày Tạo</th>
+                <th>
+                    Hủy đơn hàng
+                </th>
 
             </tr>
         </thead>
@@ -41,9 +44,38 @@ else
                     <td>@donHang.TongTien vnđ</td>
                     <td>@donHang.TrangThai</td>
                     <td>@donHang.CreatedAt</td>
+                    @if(donHang.TrangThai=="Đã giao")
+                    {
+                        <td>
+                            <a style="display: inline-block; padding: 10px 20px; background-color: grey; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                                Hủy đơn hàng
+                            </a>
+                        </td>
+                      
+                    }
+                    else
+                    {
+                        <td>
+                            <a href="javascript:void(0);" class="btnHuyDonHang" maDH="@donHang.MaDh" style="display: inline-block; padding: 10px 20px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                                Hủy đơn hàng
+                            </a>
+                        </td>
+                    }
+                   
                    
                 </tr>
             }
         </tbody>
     </table>
 }
+<script>
+    var btnHuyDonHang = document.querySelectorAll(".btnHuyDonHang");
+    btnHuyDonHang.forEach(item => {
+        item.addEventListener('click', e => {
+            var madh = item.getAttribute("maDH");
+            if (confirm('Bạn có chắc muốn hủy đơn hàng này?')) {
+                window.location = `/home/HuyDonHang?maDH=${madh}`;
+            }
+        });
+    });
+</script>

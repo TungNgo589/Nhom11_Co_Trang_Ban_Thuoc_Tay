@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QLThuocDAPM.Data;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace QLThuocDAPM.Areas.Admin.Controllers
 {
@@ -209,6 +213,97 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
 
             return NotFound(); // Trả về lỗi nếu không tìm thấy đơn hàng
         }
+
+
+
+
+
+
+
+
+
+
+
+        public ActionResult XuatHoaDonPDF(string maDH)
+        {
+
+            var donhang = _context.DonHangs
+                .Include(dh => dh.ChiTietDonHangs)
+                    .ThenInclude(ct => ct.MaSpNavigation)  // Ensure product navigation property is loaded
+                .FirstOrDefault(dh => dh.MaDh == maDH /*&& dh.Username == userID*/);
+
+            if (donhang == null)
+            {
+                return NotFound(); // Trả về 404 nếu không tìm thấy đơn hàng
+            }
+
+            using (MemoryStream stream = new MemoryStream())
+            {
+                Document pdfDoc = new Document(PageSize.A4);
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+
+                // Add Title
+                pdfDoc.Add(new Paragraph("Hoa don"));
+                pdfDoc.Add(new Paragraph($"Ma Hoa Don: {donhang.MaDh}"));
+                pdfDoc.Add(new Paragraph($"Ten Khach Hang: {donhang.HoTen}"));
+                pdfDoc.Add(new Paragraph($"So Dien Thoai: {donhang.Sdt}"));
+                pdfDoc.Add(new Paragraph($"Dia Chi: {donhang.Diachi}"));
+                pdfDoc.Add(new Paragraph($"Trang Thai: {donhang.TrangThai}"));
+
+                // Add table header for order details
+                pdfDoc.Add(new Paragraph("Chi Tiet Don Hang"));
+                PdfPTable table = new PdfPTable(4);
+                table.AddCell("Ten San Pham");
+                table.AddCell("So Luong");
+                table.AddCell("Gia");
+                table.AddCell("Tong");
+
+                // Add each product's details to the table with null checks
+                foreach (var item in donhang.ChiTietDonHangs)
+                {
+                    string tenSp = item.MaSpNavigation?.TenSp ?? "Sản phẩm không tồn tại";
+                    string gia = item.MaSpNavigation?.GiaTien.ToString("C") ?? "0 vnđ";
+                    string soLuong = item.SoLuong.ToString();
+                    string tongTien = (item.MaSpNavigation?.GiaTien * item.SoLuong)?.ToString("C") ?? "0 vnđ";
+
+                    table.AddCell(tenSp);     // Product Name
+                    table.AddCell(soLuong);    // Quantity
+                    table.AddCell(gia);        // Price
+                    table.AddCell(tongTien);   // Total for this item
+                }
+
+                pdfDoc.Add(table);
+                pdfDoc.Add(new Paragraph($"Tong Gia Tri Don Hang: {donhang.TongTien.ToString("C")}"));
+
+                pdfDoc.Close();
+
+                // Return PDF to user
+                byte[] bytes = stream.ToArray();
+                return File(bytes, "application/pdf", "HoaDon_" + donhang.MaDh + ".pdf");
+            }
+        }
+        public IActionResult DoanhThu()
+        {
+            var doanhThu = _context.ChiTietDonHangs
+                .Join(_context.DonHangs, cdh => cdh.MaDh, dh => dh.MaDh, (cdh, dh) => new { cdh, dh })
+                .Join(_context.SanPhams, combined => combined.cdh.MaSp, sp => sp.MaSp, (combined, sp) => new { combined.cdh, combined.dh, sp })
+                .Join(_context.DanhMucs, combined => combined.sp.MaDm, dm => dm.MaDm, (combined, dm) => new
+                {
+                    DanhMuc = dm.TenDm,
+                    DoanhThu = combined.cdh.TongTien
+                })
+                .GroupBy(x => x.DanhMuc)
+                .Select(g => new
+                {
+                    DanhMuc = g.Key,
+                    DoanhThu = g.Sum(x => x.DoanhThu)
+                })
+                .ToList();
+
+            return View(doanhThu);
+        }
+
 
     }
 }

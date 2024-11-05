@@ -35,12 +35,14 @@ namespace QLThuocDAPM.Controllers
         }
 
         public IActionResult ChiTietSanPham(int id)
-        {
+        {   
+
             var data = db.SanPhams
                 .Include(p => p.MaDmNavigation) // Bao gồm thông tin danh mục nếu cần
                         .Include(p => p.MaNhaCungCapNavigation) // Bao gồm thông tin nhà cung cấp
                                                 .Include(p => p.MaBenhNavigation) // Bao gồm thông tin nhà cung cấp
                                                    .Include(p => p.MaGiamGiaNavigation)
+                                                   .Include(sp => sp.BinhLuans)
     // Bao gồm thông tin đánh giá
     .Include(p=>p.DanhGia)
 
@@ -48,6 +50,7 @@ namespace QLThuocDAPM.Controllers
 
             var benhs = db.Benhs.ToList(); // Lấy danh sách các bệnh từ cơ sở dữ liệu
             ViewBag.Benhs = benhs;
+            data.SoBinhLuan = data.BinhLuans.Count;
 
 
             var diemTrungBinh = data.DanhGia.Any()
@@ -116,6 +119,15 @@ namespace QLThuocDAPM.Controllers
             {
                 await db.BinhLuans.AddAsync(binhLuan);
                 await db.SaveChangesAsync();
+
+                // Cập nhật số lượng bình luận cho sản phẩm
+                var sanPham = await db.SanPhams.FindAsync(maSP);
+                if (sanPham != null)
+                {
+                    sanPham.SoBinhLuan = (sanPham.SoBinhLuan ?? 0) + 1; // Tăng số bình luận lên 1
+                    db.SanPhams.Update(sanPham);
+                    await db.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
@@ -126,7 +138,8 @@ namespace QLThuocDAPM.Controllers
 
             return RedirectToAction("ChiTietSanPham", new { id = maSP });
         }
-[HttpPost]
+
+        [HttpPost]
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> AddAndUpdateRating(int maSP, decimal rating)
 {

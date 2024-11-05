@@ -1031,3 +1031,5 @@ C:\DongTrieu_Nam3\4_11\QLThuocDAPM\obj\Debug\net8.0\refint\QLThuocDAPM.dll
 C:\DongTrieu_Nam3\4_11\QLThuocDAPM\obj\Debug\net8.0\QLThuocDAPM.pdb
 C:\DongTrieu_Nam3\4_11\QLThuocDAPM\obj\Debug\net8.0\QLThuocDAPM.genruntimeconfig.cache
 C:\DongTrieu_Nam3\4_11\QLThuocDAPM\obj\Debug\net8.0\ref\QLThuocDAPM.dll
+C:\DongTrieu_Nam3\4_11\QLThuocDAPM\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\DongTrieu_Nam3\4_11\QLThuocDAPM\bin\Debug\net8.0\itextsharp.dll

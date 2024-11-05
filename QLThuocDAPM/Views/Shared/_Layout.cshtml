@@ -1,5 +1,4 @@
 ﻿
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- CSS của Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- JavaScript của Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -274,8 +280,8 @@
                         <li><a href="/home/index"><img class="img-logo" src="~/img/logoLC.jpg"></a> <a href="/home/index">TRANG CHỦ</a> </li>
 
                        
-                        <li class="ml-4"><a href="/danhmucs/1">THỰC PHẨM CHỨC NĂNG</a> </li>
-                        <li><a href="/games/danhmuc/2">DƯỢC PHẨM</a></li>
+@*                         <li class="ml-4"><a href="/danhmucs/1">THỰC PHẨM CHỨC NĂNG</a> </li>
+ *@                        <li><a href="/games/danhmuc/2">DƯỢC PHẨM</a></li>
                     
                         <li><a href="/games/danhmuc/5">THIẾT BỊ Y TẾ</a></li>
                         <li><a href="/kiemtrasuckhoe/Index">KIỂM TRA SỨC KHỎE</a></li>
@@ -304,9 +310,14 @@
                         </form>
                     </div>
 
+                    <a class="icon-cart-cus" style="margin-left:10px" href="@Url.Action("Index", "GioHang")">
+                        <i class='cus-icon bx bx-cart'></i>
+                        <span id="cart">
+                            @* Hiển thị số lượng sản phẩm trong giỏ *@
+                            <span id="cart_count">0</span>  <!-- Số lượng giỏ mặc định là 0 -->
+                        </span>
+                    </a>
 
-
-                    <a class="icon-cart-cus" style="margin-left:10px" href="/giohang"><i class='cus-icon bx bx-cart'></i> <span id="cart"></span></a>
 
                     @if (Context.Session.GetString("userLogin") != null)
                     {
@@ -482,12 +493,6 @@
 
 
 
-        <!----footer------>
-        <!-- script for menu -->
-      
 
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
- 
+@RenderSection("scripts", required: false)

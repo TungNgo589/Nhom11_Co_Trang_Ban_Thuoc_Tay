@@ -31,10 +31,10 @@
 
 
         <div  class="product-container" style="display:flex">
-            @foreach (var item in Model.Take(6))
+            @foreach (var item in Model.Take(4))
             {
-                <a asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
-                    <div class="product-card" style="padding-left:10px">
+                <a style="padding-left:20px" asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                    <div class="product-card" style="padding-left:20px">
                         @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
                         {
                             <div class="discount-badge">@item.MaGiamGiaNavigation.GiaTri %</div>
@@ -56,46 +56,89 @@
 
                         }
                         <div class="package-info">@item.DonVi</div>
-                        <button class="buy-button">Chọn mua</button>
+                        <button class="buy-button">Xem chi tiết sản phẩm</button>
                     </div>
                 </a>
 
             }
         </div>
 
-    
-
-
-
-
-
-        @* /////////////////////// *@
         <br style="margin-top:100px;" />
 
         <div>
             <h2 style="text-align:center;justify-items:center">Sản Phẩm Bán Chạy</h2>
 
-            <div class="row" >
+                 <div  class="product-container" style="display:flex">
                 @foreach (var item in Model.OrderByDescending(sp => sp.SoLuongMua).Take(3))
-                {
-                    <div class="col-3 mt-2 card-product" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
-                        <a href="/SanPham/ChiTietSanPham/@item.MaSp">
-                            <img class="img-product" src="@Url.Content(item.HinhAnh1)" alt="@item.TenSp" style="width: 100%; height: auto;">
-                            <div class="name-product" style="font-weight: bold; font-size: 16px; margin-top: 10px;">
-                                @item.TenSp
-                            </div>
-                            <div class="price-product" style="color: #e74c3c; font-size: 14px; margin-top: 5px;">
-                                Giá: @String.Format("{0:0,0}", item.GiaTien) VNĐ
-                            </div>
-                            <div class="purchase-count" style="color: #2ecc71; font-size: 13px; margin-top: 5px;">
-                                Lượt Mua: @item.SoLuongMua
+
+            {
+                    <a style="padding-left:20px" asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                        <div style ="padding-left:20px" class="product-card" style="padding-left:10px">
+                        @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                        {
+                            <div class="discount-badge">@item.MaGiamGiaNavigation.GiaTri %</div>
+                        }
+                        else
+                        {
+
+                        }
+                        <img src="@Url.Content(item.HinhAnh1)" alt="Product Image" class="product-image">
+                        <div class="product-name">@item.TenSp</div>
+                        <div class="product-description">@item.Doituongsudung</div>
+                        <div class="price">@item.GiaSauGiam.000vnđ / @item.DonVi</div>
+                        @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                        {
+                            <div class="old-price">@item.GiaTien.000đ</div>
+                        }
+                        else
+                        {
+
+                        }
+                        <div class="package-info">Lượt mua @item.SoLuongMua</div>
+                        <button class="buy-button">Xem chi tiết sản phẩm</button>
+                    </div>
+                </a>
+
+            }
+        </div>
+
+
+            <div>
+                <h2 style="text-align:center;justify-items:center">Sản Phẩm Giá Rẻ</h2>
+
+                <div class="product-container" style="display:flex">
+                    @foreach (var item in Model.OrderBy(sp => sp.GiaSauGiam).Take(3))
+
+                    {
+                        <a style="padding-left:20px" asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                            <div style="padding-left:20px" class="product-card" style="padding-left:10px">
+                                @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                                {
+                                    <div class="discount-badge">@item.MaGiamGiaNavigation.GiaTri %</div>
+                                }
+                                else
+                                {
+
+                                }
+                                <img src="@Url.Content(item.HinhAnh1)" alt="Product Image" class="product-image">
+                                <div class="product-name">@item.TenSp</div>
+                                <div class="product-description">@item.Doituongsudung</div>
+                                <div class="price">@item.GiaSauGiam.000vnđ / @item.DonVi</div>
+                                @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                                {
+                                    <div class="old-price">@item.GiaTien.000đ</div>
+                                }
+                                else
+                                {
+
+                                }
+                                <div class="package-info">Lượt mua @item.SoLuongMua</div>
+                                <button class="buy-button">Xem chi tiết sản phẩm</button>
                             </div>
                         </a>
-                    </div>
-                }
-            </div>
 
-
+                    }
+                </div>
         </div>
     </div>
    <br style="margin-top:100px;" />
