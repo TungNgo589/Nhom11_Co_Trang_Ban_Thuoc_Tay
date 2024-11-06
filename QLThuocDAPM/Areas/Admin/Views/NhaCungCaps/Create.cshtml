@@ -1,7 +1,8 @@
-﻿@model QLThuocDAPM.Data.NhaCungCap
+﻿ @model QLThuocDAPM.Data.NhaCungCap
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -10,19 +11,94 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Use a clean, modern font */
+            background-color: #f8f9fa; /* Light background color for contrast */
+        }
+
+        h4 {
+            text-align: center; /* Center the heading */
+            margin-top: 20px; /* Add space above the heading */
+            color: #333; /* Dark color for text */
+        }
+
+        .form-container {
+            background-color: #fff; /* White background for the form */
+            padding: 30px; /* Space inside the form */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            margin: 20px auto; /* Center the form */
+            max-width: 600px; /* Limit form width */
+        }
+
+        .form-group {
+            margin-bottom: 20px; /* Space between form groups */
+        }
+
+        .form-control {
+            border-radius: 5px; /* Rounded edges for inputs */
+            border: 1px solid #ced4da; /* Light border color */
+            transition: border-color 0.3s; /* Smooth transition for focus effect */
+        }
+
+            .form-control:focus {
+                border-color: #007bff; /* Change border color on focus */
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add shadow on focus */
+            }
+
+        .btn-primary {
+            background-color: #007bff; /* Primary button color */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners for button */
+            padding: 10px 20px; /* Padding for button */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3; /* Darker button color on hover */
+            }
+
+        .text-danger {
+            font-size: 0.9rem; /* Smaller font size for validation errors */
+        }
+
+        .back-link {
+            display: block; /* Make the link a block for better spacing */
+            text-align: center; /* Center the back link */
+            margin-top: 20px; /* Space above the back link */
+            color: #007bff; /* Link color */
+            text-decoration: none; /* Remove underline */
+        }
+
+            .back-link:hover {
+                text-decoration: underline; /* Underline on hover */
+            }
+    </style>
 </head>
 <body>
 
-<h4>NhaCungCap</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    <div class="form-container">
+        <h4>Thêm Nhà Cung cấp</h4>
+        <hr />
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
                 <label asp-for="TenNhaCungCap" class="control-label"></label>
                 <input asp-for="TenNhaCungCap" class="form-control" />
                 <span asp-validation-for="TenNhaCungCap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HinhAnhNhaCungCap" class="control-label"></label>
+                <input type="file" name="file1" class="form-control-file" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MoTaNhaCungCap" class="control-label"></label>
+                <input asp-for="MoTaNhaCungCap" class="form-control" />
+                <span asp-validation-for="MoTaNhaCungCap" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Sdt" class="control-label"></label>
@@ -39,16 +115,25 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index" class="back-link">Back to List</a>
+    </div>
 
 </body>
 </html>
+
+
+
+
+
+
+
+

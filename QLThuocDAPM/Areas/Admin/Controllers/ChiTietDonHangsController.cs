@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class ChiTietDonHangsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public ChiTietDonHangsController(QlthuocDapm3Context context)
+        public ChiTietDonHangsController(QlthuocDapm4Context context)
         {
             _context = context;
         }

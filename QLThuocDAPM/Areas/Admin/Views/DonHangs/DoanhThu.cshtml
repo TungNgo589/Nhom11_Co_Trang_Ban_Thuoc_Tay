@@ -1,0 +1,71 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "DoanhThu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<h2>@ViewData["Title"]</h2>
+
+<canvas id="doanhThuChart" width="400" height="200"></canvas>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Lấy đối tượng canvas cho biểu đồ
+        var ctx = document.getElementById('doanhThuChart').getContext('2d');
+        
+        // Chuẩn bị dữ liệu cho biểu đồ từ Model
+        var labels = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(m => m.DanhMuc).ToList()));
+        var data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(m => m.DoanhThu).ToList()));
+
+        // Cấu hình biểu đồ Chart.js
+        var doanhThuChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Doanh Thu',
+                    data: data,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Doanh Thu (VND)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Danh Mục'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'Doanh Thu: ' + context.raw.toLocaleString('vi-VN') + ' VND';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>

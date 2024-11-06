@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QLThuocDAPM.Data.Benh>
+﻿@model IEnumerable<QLThuocDAPM.Data.Benh> 
 
 <h2 style="text-align:center">Tìm hiểu về Bệnh</h2>
 
@@ -6,7 +6,7 @@
     <div class="row">
         <!-- Bên trái: Hình ảnh cơ thể người -->
         <div style="margin-bottom: 50px" class="col-md-6">
-            <img src="~/img/cothenguoi.jpg" alt="Cơ thể con người" class="img-fluid" style="object-fit: cover; width: 100%; height: auto;">
+            <img src="~/images/cothenguoi.jpg" alt="Cơ thể con người" class="img-fluid" style="object-fit: cover; width: 100%; height: auto;">
         </div>
 
         <!-- Bên phải: Danh sách bệnh chia thành 2 cột -->
@@ -21,7 +21,6 @@
                             <div class="list-group-item">
                                 <h5 class="list-group-item-heading">
                                     <a asp-action="Details" asp-controller="Benh" asp-route-id="@item.MaBenh">@item.TenBenh</a>
-
                                 </h5>
                             </div>
                         }
@@ -49,7 +48,6 @@
 </div>
 
 <style>
-    /* Đảm bảo hình ảnh không bị bể */
     .img-fluid {
         max-width: 100%;
         height: auto;
@@ -57,17 +55,17 @@
 
     .list-group-item {
         display: flex;
-        justify-content: space-between; /* Căn chỉnh nội dung bên trong */
-        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: space-between;
+        align-items: center;
     }
 
     .list-group-item-heading a {
-        text-decoration: none; /* Bỏ gạch chân của link */
-        color: black; /* Chuyển màu chữ thành màu đen */
+        text-decoration: none;
+        color: black;
     }
 
     .list-group-item-heading a:hover {
-        text-decoration: underline; /* Thêm gạch chân khi hover */
-        color: #28a745; /* Màu xanh khi hover */
+        text-decoration: underline;
+        color: #28a745;
     }
 </style>

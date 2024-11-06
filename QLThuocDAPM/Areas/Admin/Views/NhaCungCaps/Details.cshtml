@@ -1,17 +1,11 @@
 ﻿@model QLThuocDAPM.Data.NhaCungCap
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+<h1>Details</h1>
 
 <div>
     <h4>NhaCungCap</h4>
@@ -22,6 +16,18 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.TenNhaCungCap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.HinhAnhNhaCungCap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HinhAnhNhaCungCap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MoTaNhaCungCap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MoTaNhaCungCap)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Sdt)
@@ -47,5 +53,3 @@
     <a asp-action="Edit" asp-route-id="@Model?.MaNhaCungCap">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
-</body>
-</html>

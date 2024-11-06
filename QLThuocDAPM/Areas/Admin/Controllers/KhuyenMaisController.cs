@@ -10,9 +10,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class KhuyenMaisController : Controller
     {
-        private readonly QlthuocDapm3Context db;
+        private readonly QlthuocDapm4Context db;
 
-        public KhuyenMaisController(QlthuocDapm3Context context)
+        public KhuyenMaisController(QlthuocDapm4Context context)
         {
             db = context;
         }
@@ -51,9 +51,18 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+            
                 await db.KhuyenMais.AddAsync(khuyenMai);
                 await db.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
+
+                if (khuyenMai.ThoiGianKetThuc > DateTime.Now)
+                {
+                    khuyenMai.TrangThai = false;
+                    await db.KhuyenMais.AddAsync(khuyenMai);
+                    await db.SaveChangesAsync();
+                }                    
+                        
             }
 
             return View(khuyenMai);
@@ -75,76 +84,5 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         }
 
         // POST: Admin/KhuyenMais/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaKhuyenMai,GiaTri,ThoiGianBatDau,ThoiGianKetThuc,TrangThai,NgayTao,DieuKienApDung,SoLuong")] KhuyenMai khuyenMai)
-        {
-            if (id != khuyenMai.MaKhuyenMai)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.Entry(khuyenMai).State = EntityState.Modified;
-                    await db.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!KhuyenMaiExists(khuyenMai.MaKhuyenMai))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(khuyenMai);
-        }
-
-        // GET: Admin/KhuyenMais/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return BadRequest();
-            }
-            var khuyenMai = await db.KhuyenMais.FindAsync(id);
-            if (khuyenMai == null)
-            {
-                return NotFound();
-            }
-            return View(khuyenMai);
-        }
-
-        // POST: Admin/KhuyenMais/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var khuyenMai = await db.KhuyenMais.FindAsync(id);
-            db.KhuyenMais.Remove(khuyenMai);
-            await db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool KhuyenMaiExists(int id)
-        {
-            return db.KhuyenMais.Any(e => e.MaKhuyenMai == id);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }

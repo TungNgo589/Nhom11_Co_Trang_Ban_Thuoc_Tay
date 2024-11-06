@@ -12,18 +12,25 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class BenhsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public BenhsController(QlthuocDapm3Context context)
+        public BenhsController(QlthuocDapm4Context context)
         {
             _context = context;
         }
 
         // GET: Admin/Benhs
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int? maBenh)
         {
-            return View(await _context.Benhs.ToListAsync());
+            // If maBenh is null, retrieve all records. Otherwise, filter by maBenh.
+            var benhList = maBenh == null
+                ? _context.Benhs.ToList() // Retrieve all records if no filter is applied.
+                : _context.Benhs.Where(b => b.MaBenh == maBenh).ToList(); // Filter by maBenh if provided.
+
+            return View(benhList);
         }
+
+
 
         // GET: Admin/Benhs/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -54,7 +61,7 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaBenh,TenBenh,MoTa")] Benh benh)
+        public async Task<IActionResult> Create([Bind("MaBenh,TenBenh,MoTa1,MoTa2")] Benh benh)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +93,7 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaBenh,TenBenh,MoTa")] Benh benh)
+        public async Task<IActionResult> Edit(int id, [Bind("MaBenh,TenBenh,MoTa1,MoTa2")] Benh benh)
         {
             if (id != benh.MaBenh)
             {

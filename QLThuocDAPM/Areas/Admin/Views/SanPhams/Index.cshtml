@@ -151,6 +151,42 @@
     <title>Danh Sách Sản Phẩm</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .page-link {
+            padding: 8px 16px;
+            margin: 0 5px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .page-link:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .page-info {
+            margin: 0 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .page-link:disabled, .page-link.disabled {
+            color: #aaa;
+            border-color: #ddd;
+            pointer-events: none;
+        }
+
         body {
             font-family: Arial, sans-serif;
 /*             margin: 20px;
@@ -260,10 +296,32 @@
                     <td><img src="@Url.Content(item.HinhAnh2)" alt="Hình 2" class="image-thumbnail" /></td>
                     <td><img src="@Url.Content(item.HinhAnh3)" alt="Hình 3" class="image-thumbnail" /></td>
 @*                     <td><img src="@Url.Content(item.HinhAnh4)" alt="Hình 4" class="image-thumbnail" /></td>
- *@                    <td>@Html.DisplayFor(modelItem => item.MaBenhNavigation.MaBenh)</td>
-                    <td>@Html.DisplayFor(modelItem => item.MaDmNavigation.MaDm)</td>
-                    <td>@Html.DisplayFor(modelItem => item.MaGiamGiaNavigation.MaGiamGia)</td>
-                    <td>@Html.DisplayFor(modelItem => item.MaNhaCungCapNavigation.MaNhaCungCap)</td>
+ *@                    
+
+                    <td>
+                        <a asp-action="Index" asp-controller="Benhs" asp-route-maBenh="@item.MaBenhNavigation.MaBenh">
+                            @Html.DisplayFor(modelItem => item.MaBenhNavigation.MaBenh)
+                        </a>
+                    </td>
+
+                   
+                    <td>
+                        <a asp-action="Index" asp-controller="DanhMucs" asp-route-maDanhMuc="@item.MaDmNavigation.MaDm">
+                            @Html.DisplayFor(modelItem => item.MaDmNavigation.MaDm)
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="Index" asp-controller="GiamGiums" asp-route-maGiamGia="@item.MaGiamGiaNavigation.MaGiamGia">
+                            @Html.DisplayFor(modelItem => item.MaGiamGiaNavigation.MaGiamGia)
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a asp-action="Index" asp-controller="NhaCungCaps" asp-route-maNhaCungCap="@item.MaNhaCungCapNavigation.MaNhaCungCap">
+                            @Html.DisplayFor(modelItem => item.MaNhaCungCapNavigation.MaNhaCungCap)
+                        </a>
+                    </td>
+
                     <td>
                         <div style="color:white" class="action-buttons">
                             <a  class="btn" asp-action="Edit" asp-route-id="@item.MaSp">Sửa</a>
@@ -275,5 +333,18 @@
             }
         </tbody>
     </table>
+    <div class="pagination">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <a asp-action="Index" asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" class="page-link">Previous</a>
+        }
+
+        <span class="page-info">Page @ViewBag.CurrentPage of @ViewBag.TotalPages</span>
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <a asp-action="Index" asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" class="page-link">Next</a>
+        }
+    </div>
 </body>
 </html>

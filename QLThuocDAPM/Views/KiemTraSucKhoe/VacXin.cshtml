@@ -1,0 +1,124 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+       
+        .content {
+            padding: 20px;
+        }
+
+        .slogan {
+            font-style: italic;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .benefit {
+            text-align: center;
+            width: 23%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+            .benefit:hover {
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .benefit img {
+                width: 100%;
+                height: auto;
+            }
+
+            .benefit p {
+                font-size: 16px;
+                color: #fff;
+                background-color: #007bff;
+                padding: 10px 0;
+                margin: 0;
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+
+    <div style="margin-bottom: 20px; margin-top: 20px" class="container">
+        <div style="width: 690px; height: 60px; font: 3px 0px; margin: 0px 570px; text-align: center; padding: 20px; border-radius: 8px 8px 0 0; background-color: #ff8400; " class="header">
+            <h1 style="color: #fff; font-size: 24px;">TRUNG TÂM TIÊM CHỦNG VẮC XIN LONG CHÂU
+            </h1>
+        </div>
+        <div class="content">
+            <p style="color: #020b27; margin: 0px 620px; font-size: 30px; width: 530px; height: 95px" class="slogan">“Tiêm chủng đã giúp cứu sống hàng triệu sinh mạng trên thế giới”</p>
+            <p style="width: 930px; height: 96px; margin: 30px 460px 0px; color: #2f364a " class="description">
+                Trung tâm tiêm chủng Long Châu tự hào là đơn vị có các loại vắc xin thế hệ mới nhất từ các nhà sản xuất hàng đầu thế giới,
+                toàn bộ vắc xin đều được nhập khẩu chính hãng từ các nhà sản xuất lớn trên thế giới. Tiêm chủng Long Châu cung cấp nhiều dịch vụ tiêm chủng linh hoạt theo yêu cầu của Quý khách:
+                Tiêm lẻ, tiêm theo yêu cầu, mua đặt giữ vắc xin theo yêu cầu, đặt giữ vắc xin online dễ dàng tiện lợi...
+            </p>
+            <h2 style="width: 1200px; height: 30px; color: #020b27; margin: 0px 310px; font-size: 20px; margin-top:20px; font-weight:bold ">Vì sao chọn trung tâm tiêm chủng Long Châu?</h2>
+            <div style="display: flex; margin: auto; margin-top: 30px; gap: 30px" class="benefits">
+                <div class="benefit">
+                    <img src="~/images/timnhe.jpg" alt="Tiêm nhẹ - Ít đau">
+                    <p>Tiêm nhẹ - Ít đau</p>
+                </div>
+                <div class="benefit">
+                    <img src="~/Images/vacxinchinhhang.jpg" alt="Vắc xin chính hãng, đa chủng loại">
+                    <p>Vắc xin chính hãng, đa chủng loại</p>
+                </div>
+                <div class="benefit">
+                    <img src="~/Images/giatot.jpg" alt="Giá tốt">
+                    <p>Giá tốt</p>
+                </div>
+                <div class="benefit">
+                    <img src="~/Images/hethongluutru.jpg" alt="Hệ thống lưu trữ đạt chuẩn GSP">
+                    <p>Hệ thống lưu trữ đạt chuẩn GSP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

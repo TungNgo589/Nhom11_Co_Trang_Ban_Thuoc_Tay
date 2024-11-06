@@ -2,87 +2,433 @@
 
 @{
     ViewBag.Title = "Giỏ Hàng";
-    Layout = Layout = "~/Views/Shared/_Layout.cshtml";
-
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Sản phẩm</th>
-            <th scope="col">Tên sản phẩm</th>
-            <th scope="col">Đơn giá</th>
-            <th scope="col">Số lượng</th>
-            <th scope="col">Tổng tiền</th> <!-- Total price column -->
-            <th scope="col">Thao tác</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (!Model.Any())
-        {
-            <tr>
-                <td colspan="6" class="text-center">Giỏ hàng của bạn đang trống.</td>
-            </tr>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM9U0mU9HNSWPTQQE0t0jxn5gHdXktZq2XgLzF" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <style>
+        /* Phong cách tổng thể */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
         }
-        else
-        {
-         
 
-          
-            decimal grandTotal = 0; // Variable to hold total amount
-            foreach (var item in Model)
-            {
-                    <table>
+        /* Container tổng của giỏ hàng */
+        .cart-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fafcff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-                    
-                <tr>
-                    <td>
-                           
-                            <img src="@Url.Content(@item.Hinh)" class="img-cus" alt="@item.TenHH" />
-                    </td>
-                    <td>
-                        <a asp-action="ChiTietSanPham" asp-controller="SanPham" asp-route-id="@item.MaHh">
-                            @item.TenHH
-                        </a>
-                    </td>
-                    <td>
-                        @String.Format("{0:C}", item.DonGia) 
-                    </td>
-                    <td>
-                        <form asp-action="UpdateQuantity" asp-controller="GioHang" method="post" style="display:inline;">
-                            <input type="number" name="quantity" value="@item.SoLuong" min="0" class="form-control" style="width: 60px; display: inline-block;" />
-                            <input type="hidden" name="id" value="@item.MaHh" />
-                            <button asp-action="UpdateQuantity" asp-controller="GioHang" type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
-                        </form>
-                    </td>
-                    <td>
-                        @String.Format("{0:C}", item.TongTien) 
-                    </td>
-                    <td>
-                        <a asp-action="RemoveCart" asp-controller="GioHang" asp-route-id="@item.MaHh" class="btn btn-danger">
-                            Xóa
-                        </a>
-                    </td>
-                    <td>
-                     
+        /* Phần sản phẩm */
+        .cart-items {
+            width: 60%;
+        }
 
-                    </td>
-                </tr>
-                    </table>
+        /* Phần tóm tắt đơn hàng */
+        .order-summary {
+            width: 35%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .continue-shopping {
+            margin-bottom: 10px;
+        }
+
+            .continue-shopping a {
+                color: #1d4ed8;
+                font-weight: bold;
+                text-decoration: none;
             }
 
-            <a asp-action="ThanhToan" asp-controller="GioHang"
-               style="display: inline-block; padding: 10px 20px; font-size: 16px;
-          color: #fff; background-color: #007bff; border: none;
-          border-radius: 5px; text-decoration: none;
-          transition: background-color 0.3s ease;"
-               onmouseover="this.style.backgroundColor='#0056b3';"
-               onmouseout="this.style.backgroundColor='#007bff';">
-                Thanh toán
-            </a>
-            // Display the grand total
-           
+                .continue-shopping a:hover {
+                    text-decoration: underline;
+                }
+
+        .select-all {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            color: #1d4ed8;
+            margin-bottom: 15px;
         }
-       
-    </tbody>
-</table>
+
+        .round-checkbox {
+            width: 18px;
+            height: 18px;
+            appearance: none;
+            border: 2px solid #1d4ed8;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+            .round-checkbox:checked {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+                .round-checkbox:checked::after {
+                    content: '✓';
+                    color: white;
+                    font-size: 14px;
+                    font-weight: bold;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+        /* CSS cho checkbox hình tròn */
+        .product-checkbox {
+            width: 18px;
+            height: 18px;
+            appearance: none; /* Xóa kiểu mặc định của checkbox */
+            border: 2px solid #1d4ed8;
+            border-radius: 50%; /* Làm cho checkbox có viền tròn */
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+            .product-checkbox:checked {
+                background-color: #1d4ed8;
+                border-color: #1d4ed8;
+            }
+
+                .product-checkbox:checked::after {
+                    content: '✓'; /* Thêm dấu tích */
+                    font-size: 14px;
+                    color: white;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #f5f7fc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+            .table thead {
+                background-color: #f3f4f6 !important; /* Màu trắng sữa */
+            }
+
+            .table th, .table td {
+                padding: 15px;
+                text-align: center;
+                vertical-align: middle;
+            }
+
+            .table th {
+                font-weight: bold;
+                color: black;
+            }
+
+            .table tbody td {
+                border-top: 1px solid #e5e7eb;
+            }
+
+
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .img-cus {
+            width: 60px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #215bbf;
+            font-size: 16px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-decrement, .btn-increment {
+            background-color: #e5e7eb;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #6b7280;
+        }
+
+            .btn-decrement:hover, .btn-increment:hover {
+                background-color: #d1d5db;
+            }
+
+        .delete-btn {
+            background-color: transparent;
+            border: none;
+            color: #ef4444;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+            .delete-btn:hover {
+                color: #dc2626;
+            }
+
+        .summary-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            color: #215bbf;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #215bbf;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .checkout-btn:hover {
+                background-color: #1d4ed8;
+            }
+
+        .terms {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body >
+
+    <div style="margin-bottom:50px; margin-top:50px;width:1600px" class="cart-container">
+        <!-- Phần sản phẩm trong giỏ hàng -->
+        <div class="cart-items">
+            <div class="continue-shopping">
+                <a asp-action="Index" asp-controller="SanPham">← Tiếp tục mua sắm</a>
+            </div>
+
+            <div class="select-all">
+                <input type="checkbox" class="round-checkbox" id="selectAll" onclick="toggleSelectAll()">
+                <label for="selectAll">Chọn tất cả</label>
+            </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th style="background-color:#007BFF"></th>
+                        <th style="background-color:#007BFF;color:white">Sản phẩm</th>
+                        <th style="background-color:#007BFF;color:white" >Giá thành</th>
+                        <th style="background-color:#007BFF;color:white">Số lượng</th>
+                        <th style="background-color:#007BFF;color:white">Đơn vị</th>
+                        <th style="background-color:#007BFF;color:white">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center">Giỏ hàng của bạn đang trống.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        decimal grandTotal = 0;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="product-checkbox">
+                                </td>
+                                <td>
+                                    <div class="product-info">
+                                        <img src="@Url.Content(item.Hinh)" class="img-cus" alt="@item.TenHH" />
+                                        <div>
+                                            <p class="product-name">@item.TenHH</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="total-price">@((item.DonGia * item.SoLuong).ToString("#,0"))</span>
+                                </td>
+
+                                <td>
+                                    <form asp-action="UpdateQuantity" asp-controller="GioHang" method="post" style="display:inline;">
+                                        <input type="number" name="quantity" value="@item.SoLuong" min="0" class="form-control" style="width: 60px; display: inline-block;" />
+                                        <input type="hidden" name="id" value="@item.MaHh" />
+                                        <button asp-action="UpdateQuantity" asp-controller="GioHang" type="submit" class="btn btn-primary btn-sm">Cập nhật</button>
+                                    </form>
+                                </td>
+
+
+                                <td>
+                                    
+                                    @item.DonVi
+                                    
+                                </td>
+                                <td>
+                                  
+                                    
+                                        <a asp-action="RemoveCart" asp-controller="GioHang" asp-route-id="@item.MaHh" class="btn btn-danger">Xóa</a>
+
+                                    
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Phần tóm tắt đơn hàng -->
+        <div class="order-summary">
+            <div class="summary-title">Áp dụng ưu đãi để được giảm giá</div>
+            <div class="summary-item">
+                <span>Tổng tiền</span>
+                <span>@ViewData["TotalAmount"] vnđ</span>
+
+            </div>
+      @*       <div class="summary-item">
+                <span>Giảm giá trực tiếp</span>
+                <span>-33.000đ</span>
+            </div>
+            <div class="summary-item">
+                <span>Giảm giá voucher</span>
+                <span>0đ</span>
+            </div> *@
+            <div class="summary-total">
+                <span>Thành tiền</span>
+                <span>@ViewData["TotalAmount"] vnđ</span>
+            </div>
+            @if (!Model.Any())
+            {
+
+
+
+            }
+            else
+            {
+                <a asp-action="ThanhToan" asp-controller="GioHang"
+                   style="display: inline-block; padding: 10px 60px; font-size: 16px;
+          color: #fff; background-color: #007bff; border: none;
+          border-radius: 5px; text-decoration: none; margin-top:10px;
+          transition: background-color 0.3s ease;"
+                   onmouseover="this.style.backgroundColor='#0056b3';"
+                   onmouseout="this.style.backgroundColor='#007bff';">
+                    Thanh toán
+                </a>
+            }
+          
+
+
+
+            <div class="terms">
+                Bằng việc tiến hành đặt mua hàng, bạn đồng ý với Điều khoản dịch vụ và Chính sách xử lý dữ liệu cá nhân của Nhà thuốc FPT Long Châu.
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleSelectAll() {
+            const selectAllCheckbox = document.getElementById('selectAll');
+            const productCheckboxes = document.querySelectorAll('.product-checkbox');
+
+            productCheckboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        }
+
+        function updateQuantity(button, change) {
+            const quantityInput = button.parentElement.querySelector('input[name="quantity"]');
+            let quantity = parseInt(quantityInput.value);
+
+            quantity += change;
+            if (quantity < 1) {
+                quantity = 1; // Không cho phép số lượng nhỏ hơn 1
+            }
+            quantityInput.value = quantity;
+            updateTotal();
+        }
+
+        function deleteItem(button) {
+            const row = button.closest('tr');
+            row.parentNode.removeChild(row);
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const rows = document.querySelectorAll('.table tbody tr');
+            let grandTotal = 0;
+
+            rows.forEach(row => {
+                const priceText = row.querySelector('.product-price').innerText.replace('đ', '').replace('.', '').trim();
+                const price = parseFloat(priceText);
+                const quantity = parseInt(row.querySelector('input[name="quantity"]').value);
+                const totalPrice = price * quantity;
+
+                row.querySelector('.total-price').innerText = totalPrice.toLocaleString() + 'đ'; // Cập nhật giá tổng cho sản phẩm
+                grandTotal += totalPrice; // Cộng dồn vào tổng
+            });
+
+            document.getElementById('total-price').innerText = grandTotal.toLocaleString() + 'đ'; // Cập nhật tổng giá
+            // Update the final price if needed
+            document.getElementById('final-price').innerText = grandTotal.toLocaleString() + 'đ';
+        }
+    </script>
+
+</body>
+</html>

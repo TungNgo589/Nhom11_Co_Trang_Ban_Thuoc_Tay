@@ -1,61 +1,117 @@
 ﻿@model IEnumerable<QLThuocDAPM.Data.NhaCungCap>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/shared/_Layout.cshtml";
 }
+
 
 <!DOCTYPE html>
-
-<html>
+<html lang="vi">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh Sách Sản Phẩm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+                body {
+                    font-family: Arial, sans-serif;
+        /*             margin: 20px;
+         */            background-color: #f4f4f4;
+
+                }
+
+                h1 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+
+                .table {
+                    border-collapse: collapse;
+                    margin: 20px 0;
+                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                    background-color: #fff;
+                    width:1500px;
+                }
+
+                    .table th, .table td {
+                        padding: 12px;
+                        text-align: left;
+                        border: 1px solid #ddd;
+                    }
+
+                    .table th {
+                        background-color: #007bff;
+                        color: white;
+                    }
+
+                    .table tr:hover {
+                        background-color: #f1f1f1;
+                    }
+
+                .image-thumbnail {
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
+
+                .btn {
+        /*             padding: 6px 12px;
+         */            margin: 2px;
+                    border: none;
+                    border-radius: 4px;
+                    background-color: #007bff;
+                    color: white;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+
+                    .btn:hover {
+        /*                 background-color: #0056b3;
+         */            }
+
+                .action-buttons {
+
+                }
+    </style>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TenNhaCungCap)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sdt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiaChi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenNhaCungCap)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sdt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiaChi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MaNhaCungCap">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaNhaCungCap">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaNhaCungCap">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <h1>Danh Sách Nhà Cung Cấp</h1>
+    <p>
+        <a class="btn" asp-action="Create">Tạo Mới</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.TenNhaCungCap)</th>
+                <th>@Html.DisplayNameFor(model => model.HinhAnhNhaCungCap)</th>
+                <th>@Html.DisplayNameFor(model => model.MoTaNhaCungCap)</th>
+                <th>@Html.DisplayNameFor(model => model.Sdt)</th>
+                <th>@Html.DisplayNameFor(model => model.DiaChi)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.TenNhaCungCap)</td>
+                    <td><img src="@Url.Content(item.HinhAnhNhaCungCap)" alt="Hình 1" class="image-thumbnail" /></td>
+                    <td>@Html.DisplayFor(modelItem => item.MoTaNhaCungCap)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Sdt)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MaNhaCungCap">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.MaNhaCungCap">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.MaNhaCungCap">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </body>
 </html>
+

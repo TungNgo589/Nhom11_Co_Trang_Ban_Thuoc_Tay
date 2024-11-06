@@ -12,18 +12,24 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class DanhMucsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public DanhMucsController(QlthuocDapm3Context context)
+        public DanhMucsController(QlthuocDapm4Context context)
         {
             _context = context;
         }
 
         // GET: Admin/DanhMucs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? maDanhMuc)
         {
-            return View(await _context.DanhMucs.ToListAsync());
+            // If maDanhMuc is null, retrieve all records. Otherwise, filter by maDanhMuc.
+            var danhMucList = maDanhMuc == null
+                ? await _context.DanhMucs.ToListAsync() // Retrieve all records if no filter is applied.
+                : await _context.DanhMucs.Where(dm => dm.MaDm == maDanhMuc).ToListAsync(); // Filter by maDanhMuc if provided.
+
+            return View(danhMucList);
         }
+
 
         // GET: Admin/DanhMucs/Details/5
         public async Task<IActionResult> Details(int? id)

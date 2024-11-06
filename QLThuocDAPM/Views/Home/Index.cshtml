@@ -207,8 +207,7 @@
                 <div class="col-5">
                     <h1>Nhà thuốc online nơi cung cấp đầy đủ các sản phẩm cho bạn thoải mái lựa chọn</h1>
                     <p>Xem nhanh tất cả sản phẩm có sẵn của chúng tôi tại đây.</p>
-                    <a asp-controller="SanPham" asp-action="DanhSachSanPham" role="button" class="btn btn-success">Xem ngay &#8594;</a>
-                    
+                    <a asp-controller="SanPham" asp-action="Index" role="button" class="btn btn-success">Xem ngay &#8594;</a>
                 </div>
                 <div class="col-5">
                     <img class="w-100" src="/img/logoLC.jpg">
@@ -221,25 +220,35 @@
         <table>
             <tr style="height:90px">
                 <td>
-                    <img src="~/img/ktsk.png" />
-                    Kiểm tra sức khỏe
+    <a asp-controller="KiemTraSucKhoe" asp-action="Index">
+        <img src="~/img/ktsk.png" alt="Kiểm tra sức khỏe" />
+        Kiểm tra sức khỏe
+    </a>
+</td>
+
+               <td>
+    <a asp-controller="Home" asp-action="StoreLocation">
+        <img src="~/img/nhathuoc.png" alt="Nhà thuốc" />
+        Nhà thuốc
+    </a>
                 </td>
                 <td>
-                    <img src="~/img/nhathuoc.png" />
-                    Nhà thuốc
-                </td>
-                <td>
-                    <img src="~/img/vacxin.png" />
-                    Vacxin
+                    <a asp-controller="KiemTraSucKhoe" asp-action="VacXin">
+                        <img src="~/img/vacxin.png" alt="Tiêm vắc xin" />
+                        Tiêm vắc xin
+                    </a>
                 </td>
                 <td>
                     <img src="~/img/duocsi.png" />
                     Tư vấn với dược sĩ
                 </td>
-                <td>
-                    <img src="~/img/thuoccanmua.png" />
-                    Cần mua thuốc
-                </td>
+
+                
+               <td>
+    <a asp-controller="SanPham" asp-action="Index">
+        <img src="~/img/thuoccanmua.png" alt="Cần mua thuốc" />
+        Cần mua thuốc
+    </a>                
             </tr>
         </table>
     </div>
@@ -294,6 +303,7 @@
                 </div>
             }
         </div>
+
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function () {

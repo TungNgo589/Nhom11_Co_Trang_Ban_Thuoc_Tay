@@ -119,6 +119,12 @@ public class KiemTraSucKhoeController : Controller
         {
             return new List<SurveyQuestion>();
         }
+
+
+    }
+    public IActionResult VacXin()
+    {
+        return View();
     }
 }
 
@@ -128,3 +134,7 @@ public class SurveyQuestion
     public int Id { get; set; }
     public string QuestionText { get; set; }
 }
+
+
+
+

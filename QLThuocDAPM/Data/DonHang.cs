@@ -11,7 +11,7 @@ public partial class DonHang
 
     public string Diachi { get; set; }
 
-    public int MaKhuyenMai { get; set; }
+    public string MaKhuyenMai { get; set; }
 
     public double TongTien { get; set; }
 
@@ -27,7 +27,7 @@ public partial class DonHang
 
     public string HoTen { get; set; }
 
-    public int Sdt { get; set; }
+    public string Sdt { get; set; }
 
     public virtual ICollection<ChiTietDonHang> ChiTietDonHangs { get; set; } = new List<ChiTietDonHang>();
 

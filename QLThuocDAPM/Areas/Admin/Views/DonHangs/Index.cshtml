@@ -11,6 +11,50 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <style>
+         .pagination {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin: 20px 0;
+ }
+
+     .pagination a {
+         display: inline-block;
+         padding: 8px 15px;
+         margin: 0 5px;
+         font-size: 16px;
+         font-weight: bold;
+         color: #007bff;
+         background-color: #f8f9fa;
+         border: 1px solid #ddd;
+         border-radius: 5px;
+         text-decoration: none;
+         transition: all 0.3s;
+     }
+
+         .pagination a:hover {
+             background-color: #007bff;
+             color: white;
+             border-color: #007bff;
+         }
+
+     .pagination .page-info {
+         font-size: 16px;
+         margin: 0 10px;
+         color: #495057;
+     }
+
+     .pagination a:disabled {
+         color: #ccc;
+         cursor: not-allowed;
+         background-color: #e9ecef;
+         border-color: #ddd;
+     }
+
+     .pagination .page-link {
+         cursor: pointer;
+     }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -98,108 +142,173 @@
     </style>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Diachi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TongTien)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SoLuong)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrangThai)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedAt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HoTen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sdt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaKhuyenMaiNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaNguoiDungNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diachi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TongTien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoLuong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThai)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoTen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sdt)
-            </td>
- @*            <td>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Diachi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TongTien)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SoLuong)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TrangThai)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoTen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sdt)
+                </th>
+                <th>
+                    Cập nhật trạng thái
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaNguoiDungNavigation)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diachi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TongTien)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoLuong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrangThai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UpdatedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sdt)
+                    </td>
+                    @*            <td>
                 @Html.DisplayFor(modelItem => item.MaKhuyenMaiNavigation.MaKhuyenMai)
-            </td>
-            <td>
+                </td>
+                <td>
                 @Html.DisplayFor(modelItem => item.MaNguoiDungNavigation.MaNguoiDung)
-            </td> *@
-            <td>
-          @*       <button>
+                </td> *@
+                    <td>
+                        @*       <button>
                     Xác nhận đơn
-                </button>
-                     <button>
-                            Xác hủy đơn
-                     </button> *@
-                        <form asp-action="UpdateOrderStatus" method="post">
-                            <input type="hidden" name="id" value="@item.MaDh" />
-                            <button type="submit">
-                                Đã giao
-                            </button>
-                        </form>
+                    </button>
+                    <button>
+                    Xác hủy đơn
+                    </button> *@
+
+                        @if (
+                       item.TrangThai == "Chờ xác nhận hủy đơn"
+                       )
+                        {
+                            <form asp-action="ChapNhanHuy" method="post">
+                                <input type="hidden" name="id" value="@item.MaDh" />
+                                <button type="submit">
+                                    Chấp nhận hủy đơn
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            if (
+                            item.TrangThai == "Đang chờ"
+
+                            )
+                            {
+                                <form asp-action="XacNhanDon" method="post">
+                                    <input type="hidden" name="id" value="@item.MaDh" />
+                                    <button type="submit">
+                                        Xác nhận đơn
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                if (item.TrangThai == "Đã xác nhận đơn hàng sẽ sớm được giao đến bạn")
+                                {
+                                    <form asp-action="UpdateOrderStatus" method="post">
+                                        <input type="hidden" name="id" value="@item.MaDh" />
+                                        <button type="submit">
+                                            Đã giao
+                                        </button>
+                                    </form>
+                                }
+                                else
+                                {
+
+                                }
+
+                            }
+                        }
+                        @if (item.TrangThai == "Hủy đơn hàng thành công")
+                        {
+                            <p>
+                                Đơn hàng đã hủy
+                            </p>
+                        }
+                        else
+                        {
+                            <a style="color:white;background-color:brown;" href="@Url.Action("XuatHoaDonPDF", "DonHangs", new { maDH = item.MaDh })" class="btn btn-primary">PDF</a>
+
+                        }
 
 
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MaDh">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MaDh">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaDh">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MaDh">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.MaDh">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.MaDh">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+     <div class="pagination">
+     @if (ViewBag.CurrentPage > 1)
+     {
+         <a asp-action="Index" asp-route-pageNumber="@(ViewBag.CurrentPage - 1)" class="page-link">Previous</a>
+     }
+
+     <span class="page-info">Page @ViewBag.CurrentPage of @ViewBag.TotalPages</span>
+
+     @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+     {
+         <a asp-action="Index" asp-route-pageNumber="@(ViewBag.CurrentPage + 1)" class="page-link">Next</a>
+     }
+ </div>
 </body>
 </html>

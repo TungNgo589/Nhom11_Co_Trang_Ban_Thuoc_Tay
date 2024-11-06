@@ -12,19 +12,43 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class SanPhamsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public SanPhamsController(QlthuocDapm3Context context)
+        public SanPhamsController(QlthuocDapm4Context context)
         {
             _context = context;
         }
 
         // GET: Admin/SanPhams
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    var qlthuocDapm2Context = _context.SanPhams.Include(s => s.MaBenhNavigation).Include(s => s.MaDmNavigation).Include(s => s.MaGiamGiaNavigation).Include(s => s.MaNhaCungCapNavigation);
+        //    return View(await qlthuocDapm2Context.ToListAsync());
+        //}
+        public async Task<IActionResult> Index(int pageNumber = 1)
         {
-            var qlthuocDapm2Context = _context.SanPhams.Include(s => s.MaBenhNavigation).Include(s => s.MaDmNavigation).Include(s => s.MaGiamGiaNavigation).Include(s => s.MaNhaCungCapNavigation);
+            int pageSize = 5; // Number of products per page
+
+            // Calculate the number of products to skip based on the current page
+            var qlthuocDapm2Context = _context.SanPhams
+                .Include(s => s.MaBenhNavigation)
+                .Include(s => s.MaDmNavigation)
+                .Include(s => s.MaGiamGiaNavigation)
+                .Include(s => s.MaNhaCungCapNavigation)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize);
+
+            // Get the total count of products to calculate the total pages
+            int totalProducts = await _context.SanPhams.CountAsync();
+            int totalPages = (int)Math.Ceiling(totalProducts / (double)pageSize);
+
+            // Pass pagination data to the view using ViewBag
+            ViewBag.CurrentPage = pageNumber;
+            ViewBag.TotalPages = totalPages;
+
             return View(await qlthuocDapm2Context.ToListAsync());
         }
+
 
         // GET: Admin/SanPhams/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -63,13 +87,13 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSp,TenSp,MaBenh,MaNhaCungCap,MaGiamGia,ThanhPhan,GiaTien,DonVi,HansuDung,ChitietSp,MaDm,SoLuong,SoLuongMua,HinhAnh1,HinhAnh2,HinhAnh3,HinhAnh4")]
+        public async Task<IActionResult> Create([Bind("MaSp,TenSp,MaBenh,MaNhaCungCap,MaGiamGia,SoBinhLuan,ThanhPhan,Congdung,Cachdung,Doituongsudung,Tacdungphu,GiaTien,DonVi,Ngaysanxuat,Noisanxuat,HansuDung,ChitietSp,MaDm,SoLuong,SoLuongMua,HinhAnh1,HinhAnh2,HinhAnh3,HinhAnh4")]
         SanPham sanPham, IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4)
         {
             if (ModelState.IsValid)
             {
                 // Kiểm tra xem file có được upload không
-                if ((file1 != null && file1.Length > 0) &&(file2 != null && file2.Length > 0) &&(file3 != null && file4.Length > 0) &&(file4 != null && file4.Length > 0))
+                if ((file1 != null && file1.Length > 0) && (file2 != null && file2.Length > 0) && (file3 != null && file4.Length > 0) && (file4 != null && file4.Length > 0))
                 {
                     // Tạo tên file duy nhất để tránh xung đột
                     var fileName1 = Path.GetFileName(file1.FileName);
@@ -142,7 +166,7 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaSp,TenSp,MaBenh,MaNhaCungCap,MaGiamGia,ThanhPhan,GiaTien,DonVi,HansuDung,ChitietSp,MaDm,SoLuong,SoLuongMua,HinhAnh1,HinhAnh2,HinhAnh3,HinhAnh4")] SanPham sanPham)
+        public async Task<IActionResult> Edit(int id, [Bind("MaSp,TenSp,MaBenh,MaNhaCungCap,MaGiamGia,SoBinhLuan,ThanhPhan,Congdung,Cachdung,Doituongsudung,Tacdungphu,GiaTien,DonVi,Ngaysanxuat,Noisanxuat,HansuDung,ChitietSp,MaDm,SoLuong,SoLuongMua,HinhAnh1,HinhAnh2,HinhAnh3,HinhAnh4")] SanPham sanPham, IFormFile file1, IFormFile file2, IFormFile file3, IFormFile file4)
         {
             if (id != sanPham.MaSp)
             {
@@ -153,8 +177,46 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
             {
                 try
                 {
+                    if ((file1 != null && file1.Length > 0) && (file2 != null && file2.Length > 0) && (file3 != null && file4.Length > 0) && (file4 != null && file4.Length > 0))
+                    {
+                        // Tạo tên file duy nhất để tránh xung đột
+                        var fileName1 = Path.GetFileName(file1.FileName);
+                        var fileName2 = Path.GetFileName(file2.FileName);
+                        var fileName3 = Path.GetFileName(file3.FileName);
+                        var fileName4 = Path.GetFileName(file4.FileName);
+                        var filePath1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName1);
+                        var filePath2 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName2);
+                        var filePath3 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName3);
+                        var filePath4 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName4);
+
+                        // Lưu file vào thư mục wwwroot/images
+                        using (var stream = new FileStream(filePath1, FileMode.Create))
+                        {
+                            await file1.CopyToAsync(stream);
+                        }
+                        using (var stream = new FileStream(filePath2, FileMode.Create))
+                        {
+                            await file2.CopyToAsync(stream);
+                        }
+                        using (var stream = new FileStream(filePath3, FileMode.Create))
+                        {
+                            await file3.CopyToAsync(stream);
+                        }
+                        using (var stream = new FileStream(filePath4, FileMode.Create))
+                        {
+                            await file4.CopyToAsync(stream);
+                        }
+
+                        // Gán đường dẫn của ảnh cho thuộc tính AnhSp của sản phẩm
+                        sanPham.HinhAnh1 = "/images/" + fileName1; // Đảm bảo đường dẫn hợp lệ
+                        sanPham.HinhAnh2 = "/images/" + fileName2; // Đảm bảo đường dẫn hợp lệ
+                        sanPham.HinhAnh3 = "/images/" + fileName3; // Đảm bảo đường dẫn hợp lệ
+                        sanPham.HinhAnh4 = "/images/" + fileName4; // Đảm bảo đường dẫn hợp lệ
+
+                    }
                     _context.Update(sanPham);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -217,5 +279,6 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         {
             return _context.SanPhams.Any(e => e.MaSp == id);
         }
+        
     }
 }

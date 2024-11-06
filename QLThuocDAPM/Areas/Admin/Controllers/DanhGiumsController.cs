@@ -12,18 +12,28 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class DanhGiumsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public DanhGiumsController(QlthuocDapm3Context context)
+        public DanhGiumsController(QlthuocDapm4Context context)
         {
             _context = context;
         }
 
-        // GET: Admin/DanhGiums
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var qlthuocDapm2Context = _context.DanhGia.Include(d => d.MaNguoiDungNavigation).Include(d => d.MaSanPhamNavigation);
-            return View(await qlthuocDapm2Context.ToListAsync());
+            var products = _context.DanhGia
+                .Include(dg => dg.MaSanPhamNavigation) // Bao gồm thông tin sản phẩm
+                .GroupBy(dg => dg.MaSanPham) // Nhóm theo mã sản phẩm
+                .Select(g => new
+                {
+                    SanPham = g.Key,
+                    TenSanPham = g.FirstOrDefault().MaSanPhamNavigation.TenSp, // Tên sản phẩm
+                    HinhAnh = g.FirstOrDefault().MaSanPhamNavigation.HinhAnh1, // Hình ảnh sản phẩm
+                    SoSaoTrungBinh = g.Average(dg => dg.SoSao) // Tính số sao trung bình
+                })
+                .ToList();
+
+            return View(products);
         }
 
         // GET: Admin/DanhGiums/Details/5

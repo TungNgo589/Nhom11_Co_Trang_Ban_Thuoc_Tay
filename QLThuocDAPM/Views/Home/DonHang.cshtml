@@ -1,137 +1,73 @@
 ﻿@model IEnumerable<QLThuocDAPM.Data.DonHang>
 
 @{
-    ViewBag.Title = "DonHang";
+    ViewData["Title"] = "Đơn Hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    .my-bill {
-        width: 90%;
-        margin: 0 auto;
-    }
+<h2>Danh Sách Đơn Hàng</h2>
 
-    .bill-title {
-        text-align: center;
-        font-size: 22px;
-        font-weight: bolder;
-    }
+@if (Model == null || !Model.Any())
+{
+    <p>Không có đơn hàng nào được tìm thấy.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+           
+                <th>Tên Sản Phẩm</th>
+                <th>Giá trị đơn hàng</th>
+                <th>Trạng Thái</th>
+                <th>Ngày Tạo</th>
+                <th>
+                    Hủy đơn hàng
+                </th>
 
-    .bill-item {
-        width: 900px;
-        margin: 20px auto;
-        padding: 40px;
-        border-bottom: 1px #808080 solid;
-    }
-
-    .item {
-        height: 120px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .img-product {
-        width: 100px;
-        height: 100px;
-    }
-
-        .img-product img {
-            width: 100%;
-            height: 100%;
-        }
-
-    .info {
-        width: calc(100% - 60px);
-        padding: 10px 10px;
-        font-size: 15px;
-    }
-
-        .info span {
-            font-weight: bolder;
-        }
-
-        .info div + div {
-            margin: 6px 0;
-        }
-
-    .total-money {
-        font-size: 22px;
-        padding: 20px;
-    }
-
-        .total-money span {
-            font-weight: bolder;
-        }
-
-    .donhang {
-        border: 1px solid #333;
-        padding: 5px 10px;
-    }
-
-    .maDH {
-        font-weight: bolder;
-    }
-</style>
-
-<div class="container">
-    <div class="my-bill">
-        <h1 class="bill-title">DANH SÁCH ĐƠN HÀNG</h1>
-
-        <div class="list-bill mb-2">
-            @if (Model != null && Model.Any())
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var donHang in Model)
             {
-                foreach (var item in Model)
-                {
-                  
-                        // Kiểm tra các thuộc tính của item trước khi sử dụng
-                       foreach (var chiTiet in item.ChiTietDonHangs)
+                <tr>
+                    <td>
+                        <ul>
+                            @foreach (var chiTiet in donHang.ChiTietDonHangs)
                             {
-                                // Kiểm tra chiTiet trước khi sử dụng các thuộc tính của nó
-                                if (chiTiet != null )
-                                {
-                                    <div class="bill-item">
-                                        <div class="item">
-                                            <div class="img-product">
-                                                <img src="@Url.Content(@chiTiet.MaSpNavigation.HinhAnh1)" alt="Sản phẩm" />
-                                            </div>
-                                            <div class="info">
-                                                <div class="info-name"><span>Tên sản phẩm: </span>@chiTiet.MaSpNavigation.TenSp</div>
-                                                <div class="info-price"><span>Giá: </span>@String.Format("{0:0,0}", chiTiet.MaSpNavigation.GiaTien) đ</div>
-                                                <div class="info-qty"><span>Số lượng: </span>@chiTiet.SoLuong</div>
-                                                <div class="info-total"><span>Tổng: </span>@String.Format("{0:0,0}", chiTiet.SoLuong * chiTiet.MaSpNavigation.GiaTien) đ</div>
-                                            </div>
-                                    <a  style="display: inline-block; padding: 10px 20px; background-color: #17a2b8; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-right: 10px;">
-                                        <div class="info-name" style="color: white;"><span>Trạng thái: </span>@item.TrangThai</div>
-                                    </a>
+                                <img width="100" height="100;" class="anhsanpham2" src="@Url.Content(@chiTiet.MaSpNavigation.HinhAnh1)">
+                                <li>@chiTiet.MaSpNavigation.TenSp - Số lượng: @chiTiet.SoLuong</li>
 
-                                    <a href="javascript:void(0);" class="btnHuyDonHang" maDH="@item.MaDh" style="display: inline-block; padding: 10px 20px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
-                                        Hủy đơn hàng
-                                    </a>
-
-
-                                        </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <a>
-                                K co don
+                            }
+                        </ul>
+                    </td>
+                    <td>@donHang.TongTien vnđ</td>
+                    <td>@donHang.TrangThai</td>
+                    <td>@donHang.CreatedAt</td>
+                    @if(donHang.TrangThai=="Đã giao")
+                    {
+                        <td>
+                            <a style="display: inline-block; padding: 10px 20px; background-color: grey; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                                Hủy đơn hàng
                             </a>
-                        }
+                        </td>
+                      
                     }
-                        
+                    else
+                    {
+                        <td>
+                            <a href="javascript:void(0);" class="btnHuyDonHang" maDH="@donHang.MaDh" style="display: inline-block; padding: 10px 20px; background-color: #dc3545; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                                Hủy đơn hàng
+                            </a>
+                        </td>
                     }
-                
+                   
+                   
+                </tr>
             }
-            else
-            {
-                <p>Không có đơn hàng nào.</p>
-            }
-
-        </div>
-    </div>
-</div>
-
+        </tbody>
+    </table>
+}
 <script>
     var btnHuyDonHang = document.querySelectorAll(".btnHuyDonHang");
     btnHuyDonHang.forEach(item => {

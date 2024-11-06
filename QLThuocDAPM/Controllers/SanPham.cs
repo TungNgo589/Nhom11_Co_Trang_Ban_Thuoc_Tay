@@ -13,25 +13,36 @@ namespace QLThuocDAPM.Controllers
     public class SanPhamController : Controller
     {
 
-        private readonly QlthuocDapm3Context db;
+        private readonly QlthuocDapm4Context db;
 
-        public SanPhamController(QlthuocDapm3Context context)
+        public SanPhamController(QlthuocDapm4Context context)
         {
             db = context;
         }
 
         public async Task<IActionResult> Index()
         {
+
+            var sanPhams = db.SanPhams
+                
+       .Include(sp => sp.MaGiamGiaNavigation) // Lấy thông tin giảm giá
+       .ToList();
+
             var qlthuocDapm2Context = db.SanPhams.Include(s => s.MaBenhNavigation).Include(s => s.MaDmNavigation).Include(s => s.MaGiamGiaNavigation).Include(s => s.MaNhaCungCapNavigation);
+         
             return View(await qlthuocDapm2Context.ToListAsync());
+
         }
 
         public IActionResult ChiTietSanPham(int id)
-        {
+        {   
+
             var data = db.SanPhams
                 .Include(p => p.MaDmNavigation) // Bao gồm thông tin danh mục nếu cần
                         .Include(p => p.MaNhaCungCapNavigation) // Bao gồm thông tin nhà cung cấp
                                                 .Include(p => p.MaBenhNavigation) // Bao gồm thông tin nhà cung cấp
+                                                   .Include(p => p.MaGiamGiaNavigation)
+                                                   .Include(sp => sp.BinhLuans)
     // Bao gồm thông tin đánh giá
     .Include(p=>p.DanhGia)
 
@@ -39,12 +50,13 @@ namespace QLThuocDAPM.Controllers
 
             var benhs = db.Benhs.ToList(); // Lấy danh sách các bệnh từ cơ sở dữ liệu
             ViewBag.Benhs = benhs;
+            data.SoBinhLuan = data.BinhLuans.Count;
 
 
             var diemTrungBinh = data.DanhGia.Any()
         ? data.DanhGia.Average(dg => dg.SoSao)
         : 0;
-
+           
             ViewBag.SoSaoTrungBinh = diemTrungBinh;
 
             // Lưu danh sách đánh giá vào ViewBag
@@ -107,6 +119,15 @@ namespace QLThuocDAPM.Controllers
             {
                 await db.BinhLuans.AddAsync(binhLuan);
                 await db.SaveChangesAsync();
+
+                // Cập nhật số lượng bình luận cho sản phẩm
+                var sanPham = await db.SanPhams.FindAsync(maSP);
+                if (sanPham != null)
+                {
+                    sanPham.SoBinhLuan = (sanPham.SoBinhLuan ?? 0) + 1; // Tăng số bình luận lên 1
+                    db.SanPhams.Update(sanPham);
+                    await db.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {
@@ -117,7 +138,8 @@ namespace QLThuocDAPM.Controllers
 
             return RedirectToAction("ChiTietSanPham", new { id = maSP });
         }
-[HttpPost]
+
+        [HttpPost]
 [ValidateAntiForgeryToken]
 public async Task<IActionResult> AddAndUpdateRating(int maSP, decimal rating)
 {
@@ -182,7 +204,7 @@ public async Task<IActionResult> AddAndUpdateRating(int maSP, decimal rating)
             .AverageAsync(dg => dg.SoSao);
 
         // Cập nhật lại SoSaoTrungBinh của sản phẩm trong bảng DanhGia
-        danhGia.SoSaoTrungBinh = averageRating;
+        //danhGia.SoSaoTrungBinh = averageRating;
         await db.SaveChangesAsync();
 
         TempData["SuccessMessage"] = "Đánh giá của bạn đã được thêm thành công!";
@@ -212,6 +234,7 @@ public async Task<IActionResult> AddAndUpdateRating(int maSP, decimal rating)
                 return View(benh);
             }
 
+
         public IActionResult DanhSachSanPham(int page = 1, int pageSize = 3)
         {
             var products = db.SanPhams.ToList(); // Get all products
@@ -235,6 +258,45 @@ public async Task<IActionResult> AddAndUpdateRating(int maSP, decimal rating)
             return View(paginatedProducts);
         }
 
+
+        public IActionResult ChiTietSP(int id)
+        {
+            var data = db.SanPhams
+                .Include(p => p.MaDmNavigation) // Bao gồm thông tin danh mục nếu cần
+                        .Include(p => p.MaNhaCungCapNavigation) // Bao gồm thông tin nhà cung cấp
+                                                .Include(p => p.MaBenhNavigation) // Bao gồm thông tin nhà cung cấp
+                                                                                  // Bao gồm thông tin đánh giá
+    .Include(p => p.DanhGia)
+
+                .SingleOrDefault(p => p.MaSp == id);
+
+            var benhs = db.Benhs.ToList(); // Lấy danh sách các bệnh từ cơ sở dữ liệu
+            ViewBag.Benhs = benhs;
+
+
+            var diemTrungBinh = data.DanhGia.Any()
+        ? data.DanhGia.Average(dg => dg.SoSao)
+        : 0;
+
+            ViewBag.SoSaoTrungBinh = diemTrungBinh;
+
+            // Lưu danh sách đánh giá vào ViewBag
+            ViewBag.DanhGia = data.DanhGia.ToList(); // Chuyển thành danh sách
+            if (data == null)
+            {
+                TempData["Message"] = $"Không thấy sản phẩm có mã {id}";
+                return Redirect("/404");
+            }
+
+
+            ViewBag.BinhLuans = db.BinhLuans
+       // Lấy tên nhà cung cấp
+
+       .Where(bl => bl.MaSp == id)
+       .Include(bl => bl.MaNguoiDungNavigation) // Nếu bạn muốn hiển thị tên người dùng
+       .ToList();
+            return View("ChiTietSanPham", data); // Gọi rõ ràng View "ChiTietSanPham"
+        }
 
     }
 

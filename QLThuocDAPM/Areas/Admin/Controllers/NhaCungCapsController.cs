@@ -12,18 +12,24 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class NhaCungCapsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public NhaCungCapsController(QlthuocDapm3Context context)
+        public NhaCungCapsController(QlthuocDapm4Context context)
         {
             _context = context;
         }
 
         // GET: Admin/NhaCungCaps
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? maNhaCungCap)
         {
-            return View(await _context.NhaCungCaps.ToListAsync());
+            // Check if maNhaCungCap is provided; filter by maNhaCungCap if it is.
+            var nhaCungCapList = maNhaCungCap == null
+                ? await _context.NhaCungCaps.ToListAsync() // Retrieve all records if no filter is applied.
+                : await _context.NhaCungCaps.Where(ncc => ncc.MaNhaCungCap == maNhaCungCap).ToListAsync(); // Filter by maNhaCungCap.
+
+            return View(nhaCungCapList);
         }
+
 
         // GET: Admin/NhaCungCaps/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -54,15 +60,36 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaNhaCungCap,TenNhaCungCap,Sdt,DiaChi,Email")] NhaCungCap nhaCungCap)
+        public async Task<IActionResult> Create([Bind("MaNhaCungCap,TenNhaCungCap,MoTaNhaCungCap,Sdt,DiaChi,Email,HinhAnhNhaCungCap")] NhaCungCap nhaCungCap, IFormFile file1)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(nhaCungCap);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Kiểm tra xem file có được upload không
+                if ((file1 != null && file1.Length > 0))
+                {
+                    // Tạo tên file duy nhất để tránh xung đột
+                    var fileName1 = Path.GetFileName(file1.FileName);
+                    var filePath1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName1);
+
+
+                    // Lưu file vào thư mục wwwroot/images
+                    using (var stream = new FileStream(filePath1, FileMode.Create))
+                    {
+                        await file1.CopyToAsync(stream);
+                    }
+
+
+                    // Gán đường dẫn của ảnh cho thuộc tính AnhSp của sản phẩm
+                    nhaCungCap.HinhAnhNhaCungCap = "/images/" + fileName1; // Đảm bảo đường dẫn hợp lệ
+
+                    _context.Add(nhaCungCap);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return View(nhaCungCap);
             }
-            return View(nhaCungCap);
+            return View();
         }
 
         // GET: Admin/NhaCungCaps/Edit/5
@@ -86,7 +113,7 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MaNhaCungCap,TenNhaCungCap,Sdt,DiaChi,Email")] NhaCungCap nhaCungCap)
+        public async Task<IActionResult> Edit(int id, [Bind("MaNhaCungCap,TenNhaCungCap,HinhAnhNhaCungCap,MoTaNhaCungCap,Sdt,DiaChi,Email")] NhaCungCap nhaCungCap, IFormFile file1)
         {
             if (id != nhaCungCap.MaNhaCungCap)
             {
@@ -97,8 +124,26 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
             {
                 try
                 {
+                    if ((file1 != null && file1.Length > 0))
+                    {
+                        // Tạo tên file duy nhất để tránh xung đột
+                        var fileName1 = Path.GetFileName(file1.FileName);
+
+                        var filePath1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName1);
+
+                        // Lưu file vào thư mục wwwroot/images
+                        using (var stream = new FileStream(filePath1, FileMode.Create))
+                        {
+                            await file1.CopyToAsync(stream);
+                        }
+
+                        // Gán đường dẫn của ảnh cho thuộc tính AnhSp của sản phẩm
+                        nhaCungCap.HinhAnhNhaCungCap = "/images/" + fileName1; // Đảm bảo đường dẫn hợp lệ
+
+                    }
                     _context.Update(nhaCungCap);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {

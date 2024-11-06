@@ -28,52 +28,258 @@
 <body >
     <div style="justify-content:center;margin:auto ;width:1100px">
         <h2 class="title">TẤT CẢ SẢN PHẨM</h2>
-        <div style=""  class="row mb-2">
- 
-                        @foreach (var item in Model.Take(6))
-                        {
-                            <div class="col-3 mt-2 card-product">
-                                <a asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
-                                    <img class="img-product" src="@Url.Content(item.HinhAnh1)">
-                                    <div style="font-weight:300;" class="name-product">@item.TenSp</div>
-
-                                    <div class="price-product">Giá: @item.GiaTien,000 VNĐ</div>
 
 
-                                </a>
-                            </div>
-                        }
+        <div  class="product-container" style="display:flex">
+            @foreach (var item in Model.Take(8))
+            {
+                if (item.HansuDung.HasValue && item.HansuDung.Value.ToDateTime(TimeOnly.MinValue) < DateTime.Now)
+                {
+                    // Thực hiện hành động khi hạn sử dụng đã qua
+                }
+                else
+                {
+                    <a style="padding-left:20px" asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                        <div class="product-card" style="padding-left:20px">
+                            @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                            {
+                                <div class="discount-badge">@item.MaGiamGiaNavigation.GiaTri %</div>
+                            }
+                            else
+                            {
 
+                            }
+                            <img src="@Url.Content(item.HinhAnh1)" alt="Product Image" class="product-image">
+                            <div class="product-name">@item.TenSp</div>
+                            <div class="product-description">@item.Noisanxuat</div>
+                            <div class="price">@item.GiaSauGiam.000vnđ / @item.DonVi</div>
+                            @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                            {
+                                <div class="old-price">@item.GiaTien.000đ</div>
+                            }
+                            else
+                            {
+
+                            }
+                            <div class="package-info">@item.DonVi</div>
+                            <button class="buy-button">Xem chi tiết sản phẩm</button>
+                        </div>
+                    </a>
+                }
+
+
+
+                   
+                
+               
+
+            }
         </div>
+
         <br style="margin-top:100px;" />
 
         <div>
             <h2 style="text-align:center;justify-items:center">Sản Phẩm Bán Chạy</h2>
 
-            <div class="row" >
+                 <div  class="product-container" style="display:flex">
                 @foreach (var item in Model.OrderByDescending(sp => sp.SoLuongMua).Take(3))
-                {
-                    <div class="col-3 mt-2 card-product" style="border: 1px solid #ccc; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease;">
-                        <a href="/SanPham/ChiTietSanPham/@item.MaSp">
-                            <img class="img-product" src="@Url.Content(item.HinhAnh1)" alt="@item.TenSp" style="width: 100%; height: auto;">
-                            <div class="name-product" style="font-weight: bold; font-size: 16px; margin-top: 10px;">
-                                @item.TenSp
-                            </div>
-                            <div class="price-product" style="color: #e74c3c; font-size: 14px; margin-top: 5px;">
-                                Giá: @String.Format("{0:0,0}", item.GiaTien) VNĐ
-                            </div>
-                            <div class="purchase-count" style="color: #2ecc71; font-size: 13px; margin-top: 5px;">
-                                Lượt Mua: @item.SoLuongMua
+
+            {
+                    if (item.HansuDung.HasValue && item.HansuDung.Value.ToDateTime(TimeOnly.MinValue) < DateTime.Now)
+                    {
+                        // Thực hiện hành động khi hạn sử dụng đã qua
+                    }
+                    else
+                    {
+                        <a style="padding-left:20px" asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                            <div style="padding-left:20px" class="product-card" style="padding-left:10px">
+                                @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                                {
+                                    <div class="discount-badge">@item.MaGiamGiaNavigation.GiaTri %</div>
+                                }
+                                else
+                                {
+
+                                }
+                                <img src="@Url.Content(item.HinhAnh1)" alt="Product Image" class="product-image">
+                                <div class="product-name">@item.TenSp</div>
+                                <div class="product-description">@item.Noisanxuat</div>
+                                <div class="price">@item.GiaSauGiam.000vnđ / @item.DonVi</div>
+                                @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                                {
+                                    <div class="old-price">@item.GiaTien.000đ</div>
+                                }
+                                else
+                                {
+
+                                }
+                                <div class="package-info">Lượt mua @item.SoLuongMua</div>
+                                <button class="buy-button">Xem chi tiết sản phẩm</button>
                             </div>
                         </a>
-                    </div>
-                }
-            </div>
+                    }
+                    
+
+            }
+        </div>
 
 
+            <div>
+                <h2 style="text-align:center;justify-items:center">Sản Phẩm Giá Rẻ</h2>
+
+                <div class="product-container" style="display:flex">
+                    @foreach (var item in Model.OrderBy(sp => sp.GiaSauGiam).Take(3))
+
+                    {
+
+                        if (item.HansuDung.HasValue && item.HansuDung.Value.ToDateTime(TimeOnly.MinValue) < DateTime.Now)
+                        {
+                            // Thực hiện hành động khi hạn sử dụng đã qua
+                        }
+                        else
+                        {
+
+                            <a style="padding-left:20px" asp-controller="SanPham" asp-action="ChiTietSanPham" asp-route-id="@item.MaSp">
+                                <div style="padding-left:20px" class="product-card" style="padding-left:10px">
+                                    @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                                    {
+                                        <div class="discount-badge">@item.MaGiamGiaNavigation.GiaTri %</div>
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                    <img src="@Url.Content(item.HinhAnh1)" alt="Product Image" class="product-image">
+                                    <div class="product-name">@item.TenSp</div>
+                                    <div class="product-description">@item.Noisanxuat</div>
+                                    <div class="price">@item.GiaSauGiam.000vnđ / @item.DonVi</div>
+                                    @if (item.MaGiamGiaNavigation.ThoiGianKetThuc >= DateTime.Now)
+                                    {
+                                        <div class="old-price">@item.GiaTien.000đ</div>
+                                    }
+                                    else
+                                    {
+
+                                    }
+                                    <div class="package-info">Lượt mua @item.SoLuongMua</div>
+                                    <button class="buy-button">Xem chi tiết sản phẩm</button>
+                                </div>
+                            </a>
+
+                        }
+
+
+                    }
+                </div>
         </div>
     </div>
    <br style="margin-top:100px;" />
 </body>
 
 </html>
+<style>
+    <style >
+
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items:;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    .product-card {
+        width: 250px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        position: relative;
+        text-align: left;
+    }
+
+    .discount-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: red;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .product-image {
+        max-width: 100%;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+
+    .product-name {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 8px;
+    }
+
+    .product-description {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .price {
+        font-size: 18px;
+        color: #007bff;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .old-price {
+        font-size: 14px;
+        color: #999;
+        text-decoration: line-through;
+        margin-bottom: 10px;
+    }
+
+    .package-info {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #f1f1f1;
+        color: #666;
+        font-size: 14px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    .buy-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+</style>
+</html>
+
+
+
+
+</style>

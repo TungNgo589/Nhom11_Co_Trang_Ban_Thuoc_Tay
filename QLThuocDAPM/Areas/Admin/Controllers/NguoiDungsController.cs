@@ -12,9 +12,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
     [Area("Admin")]
     public class NguoiDungsController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public NguoiDungsController(QlthuocDapm3Context context)
+        public NguoiDungsController(QlthuocDapm4Context context)
         {
             _context = context;
         }

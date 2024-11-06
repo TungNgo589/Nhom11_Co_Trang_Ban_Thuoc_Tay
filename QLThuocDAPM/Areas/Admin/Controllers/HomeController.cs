@@ -10,9 +10,9 @@ namespace QLThuocDAPM.Areas.Admin.Controllers
 
     public class HomeController : Controller
     {
-        private readonly QlthuocDapm3Context _context;
+        private readonly QlthuocDapm4Context _context;
 
-        public HomeController(QlthuocDapm3Context context)
+        public HomeController(QlthuocDapm4Context context)
         {
             _context = context;
         }
